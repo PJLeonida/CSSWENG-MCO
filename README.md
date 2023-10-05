@@ -3,7 +3,7 @@
 ### First, install the Electron Framework in your local computer
 > Run this code in your terminal where you save the clone of this github repository.
 ```
-npm i -D electron
+npm ci
 ```
 
 ### Then, run the application in terminal
