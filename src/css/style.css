@@ -54,3 +54,8 @@ body {
     height: 15rem;
     width: 15rem;
 }
+
+/* Charts */
+.chart {
+    background-color: #ffd398;
+}
