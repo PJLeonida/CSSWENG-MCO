@@ -45,6 +45,6 @@ new Chart("chartAllDeployments", {
     title: {
       display: true,
       text: "Deployment (in Hours) Per Project"
-    }
+    },
   }
 });
