@@ -1,0 +1,96 @@
+:root {
+    --light: #FFFFFF;
+    --grey: #333333;
+    --dark: #181A1E;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: var(--dark);
+    padding: 20px;
+}
+
+/***** PRODUCT LOGO *****/
+.product-logo {
+    width: 472px;
+    height: 150px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    flex-shrink: 0;
+}
+
+#login-btn, #register-btn{
+    width: 472px;
+    margin-bottom: 20px;
+}
+
+.copyright {
+    font-size: 1em;
+    color: var(--light);
+    margin: 20px;
+}
+
+
+/***** MODAL *****/
+.myform {
+    max-width: 100%;
+}
+
+.modal-body {
+    padding: 0px;
+}
+
+.btn-close {
+    position: absolute;
+    right: 0;
+    padding: 1em;
+}
+
+.modal-content {
+    width: 80%;
+    margin: 0px auto;
+}
+
+.login-form-header {
+    font-size:  2.3em;
+    font-weight: bold;
+}
+
+.myform {
+    padding: 2em;
+    max-width: 100%;
+    color: var(--light);
+    box-shadow: 0 4px 6px 0px rgba(22, 22, 26, 0.18);
+    @media(max-width: 576px) {
+        max-width: 90%;
+        margin: 0px auto;
+    }
+}
+
+.form-control {
+    background-color: inherit;
+    color: var(--light);
+    padding-left:  0px;
+    border: 0px;
+    border-bottom: 1px solid var(--light);
+}
+
+.myform .btn {
+    width: 100%;
+    font-weight: 800;
+    background-color: var(--light);
+    border-radius: 0;
+    padding: 0.5em 0;
+}
+
+.myform .btn:hover {
+    color: var(--grey);
+}
+
+/***** END of MODAL *****/
