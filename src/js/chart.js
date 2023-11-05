@@ -1,12 +1,7 @@
+/* Chart for Employees Per Project */
 const xValuesAllEmployees = ["Project A", "Project B", "Project C", "Project D", "Project E"];
 const yValuesAllEmployees = [55, 49, 44, 24, 15];
-const barColorsAllEmployees = [
-  "#b91d47",
-  "#00aba9",
-  "#2b5797",
-  "#e8c3b9",
-  "#1e7145"
-];
+const barColorsAllEmployees = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9", "#1e7145"];
 
 new Chart("chartAllEmployees", {
   type: "doughnut",
@@ -26,7 +21,7 @@ new Chart("chartAllEmployees", {
 });
 
 
-
+/* Chart for Deployment Per Project */
 const xValuesAllDeployments = ["Project A", "Project B", "Project C", "Project D", "Project E"];
 const yValuesAllDeployments = [55, 49, 44, 24, 15];
 const barColorsAllDeployments = ["red", "green","blue","orange","brown"];
