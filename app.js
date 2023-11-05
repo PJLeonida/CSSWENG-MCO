@@ -20,6 +20,9 @@ function createWindow () {
 
     // Load the file
     win.loadFile('src/html/index.html');
+
+    // Maximize the window
+    win.maximize();
 }
 
 // Check if App is ready
