@@ -1,3 +1,18 @@
+:root {
+    --light: #F6F6F9;
+    --primary: #1976D2;
+    --light-primary: #CFE8FF;
+    --grey: #EEEEEE;
+    --dark-grey: #AAAAAA;
+    --dark: #363949;
+    --danger: #D32F2F;
+    --light-danger: #FECDD3;
+    --warning: #FBC02D;
+    --light-warning: #FFF2C6;
+    --success: #388E3C;
+    --light-success: #BBF7D0;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,15 +20,24 @@
     font-family: sans-serif;
 }
 
+/* Utility Classes */
+body.dark {
+    --light: #181A1E;
+    --grey: #25252C;
+    --dark: #FBFBFB;
+}
+
 body {
-    background-image: linear-gradient(to right, #ffde59, #ff914d);
+    background-color: var(--grey);
+    overflow-x: hidden;
     padding-top: 60px;
+    color: var(--dark);
 }
 
 
 /* Nav Bar */
 .navbar {
-    background-image: linear-gradient(to right, #ffde59, #ff914d);
+    background-color: var(--light);
     border-bottom: 1px solid black;
     padding: 0;
 }
@@ -26,6 +50,7 @@ body {
 .page-name {
     display: block;
     font-weight: bold;
+    padding-left: 0.5rem;
 }
 
 .nav-user-info {
@@ -34,8 +59,9 @@ body {
     font-size: 12px;
     font-style: italic;
     margin: 0;
-    margin-left: 0.1rem;
+    margin-left: 0.5rem;
     padding: 0;
+    color: var(--dark-grey);
 }
 
 .about-cover {
@@ -51,4 +77,23 @@ body {
 .team-icon {
     color: black;
     font-size: 5rem;
+}
+
+.txt-features, .txt-team {
+    background-color: var(--light);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.team-member {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: var(--light);
+}
+
+.txt-footer {
+    background-color: var(--light);
+    padding: 1rem;
+    border-radius: 5px;
 }

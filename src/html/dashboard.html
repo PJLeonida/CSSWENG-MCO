@@ -42,15 +42,24 @@
                     <i class="bx bx-bell"></i>
                     <span class="badge">12</span>
                 </a> -->
-
-                <a href="#" class="profile">
-                    <img src="images/profile.jpg" alt="profile"/>
-                </a>
-
-                <div class="div-logout">
-                    <button type="button" id="logout-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logoutModal" onclick="clickedLogoutBtn()">Logout</button>
-                </div>
+                <div class="nav-container">
+                    <div class="profile-and-info">
+                        <a href="#" class="profile">
+                            <img src="../img/sample-profile.png" alt="profile"/>
+                        </a>
+        
+                        <div class="profile-info">
+                            <h3> Hello, AJ! </h3>
+                            <div class="date-time-placeholder">Date</div>
+                        </div>
+                    </div>
+                    
+                    <div class="div-logout">
+                        <button type="button" id="logout-btn" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModal" onclick="clickedLogoutBtn()">Logout</button>
+                    </div>
+                </div> 
             </nav>
+            <!-- End of nav -->
 
 
             <!-- Main -->
@@ -96,6 +105,7 @@
                         </span>
                     </li>
                 </ul>
+                <!-- End of cards -->
 
                 <!-- Data -->
                 <div class="bottom-data">
@@ -114,67 +124,35 @@
                                 <canvas class="chart" id="chartAllDeployments" style="width:100%;max-width:400px"></canvas>
                               </div>
                             </div>
-                        </div>                            
-                    </div>
-
-                    <!-- Right Side List -->
-                    <div class="projects">
-                        <div class="header">
-                            <h3>Project List</h3>
                         </div>
-                        <ul class="project-list">
-                            <li class="current">
-                                <div class="project-title">
-                                    <p>All Summary</p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="project-title">
-                                    <p>Project A</p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="project-title">
-                                    <p>Project B</p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="project-title">
-                                    <p>Project C</p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="project-title">
-                                    <p>Project D</p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="project-title">
-                                    <p>Project E</p>
-                                </div>
-                            </li>
-
-                        </ul>
+                        <!-- End of row -->                           
                     </div>
-
-
+                    <!-- End of reports -->
                 </div>
-
-
-                
-
-                
+                <!-- End of bottom-data -->
             </main>
-
-
-            
-            
+            <!-- End of Main --> 
         </div>
+        <!-- End of Content -->
+
+        <!-- Logout Modal -->
+        <div id="logoutModal" class="modal fade" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<!-- Modal Body -->
+					<div class="modal-body">
+						<div class="myform bg-dark p-3">
+							<h3 class="text-center logout-form-header">Logging Out?</h3>
+                            <h5 class="text-center logout-form-header">Make sure to save all your chages!</h5>
+                            <div class="text-center logout-options">
+                                <a href="index.html" class="btn btn-success m-3">Yes</a>
+                                <button type="submit" class="btn btn-danger m-3" data-bs-dismiss="modal">No</button>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
         
 

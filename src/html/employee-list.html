@@ -1,101 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="x-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="x-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- Chart.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
-    <title>CSSWENG Software App</title>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
-</head>
-<body>
-    <!-- Nav Bar -->
-    <header class="navbar navbar-expand-sm fixed-top">
-        <nav class="container-fluid">
-            <div class="d-flex flex-wrap">
-                <div class="p-1 nav-product-logo">
-                    <a href="home.html">
-                        <img class="navbar-product-logo" src="../img/product-logo.png">
-                    </a>
-                </div>
-                <div class="nav-header-body">
-                    <div class="nav-page-info">
-                        <h2 class="page-name">Employee List</h2>
+        <!-- Boxicons -->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>CSSWENG Software App</title>
+
+    </head>
+    <body class="dark">
+        <!-- Left Sidebar -->
+        <div id="navbar-placeholder"></div>
+
+        <!-- Content -->
+        <div class="content">
+            <nav>
+                <!-- <i class="bx bx-menu"></i>
+                <form action="#">
+                    <div class="form-input">
+                        <input type="search" placeholder="Search..."/>
+                        <button type="submit"><i class="bx bx-search"></i></button>
                     </div>
-                    <div class="nav-user-info">
-                        <div>Hello, user!</div>
+                </form> -->
+                <!-- <a href="#" class="notification">
+                    <i class="bx bx-bell"></i>
+                    <span class="badge">12</span>
+                </a> -->
+                
+                <a href="#" class="profile">
+                    <img src="../img/sample-profile.png" alt="profile"/>
+                </a>
+
+                <div class="d-flex flex div-logout">
+                    <button type="button" id="logout-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logoutModal" onclick="clickedLogoutBtn()">Logout</button>
+                </div>
+            </nav>
+
+
+            <!-- Main -->
+            <main>
+                <div class="header">
+                    <h1>Employee List</h1>
+                    <!-- <ul class="breadcrumbs">
+                        <li><a href="#">Analytics</a> / <a href="#">Contents</a></li>
+                    </ul> -->
+                </div>
+
+                <!-- Data -->
+                <div class="bottom-data">
+                    <div class="reports">
+                        <div class="header">
+                            <h3>Employee List</h3>
+                        </div>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Name</th>
+                                    <th>Project Name</th>
+                                    <th>Position</th>
+                                    <th>Deployment (in Hrs)</th>
+                                    <th>Rate (per Hr)</th>
+                                    <th>Total Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td class="img-content">
+                                        <img src="../img/sample-profile.png" alt="photo"/>
+                                        <p>Juan Dela Cruz</p>
+                                    </td>
+                                    <td>Project A</td>
+                                    <td>Project Manager</td>
+                                    <td>10</td>
+                                    <td>5, 000</td>
+                                    <td>50, 0000</td>
+                                </tr>
+
+                                <tr>
+                                    <td>2</td>
+                                    <td class="img-content">
+                                        <img src="../img/sample-profile.png" alt="photo"/>
+                                        <p>John Doe</p>
+                                    </td>
+                                    <td>Project E</td>
+                                    <td>Project Manager</td>
+                                    <td>10</td>
+                                    <td>5, 000</td>
+                                    <td>50, 0000</td>
+                                </tr>
+
+                                
+                                
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div>
-            <div class="d-flex flex">
-                <div class="p-2 ms-auto">Settings</div>
-                <div class="p-2"><a href="index.html">Logout</a></div>
 
-            </div>
-        </nav>
-    </header>
-
-
-    <div class="p-5 text-center">
-        <div class="text-center">
-            Go to <a href="home.html" class="text-dark">HOME</a>
+            </main>
+            
         </div>
-    </div>
-
-    <!-- Employee List in Table Format -->
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Project Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Deployment (in Hours)</th>
-                    <th scope="col">Rate (per Hour)</th>
-                    <th scope="col">Total Rate</th>
-                    <th scope="col">Notes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Juan Dela Cruz</td>
-                    <td>Project A</td>
-                    <td>Project Head</td>
-                    <td>5</td>
-                    <td>5,000</td>
-                    <td>25,000</td>
-                    <td>None</td>
-                </tr>
-                <!-- Add more rows as needed -->
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Juana Dela Cruz</td>
-                    <td>Project B</td>
-                    <td>Project Head</td>
-                    <td>5</td>
-                    <td>5,000</td>
-                    <td>25,000</td>
-                    <td>None</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-      
+        
 
 
-    
-    
+        
+        
 
-    <!-- Reference script.JS -->
-    <script src="../js/renderer.js"></script>
-</body>
+        <!-- Reference script.JS -->
+        <script src="../js/renderer.js"></script>
+
+        <script>
+            $(function() {
+                $("#navbar-placeholder").load("navbar.html");
+            });
+        </script>
+    </body>
 </html>

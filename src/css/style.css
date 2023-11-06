@@ -143,6 +143,102 @@ body {
     color: var(--danger);
 }
 
+/* Side Menu Project */
+.side-menu-project {
+    width: 94%;
+    margin: 3rem 0.5rem 0rem 0.5rem;
+    padding: 20px;
+    background-color: var(--grey);
+    border-radius: 5px;
+}
+
+.menu-project-header {
+    color: var(--dark);
+}
+
+.side-menu-project .search-project {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.scrollable {
+    height: 200px; /* adjust this value according to your needs */
+    overflow: auto;
+    background-color: var(--light);
+    border-radius: 5px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+/* Search Project */
+form {
+    width: 100%;
+    margin-right: auto;
+}
+
+.form-input {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    margin-bottom: 1rem;
+}
+
+.form-input input {
+    flex-grow: 1;
+    padding: 0 16px;
+    height: 100%;
+    border: none;
+    background-color: var(--light);
+    border-radius: 36px 0 0 36px;
+    outline: none;
+    color: var(--dark);
+    width: 100%;
+    font-family: inherit;
+}
+
+.form-input button {
+    width: 80px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--success);
+    color: var(--light);
+    font-size: 18px;
+    outline: none;
+    border: none;
+    border-radius: 0 36px 36px 0;
+    cursor: pointer;
+}
+
+.form-input button .bx-search {
+    color: white;
+}
+
+.scrollable .bx {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
 /* Content */
 .content {
     position: relative;
@@ -179,7 +275,9 @@ body {
     font-size: 2rem;
 }
 
-.content nav form {
+
+/* Search Bar in Content Nav */
+/* .content nav form {
     max-width: 600px;
     width: 100%;
     margin-right: auto;
@@ -221,9 +319,9 @@ body {
 
 .content nav form .form-input button .bx-search {
     color: white;
-}
+} */
 
-.content nav .notification {
+/* .content nav .notification {
     font-weight: 20px;
     position: relative;
 }
@@ -241,7 +339,7 @@ body {
     font-size: 12px;
     display: flex;
     justify-content: center;
-}
+} */
 
 .content nav .profile img {
     width: 36px;
@@ -251,6 +349,28 @@ body {
     border: 4px solid var(--dark-grey);
 }
 
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-and-info {
+    display: flex;
+    align-items: center;
+    grid-gap: 24px;
+}
+
+.profile-info {
+    color: var(--dark);
+}
+
+.div-logout {
+    display: flex;
+    align-items: center;
+    grid-gap: 24px;
+}
+ 
 /* Card */
 main {
     width: 100%;
@@ -376,7 +496,7 @@ main .bottom-data .reports {
 
 
 /* Projects */
-main .bottom-data .projects {
+/* main .bottom-data .projects {
     flex-grow: 1;
     flex-basis: 100px;
 }
@@ -411,4 +531,60 @@ main .bottom-data .projects .project-list li .project-title {
 
 main .bottom-data .projects .project-list li.current{
     border-left: 5px solid var(--success);
+} */
+
+
+/* Logout Modal */
+.modal-content {
+    background-color: var(--light);
+}
+
+.logout-form-header {
+    color: var(--dark);
+}
+
+.logout-options {
+    grid-gap: 24px;
+}
+
+
+/* Employee List */
+main .bottom-data .reports table th {
+    padding: 12px 10px;
+    font-size: 1rem;
+    text-align: left;
+    border-bottom: 2px solid var(--grey);
+    background-color: var(--grey);
+    color: var(--dark);
+}
+
+main .bottom-data .reports table td {
+    padding-left: 12px 10px;
+}
+
+.content main .bottom-data .reports table .img-content {
+    display: flex;
+    align-items: center;
+    grid-gap: 12px;
+    padding-left: 6px;
+}
+
+main .bottom-data .reports table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.content main .bottom-data table td img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+.content main .bottom-data .reports table tbody tr {
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.content main .bottom-data .reports table tbody tr:nth-child(even) {
+    background-color: var(--grey);
 }
