@@ -42,15 +42,25 @@
                     <i class="bx bx-bell"></i>
                     <span class="badge">12</span>
                 </a> -->
-                
-                <a href="#" class="profile">
-                    <img src="../img/sample-profile.png" alt="profile"/>
-                </a>
-
-                <div class="d-flex flex div-logout">
-                    <button type="button" id="logout-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logoutModal" onclick="clickedLogoutBtn()">Logout</button>
-                </div>
+                <div class="nav-container">
+                    <div class="profile-and-info">
+                        <a href="#" class="profile">
+                            <img src="../img/sample-profile.png" alt="profile"/>
+                        </a>
+        
+                        <div class="profile-info">
+                            <h3> Hello, AJ! </h3>
+                            <div class="date-time-placeholder">Date</div>
+                        </div>
+                    </div>
+                    
+                    <div class="div-logout">
+                        <button type="button" id="logout-btn" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModal" onclick="clickedLogoutBtn()">Logout</button>
+                    </div>
+                </div> 
             </nav>
+            <!-- End of nav -->
+
 
 
             <!-- Main -->
@@ -65,10 +75,6 @@
                 <!-- Data -->
                 <div class="bottom-data">
                     <div class="reports">
-                        <div class="header">
-                            <h3>Employee List</h3>
-                        </div>
-
                         <table>
                             <thead>
                                 <tr>
@@ -83,33 +89,24 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</td>
-                                    <td class="img-content">
-                                        <img src="../img/sample-profile.png" alt="photo"/>
-                                        <p>Juan Dela Cruz</p>
-                                    </td>
-                                    <td>Project A</td>
-                                    <td>Project Manager</td>
-                                    <td>10</td>
-                                    <td>5, 000</td>
-                                    <td>50, 0000</td>
+                                    <td id="td-no">1</td>
+                                    <td id="td-employee-name">Juan Dela Cruz</td>
+                                    <td id="td-project-name">Project A</td>
+                                    <td id="td-position">Project Manager</td>
+                                    <td id="td-deployment">10</td>
+                                    <td id="td-rate">5, 000</td>
+                                    <td id="td-total-rate">50, 0000</td>
                                 </tr>
 
                                 <tr>
-                                    <td>2</td>
-                                    <td class="img-content">
-                                        <img src="../img/sample-profile.png" alt="photo"/>
-                                        <p>John Doe</p>
-                                    </td>
-                                    <td>Project E</td>
-                                    <td>Project Manager</td>
-                                    <td>10</td>
-                                    <td>5, 000</td>
-                                    <td>50, 0000</td>
+                                    <td id="td-no">2</td>
+                                    <td id="td-employee-name">John Doe</td>
+                                    <td id="td-project-name">Project E</td>
+                                    <td id="td-position">Project Manager</td>
+                                    <td id="td-deployment">10</td>
+                                    <td id="td-rate">5, 000</td>
+                                    <td id="td-total-rate">50, 0000</td>
                                 </tr>
-
-                                
-                                
                             </tbody>
                         </table>
                     </div>

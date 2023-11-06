@@ -559,26 +559,26 @@ main .bottom-data .reports table th {
 }
 
 main .bottom-data .reports table td {
-    padding-left: 12px 10px;
+    padding: 10px 8px;
 }
 
-.content main .bottom-data .reports table .img-content {
+/* .content main .bottom-data .reports table .img-content {
     display: flex;
     align-items: center;
     grid-gap: 12px;
     padding-left: 6px;
-}
+} */
 
 main .bottom-data .reports table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.content main .bottom-data table td img {
+/* .content main .bottom-data table td img {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-}
+} */
 
 .content main .bottom-data .reports table tbody tr {
     cursor: pointer;
