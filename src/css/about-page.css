@@ -97,3 +97,9 @@ body {
     padding: 1rem;
     border-radius: 5px;
 }
+
+/* Change the size of the features icons */
+.bx {
+    font-size: 3rem;
+    color: var(--dark);
+}

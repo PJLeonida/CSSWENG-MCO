@@ -1,0 +1,66 @@
+:root {
+    --light: #F6F6F9;
+    --primary: #1976D2;
+    --light-primary: #CFE8FF;
+    --grey: #EEEEEE;
+    --dark-grey: #AAAAAA;
+    --dark: #363949;
+    --danger: #D32F2F;
+    --light-danger: #FECDD3;
+    --warning: #FBC02D;
+    --light-warning: #FFF2C6;
+    --success: #388E3C;
+    --light-success: #BBF7D0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "poppins", sans-serif;
+}
+
+/* New Tracker */
+.myform {
+    max-width: 100%;
+}
+
+.modal-body {
+    padding: 10px;
+}
+
+.btn-close {
+    position: absolute;
+    right: 1em;
+    padding: 1em;
+}
+
+.employee-form-header {
+    font-size: 2.3em;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.employee-form-subheader, .form-label {
+    color: var(--dark);
+}
+
+
+.myform .btn {
+    width: 100%;
+    font-weight: 800;
+    background-color: var(--light);
+    border-radius: 0;
+    padding: 0.5em 0;
+}
+
+.myform .btn:hover {
+    color: var(--grey);
+}
+
+.div-register {
+    width: 150px;
+}
