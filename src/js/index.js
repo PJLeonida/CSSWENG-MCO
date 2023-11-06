@@ -1,8 +1,8 @@
 /* Login Form */
 document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('login-form');
-    const passwordInput = document.getElementById('password');
-    const showPasswordCheckbox = document.getElementById('show-password');
+    const passwordInput = document.getElementById('login-password');
+    const showPasswordCheckbox = document.getElementById('login-show-password');
 
     showPasswordCheckbox.addEventListener('change', function() {
         // Toggle the visibility of the password input
@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
         // Get the entered username and password
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+        const username = document.getElementById('login-username').value;
+        const password = document.getElementById('login-password').value;
         
         
         let isLoginSuccessful = false;
@@ -57,9 +57,9 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
         // Get the entered username and password
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirm-password').value;
+        const username = document.getElementById('register-username').value;
+        const password = document.getElementById('register-password').value;
+        const confirmPassword = document.getElementById('register-confirm-password').value;
         
         let isRegisterSuccessful = false;
 
