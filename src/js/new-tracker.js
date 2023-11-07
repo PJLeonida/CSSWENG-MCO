@@ -63,3 +63,37 @@ function initializeNewTracker() {
         });
     }
 }
+
+function createNewTracker() {
+    const newTrackerForm = document.getElementById('new-tracker-form');
+    const newTrackerTable = document.querySelector('#new-tracker-table tbody');
+
+    if (newTrackerForm) {
+        newTrackerForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const trackerName = document.getElementById('trackerName').value;
+            const trackerDate = document.getElementById('trackerDate').value;
+            const trackerDescription = document.getElementById('trackerDescription').value;
+
+            let tracker = {
+                name: trackerName,
+                date: trackerDate,
+                description: trackerDescription
+            };
+
+            const row = newTrackerTable.insertRow(); // Create a new row
+
+            // Insert cell data into the row
+            row.insertCell().textContent = tracker.name;
+            row.insertCell().textContent = tracker.date;
+            row.insertCell().textContent = tracker.description;
+
+            /* Reset the form */
+            newTrackerForm.reset();
+
+            /* Log to the console that the form was reset */
+            console.log('Form reset!');
+        });
+    }
+}

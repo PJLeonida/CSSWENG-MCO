@@ -1,3 +1,8 @@
+/*
+  * Chart.js
+  - delete this once the conenction of database is done
+*/
+
 /* Chart for Employees Per Project */
 const xValuesAllEmployees = ["Project A", "Project B", "Project C", "Project D", "Project E"];
 const yValuesAllEmployees = [55, 49, 44, 24, 15];

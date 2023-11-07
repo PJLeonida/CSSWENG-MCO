@@ -60,7 +60,7 @@
         
                         <div class="profile-info">
                             <h3> Hello, AJ! </h3>
-                            <div class="date-time-placeholder">Date</div>
+                            <div id="date-time-placeholder"></div>
                         </div>
                     </div>
                     
@@ -90,7 +90,17 @@
             });
         </script>
         
+        <script>
+            function updateDateTime() {
+                const dateTimeElement = document.getElementById('date-time-placeholder');
+                const now = new Date();
+                const dateTimeString = now.toLocaleString();
+                dateTimeElement.textContent = dateTimeString;
+            }
 
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+        </script>
         
 
         
