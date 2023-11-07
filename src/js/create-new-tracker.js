@@ -96,4 +96,3 @@ function createNewTracker() {
             console.log('Form reset!');
         });
     }
-}
