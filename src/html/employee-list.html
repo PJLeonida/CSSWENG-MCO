@@ -14,7 +14,7 @@
                 <!-- Data -->
                 <div class="bottom-data">
                     <div class="reports">
-                        <table>
+                        <table id="employee-list-table">
                             <thead>
                                 <tr>
                                     <th>No.</th>
@@ -26,30 +26,36 @@
                                     <th>Total Rate</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="employee-list-tbody">
                                 <tr>
-                                    <td id="td-no">1</td>
+                                    <td id="td-employee-no">1</td>
                                     <td id="td-employee-name">Juan Dela Cruz</td>
-                                    <td id="td-project-name">Project A</td>
-                                    <td id="td-position">Project Manager</td>
-                                    <td id="td-deployment">10</td>
-                                    <td id="td-rate">5, 000</td>
-                                    <td id="td-total-rate">50, 0000</td>
+                                    <td id="td-employee-project-name">Project A</td>
+                                    <td id="td-employee-position">Project Manager</td>
+                                    <td id="td-employee-deployment">10</td>
+                                    <td id="td-employee-rate">5, 000</td>
+                                    <td id="td-employee-total-rate">50, 0000</td>
                                 </tr>
 
                                 <tr>
-                                    <td id="td-no">2</td>
+                                    <td id="td-employee-no">2</td>
                                     <td id="td-employee-name">John Doe</td>
-                                    <td id="td-project-name">Project E</td>
-                                    <td id="td-position">Project Manager</td>
-                                    <td id="td-deployment">10</td>
-                                    <td id="td-rate">5, 000</td>
-                                    <td id="td-total-rate">50, 0000</td>
+                                    <td id="td-employee-project-name">Project E</td>
+                                    <td id="td-employee-position">Project Manager</td>
+                                    <td id="td-employee-deployment">10</td>
+                                    <td id="td-employee-rate">5, 000</td>
+                                    <td id="td-employee-total-rate">50, 0000</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-
             </main>
+
+
+        <script src="../js/employee-list.js"></script>
+
+        <script>
+            initializeEmployeeListTable();
+        </script>
 
