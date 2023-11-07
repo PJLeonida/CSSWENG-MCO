@@ -64,3 +64,9 @@ body {
 .div-register {
     width: 150px;
 }
+
+.new-tracker-to-do {
+    font-size:xx-large;
+    font-weight: bold;
+    padding-right: 10px;
+}
