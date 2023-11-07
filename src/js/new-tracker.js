@@ -6,45 +6,60 @@
 
 // Path: src/js/employee.js
 
-document.addEventListener('DOMContentLoaded', function() {
+function initializeNewTracker() {
     const employeeForm = document.getElementById('employee-form');
     const employeeTable = document.querySelector('#employee-table tbody');
 
-    employeeForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+    if (employeeForm) {
+        employeeForm.addEventListener('submit', function(event) {
+            event.preventDefault();
 
-        const employeeFirstName = document.getElementById('employeeFirstName').value;
-        const employeeMiddleName = document.getElementById('employeeMiddleName').value;
-        const employeeLastName = document.getElementById('employeeLastName').value;
-        const employeeSuffix = document.getElementById('employeeSuffix').value;
-        const employeePosition = document.getElementById('employeePosition').value;
-        const employeeDeployment = document.getElementById('employeeDeployment').value;
-        const employeeRate = document.getElementById('employeeRate').value;
-        
-        let employeeFullName = employeeFirstName + ' ' + employeeMiddleName + ' ' + employeeLastName + ' ' + employeeSuffix;
-        let employeeTotalRate = employeeDeployment * employeeRate;
+            const employeeFirstName = document.getElementById('employeeFirstName').value;
+            const employeeMiddleName = document.getElementById('employeeMiddleName').value;
+            const employeeLastName = document.getElementById('employeeLastName').value;
+            const employeeSuffix = document.getElementById('employeeSuffix').value;
+            const employeePosition = document.getElementById('employeePosition').value;
+            const employeeDeployment = parseFloat(document.getElementById('employeeDeployment').value);
+            const employeeRate = parseFloat(document.getElementById('employeeRate').value);
 
-        const employee = {
-            no: 1,
-            fullname: employeeFullName,
-            position: employeePosition,
-            deployment: employeeDeployment,
-            rate: employeeRate,
-            totalRate: employeeTotalRate
-        };
+            let employeeFullName = employeeFirstName + ' ' + employeeMiddleName + ' ' + employeeLastName + ' ' + employeeSuffix;
+            let employeeTotalRate = employeeDeployment * employeeRate;
 
-        employeeTable.innerHTML += `
-            <tr>
-                <td>${employee.no}</td>
-                <td>${employee.fullname}</td>
-                <td>${employee.position}</td>
-                <td>${employee.deployment}</td>
-                <td>${employee.rate}</td>
-                <td>${employee.totalRate}</td>
-            </tr>
-        `;
+            /* Log to the console the values */
+            console.log(employeeFirstName);
+            console.log(employeeMiddleName);
+            console.log(employeeLastName);
+            console.log(employeeSuffix);
+            console.log(employeePosition);
+            console.log(employeeDeployment);
+            console.log(employeeRate);
+            console.log(employeeFullName);
+            console.log(employeeTotalRate);
+            
+            const employee = {
+                no: employeeTable.rows.length + 1, // Auto-generate a unique ID
+                fullname: employeeFullName,
+                position: employeePosition,
+                deployment: employeeDeployment,
+                rate: employeeRate,
+                totalRate: employeeTotalRate
+            };
 
-        /* Reset the form */
-        employeeForm.reset();
-    });
-});
+            const row = employeeTable.insertRow(); // Create a new row
+
+            // Insert cell data into the row
+            row.insertCell().textContent = employee.no;
+            row.insertCell().textContent = employee.fullname;
+            row.insertCell().textContent = employee.position;
+            row.insertCell().textContent = employee.deployment;
+            row.insertCell().textContent = employee.rate;
+            row.insertCell().textContent = employee.totalRate;
+
+            /* Reset the form */
+            employeeForm.reset();
+
+            /* Log to the console that the form was reset */
+            console.log('Form reset!');
+        });
+    }
+}

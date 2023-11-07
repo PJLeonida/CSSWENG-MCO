@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             alert('Login successful!');
             console.log('Login successful!');
-            window.location.href = 'dashboard.html';
+            window.location.href = 'landing-page.html';
         }
 
 
