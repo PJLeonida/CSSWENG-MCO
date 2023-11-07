@@ -11,3 +11,11 @@ function clickedRegisterBtn() {
 function clickedLogoutBtn() {
     console.log("Logout button clicked!")
 }
+
+function clickedAddEmployeeBtn() {
+    console.log("Add Employee button clicked!")
+}
+
+function clickedSubmitEmployeeBtn() {
+    console.log("Submit Employee button clicked!")
+}
