@@ -1,10 +1,18 @@
 require('dotenv').config();
 const mongoose = require('mongoose')
 
-//setting up express
+//setting up express and handlebars
 const express = require('express');
 const exp = express();
+const port = 8080;
 
+//setting up handlebars
+const { engine } = require ('express-handlebars');
+exp.engine('handlebars', engine());
+exp.set('view engine', 'handlebars');
+
+//making the src folder static
+exp.use("/static", express.static('src'));
 
 // Reference app and BrowserWindow from 'electron
 const { app, BrowserWindow } = require('electron');
@@ -16,6 +24,10 @@ const Employees = require('./db/Employees.js');
 const Projects = require('./db/Projects.js');
 const Users = require('./db/user.js')
 
+
+
+/*============================================Electron====================================================================*/ 
+
 // Create a new window
 function createWindow () {
     const win = new BrowserWindow({
@@ -24,7 +36,7 @@ function createWindow () {
     });
 
     // Load the file
-    win.loadFile('src/html/index.html');
+    win.loadURL('http://localhost:' + port);
 
     // Maximize the window
     win.maximize();
@@ -40,6 +52,23 @@ app.on('window-all-closed', () => {
 })
 
 db_ops.connect();
+
+/*============================================EXPRESS====================================================================*/ 
+
+
+exp.get('/', (req, res) => {
+    console.log("SUCCESS")
+    res.render('index');
+})
+
+exp.listen(port, function(error) {
+    if (error){
+        console.log("Error: ", error)
+    }
+    else{
+        console.log("Server is listening on port " + port)
+    }
+});
 
 // const employee1 = new Employees({
 //     firstName: "Sample",
