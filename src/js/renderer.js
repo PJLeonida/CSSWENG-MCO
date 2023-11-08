@@ -19,3 +19,7 @@ function clickedAddEmployeeBtn() {
 function clickedSubmitEmployeeBtn() {
     console.log("Submit Employee button clicked!")
 }
+
+function clickedCreateNewTrackerBtn() {
+    console.log("Create New Tracker button clicked!")
+}

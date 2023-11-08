@@ -64,36 +64,102 @@ function initializeNewTracker() {
     }
 }
 
-function createNewTracker() {
-    const newTrackerForm = document.getElementById('new-tracker-form');
-    const newTrackerTable = document.querySelector('#new-tracker-table tbody');
 
-    if (newTrackerForm) {
-        newTrackerForm.addEventListener('submit', function(event) {
-            event.preventDefault();
+function replaceMainContentWithTemplate() { 
+    const createNewTrackerBtn = document.getElementById('btn-create-new-tracker');
+    
+    createNewTrackerBtn.addEventListener('click', function() {
+        const newProjectName = document.getElementById('newProjectName').value;
+        const newProjectDescription = document.getElementById('newProjectDescription').value;
 
-            const trackerName = document.getElementById('trackerName').value;
-            const trackerDate = document.getElementById('trackerDate').value;
-            const trackerDescription = document.getElementById('trackerDescription').value;
+        let newProject = {
+            name: newProjectName,
+            description: newProjectDescription
+        };
 
-            let tracker = {
-                name: trackerName,
-                date: trackerDate,
-                description: trackerDescription
-            };
+        // Get all the employee data from the table in function createNewTracker()
+        const employeeTable = document.querySelector('#employee-table tbody');
+        const employeeData = [];
 
-            const row = newTrackerTable.insertRow(); // Create a new row
+        // Loop through the table and get the data
+        for (let i = 0; i < employeeTable.rows.length; i++) {
+            employeeData.push({
+                no: employeeTable.rows[i].cells[0].innerHTML,
+                fullname: employeeTable.rows[i].cells[1].innerHTML,
+                position: employeeTable.rows[i].cells[2].innerHTML,
+                deployment: employeeTable.rows[i].cells[3].innerHTML,
+                rate: employeeTable.rows[i].cells[4].innerHTML,
+                totalRate: employeeTable.rows[i].cells[5].innerHTML
+            });
+        }
 
-            // Insert cell data into the row
-            row.insertCell().textContent = tracker.name;
-            row.insertCell().textContent = tracker.date;
-            row.insertCell().textContent = tracker.description;
+        // Log to the console the tracker data
+        console.log(newProject);
+        console.log(employeeData);
 
-            /* Reset the form */
-            newTrackerForm.reset();
+        // Fetch the template
+        fetch("../html/template-project-tracker.html")
+            .then((response) => response.text())
+            .then((template) => {
+                if (template) {
 
-            /* Log to the console that the form was reset */
-            console.log('Form reset!');
-        });
-    }
+                    // Log the template after replacements
+                    console.log("Replaced template:", template);
+
+                    // Replace the template placeholder with the tracker data
+                    template = template.replace("project-name-placeholder", newProject.name);
+                    template = template.replace("project-description-placeholder", newProject.description);
+
+                    // Create a temporary DOM element to parse the template HTML
+                    const tempElement = document.createElement('div');
+                    tempElement.innerHTML = template;
+
+                    // Get the necessary scripts from the template
+                    const scripts = tempElement.querySelectorAll('script');
+
+                    // Get the employee table in the template
+                    const employeeListTableTemplate = tempElement.querySelector('#employee-list-table-template tbody');
+
+                    if (employeeListTableTemplate) {
+                        // Loop through the employee data and insert it into the template
+                        for (let i = 0; i < employeeData.length; i++) {
+                            const row = employeeListTableTemplate.insertRow(); // Create a new row
+
+                            // Insert cell data into the row
+                            row.insertCell().textContent = employeeData[i].no;
+                            row.insertCell().textContent = employeeData[i].fullname;
+                            row.insertCell().textContent = employeeData[i].position;
+                            row.insertCell().textContent = employeeData[i].deployment;
+                            row.insertCell().textContent = employeeData[i].rate;
+                            row.insertCell().textContent = employeeData[i].totalRate;
+                        }
+
+                        // Log the employee data to verify it
+                        console.log("Employee data:", employeeData);
+
+                        // Insert the template into the <main> tag
+                        const mainElement = document.querySelector('main');
+                        mainElement.innerHTML = tempElement.innerHTML;
+                    } else {
+                        console.error("Error: Employee table template not found.");
+                    }
+                } else {
+                    console.error("Error: Template HTML not retrieved.");
+                }
+            })
+            .catch((error) => {
+                console.error("Error fetching or replacing content:", error);
+            });
+
+        // Reset the input fields: newProjectName and newProjectDescription
+        newProjectName.value = '';
+        newProjectDescription.value = '';
+
+        // Reset the employee table
+        employeeTable.innerHTML = '';
+
+        // Log to the console that the form was reset
+        console.log('Everything reset!');
+
+    });
 }
