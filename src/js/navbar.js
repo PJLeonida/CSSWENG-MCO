@@ -15,3 +15,11 @@ function loadContent(page) {
       $("#changing-container-placeholder").html(data);
     });
 }
+
+// function fiveRecentProject() {
+//     const fiveRecentProject = document.getElementById("five-recent-projects");
+//     const ul = document.querySelector("ul");
+
+
+
+// }
