@@ -1,6 +1,11 @@
 require('dotenv').config();
 const mongoose = require('mongoose')
 
+//setting up express
+const express = require('express');
+const exp = express();
+
+
 // Reference app and BrowserWindow from 'electron
 const { app, BrowserWindow } = require('electron');
 
