@@ -103,7 +103,7 @@ body {
 
 .sidebar .side-menu li.active {
     border-left: var(--success) 6px solid;
-    background: var(--dark);
+    background: var(--light);
     transition: all 0.3s ease-in;
 }
 
@@ -162,11 +162,28 @@ body {
     margin-bottom: 10px;
 }
 
-.scrollable {
-    height: 200px; /* adjust this value according to your needs */
+.five-recent-projects {
+    height: 230px; /* adjust this value according to your needs */
     overflow: auto;
     background-color: var(--light);
     border-radius: 5px;
+    padding: 10px;
+    text-align: left;
+}
+
+.five-recent-projects ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.five-recent-projects li {
+    margin-bottom: 10px;
+    background-color: var(--grey);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
 }
 
 /* width */
@@ -190,7 +207,7 @@ body {
 }
 
 /* Search Project */
-form {
+/* form {
     width: 100%;
     margin-right: auto;
 }
@@ -232,12 +249,7 @@ form {
 
 .form-input button .bx-search {
     color: white;
-}
-
-.scrollable .bx {
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
-}
+} */
 
 /* Content */
 .content {
@@ -374,7 +386,7 @@ form {
 /* Card */
 main {
     width: 100%;
-    padding: 2.2rem 1.5rem;
+    padding: 1rem 1rem;
     max-height: calc(100vh - 65px);
 }
 
@@ -587,4 +599,36 @@ main .bottom-data .reports table {
 
 .content main .bottom-data .reports table tbody tr:nth-child(even) {
     background-color: var(--grey);
+}
+
+
+/* New Tracker */
+.myform {
+    max-width: 100%;
+}
+
+.modal-body {
+    padding: 10px;
+}
+
+.btn-close {
+    position: absolute;
+    right: 1em;
+    padding: 1em;
+}
+
+.employee-form-header {
+    font-size: 2.3em;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.employee-form-subheader, .form-label {
+    color: var(--dark);
+}
+
+.new-tracker-to-do {
+    font-size:xx-large;
+    font-weight: bold;
+    padding-right: 10px;
 }
