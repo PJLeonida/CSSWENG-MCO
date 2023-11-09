@@ -25,7 +25,6 @@ const Projects = require('./db/Projects.js');
 const Users = require('./db/user.js')
 
 
-
 /*============================================Electron====================================================================*/ 
 
 // Create a new window
