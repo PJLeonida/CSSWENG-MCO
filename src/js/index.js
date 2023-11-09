@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
         // Get the entered username and password
-        const username = document.getElementById('login-username').value;
+        const username = document.getElementById('login-userID').value;
         const password = document.getElementById('login-password').value;
         
         
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
         // Get the entered username and password
-        const username = document.getElementById('register-username').value;
+        const username = document.getElementById('register-userID').value;
         const password = document.getElementById('register-password').value;
         const confirmPassword = document.getElementById('register-confirm-password').value;
         
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             alert('Registration successful!');
             console.log('Registration successful!');
-            window.location.href = 'dashboard.html';
+            window.location.href = 'landing-page.html';
         }
 
         // Reset the form
