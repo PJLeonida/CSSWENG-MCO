@@ -57,14 +57,15 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
         // Get the entered username and password
-        const username = document.getElementById('register-userID').value;
+        const userID = document.getElementById('register-userID').value;
+        const username = document.getElementById('register-username').value;
         const password = document.getElementById('register-password').value;
         const confirmPassword = document.getElementById('register-confirm-password').value;
         
         let isRegisterSuccessful = false;
 
         // Perform client-side validation (e.g., check if fields are not empty)
-        if (username === '' || password === '' || confirmPassword === '') {
+        if (userID === '' || username === '' || password === '' || confirmPassword === '') {
             alert('Please fill in all fields.');
             return;
         } else if (password !== confirmPassword) {
