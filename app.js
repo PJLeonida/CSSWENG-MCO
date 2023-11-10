@@ -1,19 +1,19 @@
 require('dotenv').config();
 const mongoose = require('mongoose')
 const port = process.env.PORT || 3000; // Use the value from .env or default to 3000
-
 const { run_exp } = require('./express.js');
 run_exp();
+
 
 // Reference app and BrowserWindow from 'electron
 const { app, BrowserWindow } = require('electron');
 
 // Import mongoose database operations from db folder and also the collections
-const db_ops = require('./db/connect.js');
-const EmpDeployment = require('./db/EmpDeployment.js');
-const Employees = require('./db/Employees.js');
-const Projects = require('./db/Projects.js');
-const Users = require('./db/user.js')
+const db_ops = require('./server/config/connect.js');
+const EmpDeployment = require('./server/schema/EmpDeployment.js');
+const Employees = require('./server/schema/Employees.js');
+const Projects = require('./server/schema/Projects.js');
+const Users = require('./server/schema/User.js')
 
 
 /*============================================Electron====================================================================*/ 
@@ -33,7 +33,18 @@ function createWindow () {
 }
 
 // Check if App is ready
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+    // Connet to the database
+    db_ops.connect()
+        .then(() => {
+            console.log('Connected to database');
+            // Create the window
+            createWindow();
+        })
+        .catch((error) => {
+            console.log('Error connecting to database:', error);
+        });
+});
 
 // App listener when all the window is closed,
 // clsed the app completely
