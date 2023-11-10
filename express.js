@@ -1,8 +1,11 @@
+require('dotenv').config();
+const port = process.env.PORT || 3000; // Use the value from .env or default to 3000
+
 const run_exp = () =>{
     //setting up express and handlebars
     const express = require('express');
     const exp = express();
-    const port = 8080;
+    
 
     //setting up handlebars
     const { engine } = require ('express-handlebars');

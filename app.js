@@ -1,6 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose')
-const port = 8080;
+const port = process.env.PORT || 3000; // Use the value from .env or default to 3000
 
 const { run_exp } = require('./express.js');
 run_exp();
