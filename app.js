@@ -1,10 +1,8 @@
 require('dotenv').config();
 const mongoose = require('mongoose')
-const exp = require('./express.js')
 const port = 8080;
 
 const { run_exp } = require('./express.js');
-
 run_exp();
 
 // Reference app and BrowserWindow from 'electron
