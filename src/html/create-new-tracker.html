@@ -52,13 +52,13 @@
                                     <div class="col">
                                         <div class="mb-3">
                                             <label for="employeeDeployment" class="form-label">Deployment (in Hours)</label>
-                                            <input type="number" class="form-control" id="employeeDeployment" placeholder="Enter the Hours of Deployment" required>
+                                            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control" id="employeeDeployment" placeholder="Enter the Hours of Deployment" required>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3">
                                             <label for="employeeRate" class="form-label">Rate (per Hour)</label>
-                                            <input type="number" class="form-control" id="employeeRate" placeholder="Enter the Cost of Rate per Hour" required>
+                                            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control" id="employeeRate" placeholder="Enter the Cost of Rate per Hour" required>
                                         </div>
                                     </div>
                                 </div>
@@ -114,8 +114,9 @@
                             </span>
                             <span>
                                 <button type="button" id="btn-enter-employee" class="btn btn-primary mb-3 me-3" data-bs-toggle="modal" data-bs-target="#enterEmployeeModal" onclick="clickedAddEmployeeBtn()">Add Employee</button>
-                                <button type="button" id="btn-edit-employee" class="btn btn-warning mb-3 me-3"  onclick="clickedEditEmployeeBtn()">Edit Employee</button>
+                                <!-- <button type="button" id="btn-edit-employee" class="btn btn-warning mb-3 me-3"  onclick="clickedEditEmployeeBtn()">Edit Employee</button>
                                 <button type="button" id="btn-remove-employee" class="btn btn-danger mb-3 me-3"  onclick="clickedRemoveEmployeeBtn()">Remove Employee</button>
+                                -->
                                 <!--
                                     data-bs-toggle="modal" data-bs-target="#editEmployeeModal"
                                     data-bs-toggle="modal" data-bs-target="#removeEmployeeModal"
@@ -132,6 +133,8 @@
                                     <th>Deployment (in Hrs)</th>
                                     <th>Rate (per Hr)</th>
                                     <th>Total Rate</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>

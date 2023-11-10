@@ -54,6 +54,8 @@ function initializeNewTracker() {
             row.insertCell().textContent = employee.deployment;
             row.insertCell().textContent = employee.rate;
             row.insertCell().textContent = employee.totalRate;
+            row.insertCell().innerHTML = '<button class="btn btn-warning btn-sm btn-edit-employee" onclick="editEmployeeRow(this)" >Edit</button>';
+            row.insertCell().innerHTML = '<button class="btn btn-danger btn-sm btn-delete-employee" onclick="deleteEmployeeRow(this)">Delete</button>';
 
             /* Reset the form */
             employeeForm.reset();
@@ -62,6 +64,42 @@ function initializeNewTracker() {
             console.log('Form reset!');
         });
     }
+}
+
+// function editEmployeeRow(button) {
+
+//     console.log('Edit button clicked!');
+
+//     const row = button.parentNode.parentNode;
+    
+//     // Get the Employee Modal
+//     const employeeModal = document.getElementById('employeeModal');
+
+//     // Get the data from the row
+//     const no = row.cells[0].innerHTML;
+//     const fullname = row.cells[1].innerHTML;
+//     const position = row.cells[2].innerHTML;
+//     const deployment = row.cells[3].innerHTML;
+//     const rate = row.cells[4].innerHTML;
+//     const totalRate = row.cells[5].innerHTML;
+
+//     // Populate the modal with the data
+//     // document.getElementById('editEmployeeNo').value = no;
+//     // document.getElementById('editEmployeeFullName').value = fullname;
+//     document.getElementById('editEmployeePosition').value = position;
+//     document.getElementById('editEmployeeDeployment').value = deployment;
+//     document.getElementById('editEmployeeRate').value = rate;
+//     // document.getElementById('editEmployeeTotalRate').value = totalRate;
+
+//     // Show the modal
+//     employeeModal.style.display = 'block';
+
+// }
+
+
+function deleteEmployeeRow(button) {
+    const row = button.parentNode.parentNode;
+    row.parentNode.removeChild(row);
 }
 
 
