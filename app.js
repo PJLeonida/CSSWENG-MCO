@@ -1,12 +1,12 @@
 require('dotenv').config();
 const mongoose = require('mongoose')
 
-//setting up express and handlebars
+// Setting up express and handlebars
 const express = require('express');
 const exp = express();
 const port = 8080;
 
-//setting up handlebars
+// Setting up handlebars
 const { engine } = require ('express-handlebars');
 exp.engine('handlebars', engine({
     extname: 'handlebars',
@@ -25,11 +25,11 @@ exp.use("/static", express.static('src'));
 const { app, BrowserWindow } = require('electron');
 
 // Import mongoose database operations from db folder and also the collections
-const db_ops = require('./db/connect.js');
-const EmpDeployment = require('./db/EmpDeployment.js');
-const Employees = require('./db/Employees.js');
-const Projects = require('./db/Projects.js');
-const Users = require('./db/user.js')
+const db_ops = require('./server/config/connect.js');
+const EmpDeployment = require('./server/schema/EmpDeployment.js');
+const Employees = require('./server/schema/Employees.js');
+const Projects = require('./server/schema/Projects.js');
+const Users = require('./server/schema/User.js')
 
 
 /*============================================Electron====================================================================*/ 
@@ -49,7 +49,18 @@ function createWindow () {
 }
 
 // Check if App is ready
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+    // Connet to the database
+    db_ops.connect()
+        .then(() => {
+            console.log('Connected to database');
+            // Create the window
+            createWindow();
+        })
+        .catch((error) => {
+            console.log('Error connecting to database:', error);
+        });
+});
 
 // App listener when all the window is closed,
 // clsed the app completely
