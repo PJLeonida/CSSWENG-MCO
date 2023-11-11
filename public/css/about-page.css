@@ -1,0 +1,105 @@
+:root {
+    --light: #F6F6F9;
+    --primary: #1976D2;
+    --light-primary: #CFE8FF;
+    --grey: #EEEEEE;
+    --dark-grey: #AAAAAA;
+    --dark: #363949;
+    --danger: #D32F2F;
+    --light-danger: #FECDD3;
+    --warning: #FBC02D;
+    --light-warning: #FFF2C6;
+    --success: #388E3C;
+    --light-success: #BBF7D0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* Utility Classes */
+body.dark {
+    --light: #181A1E;
+    --grey: #25252C;
+    --dark: #FBFBFB;
+}
+
+body {
+    background-color: var(--grey);
+    overflow-x: hidden;
+    /* padding-top: 60px; */
+    color: var(--dark);
+}
+
+
+/* Nav Bar */
+.navbar {
+    background-color: var(--light);
+    border-bottom: 1px solid black;
+    padding: 0;
+}
+
+.navbar-product-logo {
+    width: 100%;
+    height: 50px;
+}
+
+.page-name {
+    display: block;
+    font-weight: bold;
+    padding-left: 0.5rem;
+}
+
+.nav-user-info {
+    color: #262626;
+    line-height: 5px;
+    font-size: 12px;
+    font-style: italic;
+    margin: 0;
+    margin-left: 0.5rem;
+    padding: 0;
+    color: var(--dark-grey);
+}
+
+.about-cover {
+    width: 100%;
+    height: 15rem;
+    margin-bottom: 3rem;
+}
+
+.icon {
+    color: black;
+}
+
+.team-icon {
+    color: black;
+    font-size: 5rem;
+}
+
+.txt-features, .txt-team {
+    background-color: var(--light);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.team-member {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: var(--light);
+}
+
+.txt-footer {
+    background-color: var(--light);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+/* Change the size of the features icons */
+.bx {
+    font-size: 3rem;
+    color: var(--dark);
+}
