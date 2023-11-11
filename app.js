@@ -1,7 +1,9 @@
 require('dotenv').config();
+
 const mongoose = require('mongoose')
 const port = process.env.PORT || 3000; // Use the value from .env or default to 3000
 const { run_exp } = require('./express.js');
+
 run_exp();
 
 
@@ -22,7 +24,7 @@ const Users = require('./server/schema/Users.js')
 function createWindow () {
     const win = new BrowserWindow({
         width: 1440,
-        height: 1024
+        height: 1024,
     });
 
     // Load the file
@@ -47,7 +49,7 @@ app.whenReady().then(() => {
 });
 
 // App listener when all the window is closed,
-// clsed the app completely
+// closed the app completely
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit();
 })

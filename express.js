@@ -2,25 +2,25 @@ require('dotenv').config();
 const port = process.env.PORT || 3000; // Use the value from .env or default to 3000
 
 const run_exp = () =>{
-    //setting up express and handlebars
+    // Setting up express and handlebars
     const express = require('express');
     const exp = express();
     
-
-    //setting up handlebars
+    // Setting up handlebars
     const { engine } = require ('express-handlebars');
-    exp.engine('handlebars', engine({
-        extname: 'handlebars',
+    exp.engine('hbs', engine({
+        extname: 'hbs',
         //defaultView: 'default',
         //layoutsDir:'./views/layouts/',
         partialsDir: './views/partials/'
     }));
-    exp.set('view engine', 'handlebars');
-    //setting up the hb view directory
+    exp.set('view engine', 'hbs');
+
+    // Setting up the hb view directory
     exp.set("views", "./views")
 
-    //making the src folder static
-    exp.use("/static", express.static('src'));
+    // Making the public folder static
+    exp.use("/static", express.static('public'));
     /*============================================EXPRESS====================================================================*/ 
 
     exp.get('/', (req, res) => {
@@ -48,6 +48,7 @@ const run_exp = () =>{
                 posts: searchCollection
             })
     */
+   
     // Serve the main page after successful login
     exp.get('/main', (req, res) => {
         console.log('Current working directory:', process.cwd());
