@@ -1,0 +1,92 @@
+
+            <!-- Main -->
+            <main>
+                <div class="header">
+                    <h1 id="project-name-placeholder">Template Project Tracker</h1>
+                    <h3 id="project-description-placeholder">This is a template project tracker.</h3>
+                    <!-- <ul class="breadcrumbs">
+                        <li><a href="#">Analytics</a> / <a href="#">Contents</a></li>
+                    </ul> -->
+                </div>
+
+                <!-- Cards -->
+                <ul class="cards">
+                    <li>
+                        <i class="bx bx-group"></i>
+                        <span class="info">
+                            <h3>1, 200</h3>
+                            <p>Total Employees</p>
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class="bx bx-cart-add"></i>
+                        <span class="info">
+                            <h3>9, 973</h3>
+                            <p>No. of Project Roles</p>
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class="bx bx-line-chart"></i>
+                        <span class="info">
+                            <h3>5, 373</h3>
+                            <p>Total Deployment</p>
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class="bx bx-dollar-circle"></i>
+                        <span class="info">
+                            <h3>₱56, 373</h3>
+                            <p>Total Rate</p>
+                        </span>
+                    </li>
+                </ul>
+                <!-- End of cards -->
+
+                <!-- Data -->
+                <div class="bottom-data">
+                    <div class="reports">
+                        <div class="header">
+                            <h3>REPORT</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                              <div class="card chart-container">
+                                <canvas class="chart" id="chartAllEmployees" style="width:100%;max-width:400px"></canvas>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="card chart-container">
+                                <canvas class="chart" id="chartAllDeployments" style="width:100%;max-width:400px"></canvas>
+                              </div>
+                            </div>
+                        </div> <!-- End of row --> 
+                    </div> <!-- End of reports -->
+                </div> <!-- End of bottom-data -->
+
+                <!-- Data -->
+                <div class="bottom-data">
+                    <div class="reports">
+                        <h3 class="mb-3">Employee List</h3>
+                        <table id="employee-list-table-template">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Deployment (in Hrs)</th>
+                                    <th>Rate (per Hr)</th>
+                                    <th>Total Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employee-list-tbody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main> <!-- End of Main --> 
+
+        <!-- Reference charts.js -->
+        <script src="../js/charts.js"></script>
