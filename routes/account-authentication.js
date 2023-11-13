@@ -1,11 +1,24 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('../server/schema/Users');
+// const passport = 
+
 
 const router = express.Router();
 
+router.get('/', (req,res) => {
+    res.send('SAMPLE');
+    res.render('dashboard');
+})
+
+// router.post('/', (req,res) => {
+
+// })
+
+
 // Register User
-router.post('/register', async (req, res) => {
+router.post('/', async (req, res) => {
+    console.log(req.body);
     const {
         firstName,
         middleName,
@@ -43,8 +56,15 @@ router.post('/register', async (req, res) => {
 
     // Hash the password
     const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(password, salt);
-
+    const hashedPassword =  async () => {
+        try {
+            return await bcrypt.hash(password, salt);
+        }
+        catch (e) {
+            console.log(e);
+            res.render('index');
+        }
+    }
     // Create a new user
     const newUser = new User({
         firstName,
@@ -61,6 +81,7 @@ router.post('/register', async (req, res) => {
         res.status(201).json({
             message: 'User created successfully!',
         });
+        res.render('dashboard');
     } catch (err) {
         if (err.code === 11000) {
             return res.status(400).json({
@@ -71,6 +92,9 @@ router.post('/register', async (req, res) => {
             message: err.message || 'User creation failed!',
         });
     }
+
+
+
 });
 
 module.exports = router;

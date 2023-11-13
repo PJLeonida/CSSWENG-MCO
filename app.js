@@ -19,14 +19,14 @@ const Users = require('./server/schema/Users.js')
 
 // Set up express server
 
-server.listen(port, function(error) {
-    if (error){
-        console.log("Error: ", error)
-    }
-    else{
-        console.log("Server is listening on port " + port)
-    }
-});
+// server.listen(port, function(error) {
+//     if (error){
+//         console.log("Error: ", error)
+//     }
+//     else{
+//         console.log("Server is listening on port " + port)
+//     }
+// });
 
 
 
@@ -49,15 +49,18 @@ function createWindow () {
 // Check if App is ready
 app.whenReady().then(() => {
     // Connet to the database
+    
     db_ops.connect()
-        .then(() => {
-            console.log('Connected to database');
-            // Create the window
-            createWindow();
-        })
-        .catch((error) => {
-            console.log('Error connecting to database:', error);
-        });
+    server.listen(port);
+    createWindow();
+        // .then(() => {
+        //     console.log('Connected to database');
+        //     // Create the window
+        //     createWindow();
+        // })
+        // .catch((error) => {
+        //     console.log('Error connecting to database:', error);
+        // });
 });
 
 // App listener when all the window is closed,
