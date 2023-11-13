@@ -1,56 +1,48 @@
+        <!-- Navigation Bar -->
+        <div class="sidebar">
+            <a href="landing-page.html" class="logo">
+                <img src="../img/product-logo.png" alt="logo"/>
+                <span>VISER</span>
+            </a>
+            <ul class="side-menu">
+                <li><a href="#" onclick="loadContent('dashboard.html')"><i class="bx bxs-dashboard"></i>Dashboard</a></li>
+                <li><a href="#" onclick="loadContent('create-new-tracker.html')"><i class='bx bxs-plus-square'></i>Create New Tracker</a></li>
+                <li><a href="#" onclick="loadContent('project-list.html')"><i class='bx bx-group'></i>Project List</a></li>
+                <li><a href="#" onclick="loadContent('employee-list.html')"><i class='bx bx-group'></i>Employee List</a></li>
+                <li><a href="about-page.html"><i class='bx bx-info-circle'></i>About</a></li>
+            </ul>
 
-<!-- Navigation Bar -->
-<div class="sidebar">
-    <a href="#" class="logo">
-        <img src="../img/product-logo.png" alt="logo"/>
-        <span>VISER</span>
-    </a>
-    <ul class="side-menu">
-        <li class="active"><a href="dashboard.html"><i class="bx bxs-dashboard"></i>Dashboard</a></li>
-        <li><a href="new-tracker.html"><i class='bx bxs-plus-square'></i>Create New Tracker</a></li>
-        <li><a href="employee-list.html"><i class='bx bx-group'></i>Employee List</a></li>
-        <li><a href="#"><i class='bx bx-help-circle'></i>Help</a></li>
-        <li><a href="about-page.html"><i class='bx bx-info-circle'></i>About</a></li>
-    </ul>
+            <!-- <div class="side-menu">
+                <li><a href="#"><i class="bx bxs-dashboard"></i>Dark / Light</a></li>
+                <li><a href="index.html"><i class="bx bxs-dashboard"></i>Logout</a></li>
+            </div> -->
 
-    <!-- <div class="side-menu">
-        <li><a href="#"><i class="bx bxs-dashboard"></i>Dark / Light</a></li>
-        <li><a href="index.html"><i class="bx bxs-dashboard"></i>Logout</a></li>
-    </div> -->
+            <div class="side-menu-project">
+                <div class="menu-project-list">
+                    <div class="menu-project-header">
+                        <h3>Recent Projects</h3>
+                    </div>
+                    
+                    <!-- <form id="searchForm" class="search-project">
+                        <input type="text" id="searchInput" placeholder="Search for a project">
+                    </form> -->
 
-    <div class="side-menu-project">
-        <!-- *** Start of Project List (Scrollable) *** -->
-        <div class="menu-project-list">
-            <div class="menu-project-header">
-                <h3>Project List</h3>
-            </div>
-            
-            <!-- <form id="searchForm" class="search-project">
-                <input type="text" id="searchInput" placeholder="Search for a project">
-            </form> -->
-
-            <form action="#">
-                <div class="form-input">
-                    <input type="search" placeholder="Search..."/>
-                    <button type="submit"><i class="bx bx-search"></i></button>
+                    <!-- <form action="#">
+                        <div class="form-input">
+                            <input type="search" placeholder="Search..."/>
+                            <button type="submit"><i class="bx bx-search"></i></button>
+                        </div>
+                    </form> -->
+                    
+                    <div id="five-recent-projects" class="five-recent-projects scrollable">
+                        <ul>
+                            <li><a href="#" onclick="loadContent('template-project-tracker.html')"><i class="bx bx-right-arrow-alt"></i>Project 1</a></li>
+                            <li><a href="#"><i class="bx bx-right-arrow-alt"></i>Project 2</a></li>
+                            <li><a href="#"><i class="bx bx-right-arrow-alt"></i>Project 3</a></li>
+                            <li><a href="#"><i class="bx bx-right-arrow-alt"></i>Project 4</a></li>
+                            <li><a href="#"><i class="bx bx-right-arrow-alt"></i>Project 5</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </form>
-            
-            <div class="scrollable">
-                <ul>
-                    <li><a href="#"><i class='bx bx-right-arrow-alt'></i>Overall Project</a></li>
-                    <li><a href="#"><i class='bx bx-right-arrow-alt'></i>Project 1</a></li>
-                    <li><a href="#"><i class='bx bx-right-arrow-alt'></i>Project 2</a></li>
-                    <li><a href="#"><i class='bx bx-right-arrow-alt'></i>Project 3</a></li>
-                    <li><a href="#"><i class='bx bx-right-arrow-alt'></i>Project 4</a></li>
-                    <li><a href="#"><i class='bx bx-right-arrow-alt'></i>Project 5</a></li>
-                    <li><a href="#"><i class='bx bx-right-arrow-alt'></i>Project 6</a></li>
-                    <li><a href="#"><i class='bx bx-right-arrow-alt'></i>Project 7</a></li>
-                    <li><a href="#"><i class='bx bx-right-arrow-alt'></i>Project 8</a></li>
-                    <li><a href="#"><i class='bx bx-right-arrow-alt'></i>Project 9</a></li>
-                    <li><a href="#"><i class='bx bx-right-arrow-alt'></i>Project 10</a></li>
-                </ul>
             </div>
         </div>
-    </div>
-</div>

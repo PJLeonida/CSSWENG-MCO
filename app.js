@@ -75,3 +75,42 @@ module.exports = port; // Export the port value
 //     .catch(error => {
 //         console.error('Error saving new employee:', error);
 //     });
+
+
+
+
+// const { app, BrowserWindow } = require('electron');
+// const { exp, port, connectToDB } = require('./express.js');
+
+// // App listener when the app is ready, call createWindow()
+// // and connect to MongoDB
+// app.whenReady().then(() => {
+//     // Connect to MongoDB
+//     connectToDB()
+//         .then(() => {
+//             console.log('Connected to MongoDB');
+//             createWindow();
+//         })
+//         .catch((error) => {
+//             console.log(error);
+//         });
+// });
+
+// // Function to create a window
+// function createWindow() {
+//     const win = new BrowserWindow({
+//         width: 1440,
+//         height: 1024,
+//     });
+
+//     win.loadURL(`http://localhost:${port}`);
+
+//     win.maximize();
+// }
+
+// // App listener when all windows are closed
+// app.on('window-all-closed', () => {
+//     if (process.platform !== 'darwin') {
+//         app.quit();
+//     }
+// });

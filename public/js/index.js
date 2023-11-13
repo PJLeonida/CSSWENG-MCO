@@ -42,7 +42,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const registerForm = document.getElementById('register-form');
     const registerPassword = document.getElementById('register-password');
-    const registerConfirmPassword = document.getElementById('register-confirm-password');
+    const registerConfirmPassword = document.getElementById('register-confirmPassword');
 
     // Show/hide password
     const registerShowHidePassword = document.getElementById('register-show-hide-password');
@@ -85,13 +85,13 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
         // Get the entered username and password
-        const firstName = document.getElementById('register-first-name').value;
-        const middleName = document.getElementById('register-middle-name').value;
-        const lastName = document.getElementById('register-last-name').value;
+        const firstName = document.getElementById('register-firstName').value;
+        const middleName = document.getElementById('register-middleName').value;
+        const lastName = document.getElementById('register-lastName').value;
         const suffix = document.getElementById('register-suffix').value;
         const companyID = document.getElementById('register-companyID').value;
         const password = document.getElementById('register-password').value;
-        const confirmPassword = document.getElementById('register-confirm-password').value;
+        const confirmPassword = document.getElementById('register-confirmPassword').value;
 
         // Perform client-side validation (e.g., check if fields are not empty)
         if (firstName === '' || lastName === '' || companyID === '' || password === '' || confirmPassword === '') {
@@ -122,17 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Company ID must be a number.');
             return;
         }
-
-        // Send the data to the main process (Electron) using IPC
-        const { ipcRenderer } = require('electron');
-        ipcRenderer.send('register', {
-            firstName,
-            middleName,
-            lastName,
-            suffix,
-            companyID,
-            password,
-        });
 
     });
 });

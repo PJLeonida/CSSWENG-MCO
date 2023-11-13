@@ -1,7 +1,9 @@
-<!-- Main -->
+
+            <!-- Main -->
             <main>
                 <div class="header">
-                    <h1>Dashboard</h1>
+                    <h1 id="project-name-placeholder">Template Project Tracker</h1>
+                    <h3 id="project-description-placeholder">This is a template project tracker.</h3>
                     <!-- <ul class="breadcrumbs">
                         <li><a href="#">Analytics</a> / <a href="#">Contents</a></li>
                     </ul> -->
@@ -21,7 +23,7 @@
                         <i class="bx bx-cart-add"></i>
                         <span class="info">
                             <h3>9, 973</h3>
-                            <p>Total Projects</p>
+                            <p>No. of Project Roles</p>
                         </span>
                     </li>
 
@@ -37,7 +39,7 @@
                         <i class="bx bx-dollar-circle"></i>
                         <span class="info">
                             <h3>₱56, 373</h3>
-                            <p>Total Cost</p>
+                            <p>Total Rate</p>
                         </span>
                     </li>
                 </ul>
@@ -63,8 +65,28 @@
                         </div> <!-- End of row --> 
                     </div> <!-- End of reports -->
                 </div> <!-- End of bottom-data -->
-            </main> <!-- End of Main --> 
 
+                <!-- Data -->
+                <div class="bottom-data">
+                    <div class="reports">
+                        <h3 class="mb-3">Employee List</h3>
+                        <table id="employee-list-table-template">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Deployment (in Hrs)</th>
+                                    <th>Rate (per Hr)</th>
+                                    <th>Total Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employee-list-tbody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main> <!-- End of Main --> 
 
         <!-- Reference charts.js -->
         <script src="../js/charts.js"></script>

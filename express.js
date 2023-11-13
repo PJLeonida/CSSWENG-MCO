@@ -1,19 +1,27 @@
 require('dotenv').config();
 const port = process.env.PORT || 3000; // Use the value from .env or default to 3000
 
-const run_exp = () =>{
+const express = require('express');
+const { engine } = require('express-handlebars');
+const mongoose = require('mongoose');
+const connectToDB = require('./server/config/connect.js');
+const accountAuthRouter = require('./routes/account-auth.js');
+
+const run_exp = async () =>{
     // Setting up express and handlebars
-    const express = require('express');
     const exp = express();
+
+    // Set up Mongoose connection
+    await connectToDB.connect
     
     // Setting up handlebars
-    const { engine } = require ('express-handlebars');
     exp.engine('hbs', engine({
         extname: 'hbs',
         //defaultView: 'default',
         //layoutsDir:'./views/layouts/',
         partialsDir: './views/partials/'
     }));
+
     exp.set('view engine', 'hbs');
 
     // Setting up the hb view directory
@@ -21,23 +29,17 @@ const run_exp = () =>{
 
     // Making the public folder static
     exp.use("/static", express.static('public'));
+
+    // GET the route for index page
+    exp.get('/', function (req, res) {
+        res.render('index', { title: 'Project Tracker' });
+    });
+
+
+
     /*============================================EXPRESS====================================================================*/ 
 
-    exp.get('/', (req, res) => {
-        console.log("SUCCESS")
-        res.redirect('/login')
-    })
-
-    // Serve the login page
-    exp.get('/login', (req, res) => {
-        res.render('index');
-    });
-
-
-    // NOTE: Login functionalities is pj's task 
-    exp.post('/login', (req, res) => {
-        res.redirect('/main');
-    });
+    
 
     /*
             res.render("indexLogin", {
@@ -68,3 +70,25 @@ const run_exp = () =>{
 }
 
 module.exports = {run_exp}
+
+
+
+// express.js
+
+// require('dotenv').config();
+// const express = require('express');
+// const exphbs = require('express-handlebars');
+// const mongoose = require('mongoose');
+
+// const exp = express();
+// const port = process.env.PORT || 3000;
+
+// // Connect to MongoDB
+// const connectToDB = require('./server/config/connect.js');
+
+// // Routes
+// const accountAuthRouter = require('./routes/account-auth.js');
+// exp.use('/', accountAuthRouter);
+
+// // Export the express app
+// module.exports = { exp, port, connectToDB };

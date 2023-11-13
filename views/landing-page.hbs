@@ -1,0 +1,64 @@
+        <div class="landing-page-container">
+            <!-- Left Sidebar -->
+            <div id="navbar-placeholder"></div>
+            {{!-- {{navbar}} --}}
+
+        </div>
+        
+
+        <!-- Content -->
+        <div class="content">
+            <nav>
+                <div class="nav-container">
+                    <div class="profile-and-info">
+                        <a href="#" class="profile">
+                            <img src="../public/img/default-profile-pic.jpg" alt="profile"/>
+                        </a>
+        
+                        <div class="profile-info">
+                            <h3> Hello, Persona! </h3>
+                            <div id="date-time-placeholder"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="div-logout">
+                        <button type="button" id="logout-btn" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModal" onclick="clickedLogoutBtn()">Logout</button>
+                    </div>
+                </div> 
+            </nav>
+            <!-- End of nav -->
+
+
+            <!-- Main -->
+            <main id="changing-container-placeholder">
+                <div class="header">
+                    <h1>Landing Page</h1>
+                </div>
+            </main>
+
+            
+            
+        </div> <!-- End of Content -->
+        
+
+
+        <!-- Reference script.js -->
+        <script src="../js/renderer.js"></script>
+
+        <script>
+            $(function() {
+                $("#navbar-placeholder").load("navbar.html");
+            });
+        </script>
+        
+        <script>
+            function updateDateTime() {
+                const dateTimeElement = document.getElementById('date-time-placeholder');
+                const now = new Date();
+                const dateTimeString = now.toLocaleString();
+                dateTimeElement.textContent = dateTimeString;
+            }
+
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+        </script>
