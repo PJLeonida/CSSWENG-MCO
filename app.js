@@ -2,9 +2,8 @@ require('dotenv').config();
 
 const mongoose = require('mongoose')
 const port = process.env.PORT || 3000; // Use the value from .env or default to 3000
-const { run_exp } = require('./express.js');
+const server = require('./express.js');
 
-run_exp();
 
 
 // Reference app and BrowserWindow from 'electron
@@ -16,6 +15,19 @@ const EmpDeployment = require('./server/schema/EmpDeployment.js');
 const Employees = require('./server/schema/Employees.js');
 const Projects = require('./server/schema/Projects.js');
 const Users = require('./server/schema/Users.js')
+
+
+// Set up express server
+
+server.listen(port, function(error) {
+    if (error){
+        console.log("Error: ", error)
+    }
+    else{
+        console.log("Server is listening on port " + port)
+    }
+});
+
 
 
 /*============================================Electron====================================================================*/ 
@@ -53,8 +65,6 @@ app.whenReady().then(() => {
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit();
 })
-
-db_ops.connect();
 
 module.exports = port; // Export the port value
 
