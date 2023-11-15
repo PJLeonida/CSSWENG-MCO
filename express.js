@@ -3,6 +3,7 @@ const port = process.env.PORT || 3000; // Use the value from .env or default to 
 
 
 // Setting up express and handlebars
+const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 
@@ -51,7 +52,8 @@ app.get('/', (req, res) => {
 
 // Set up JSON parser
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true}));
 
 // Serve the main page after successful login
 app.get('/main', (req, res) => {
@@ -62,6 +64,7 @@ app.get('/main', (req, res) => {
 
 app.use('/register', register);
 app.use('/dashboard', dashboard);
+
 //======================Server Listen========================//
 
 

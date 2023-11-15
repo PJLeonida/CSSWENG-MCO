@@ -124,15 +124,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Send the data to the main process (Electron) using IPC
-        const { ipcRenderer } = require('electron');
-        ipcRenderer.send('register', {
-            firstName,
-            middleName,
-            lastName,
-            suffix,
-            companyID,
-            password,
-        });
+        // const { ipcRenderer } = require('electron');
+
+        // postrequest = {
+        //     firstName: firstName,
+        //     middleName: middleName,
+        //     lastName: lastName,
+        //     suffix: suffix,
+        //     companyID: companyID,
+        //     password: password,
+        // }
+
+        // console.log('WENT HERE', postrequest)
+
+        // ipcRenderer.send('register-form', postrequest);
+
+        // fetch(`http://localhost:${process.env.port}/register`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'X-Requested-With': 'XMLHttpRequest'
+        //     },
+        //     body: JSON.stringify(postrequest)
+        // })
+
+        // ipcRenderer.send('register', {
+        //     firstName,
+        //     middleName,
+        //     lastName,
+        //     suffix,
+        //     companyID,
+        //     password,
+        // });
 
     });
 });

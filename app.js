@@ -7,7 +7,7 @@ const server = require('./express.js');
 
 
 // Reference app and BrowserWindow from 'electron
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 
 // Import mongoose database operations from db folder and also the collections
 const db_ops = require('./server/config/connect.js');
@@ -49,7 +49,6 @@ function createWindow () {
 // Check if App is ready
 app.whenReady().then(() => {
     // Connet to the database
-    
     db_ops.connect()
     server.listen(port);
     createWindow();
@@ -69,22 +68,17 @@ app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit();
 })
 
-module.exports = port; // Export the port value
 
-
-// const employee1 = new Employees({
-//     firstName: "Sample",
-//     lastName: "Document",
-//     position: "Sampleposition",
-//     rate: 50,
-//     totalrate: 25000,
-//     notes: "Sana gumana pls"
+// ipcMain.on('register-form', (event, data) => {
+//     console.log('HERE', data);
+//     fetch(`http://localhost:${process.env.port}/register`, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify(data)
+//         })
 // })
 
-// employee1.save()
-//     .then(savedEmployee => {
-//         console.log('New employee saved:', savedEmployee);
-//     })
-//     .catch(error => {
-//         console.error('Error saving new employee:', error);
-//     });
+
+module.exports = port; // Export the port value

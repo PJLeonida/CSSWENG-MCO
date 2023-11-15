@@ -73,13 +73,13 @@
                                     <div class="col">
                                         <div class="mb-3">
                                             <label for="register-firstName" class="form-label">First Name</label>
-                                            <input type="text" class="form-control" id="register-firstName" placeholder="Enter First Name" required>
+                                            <input type="text" class="form-control" id="register-firstName" placeholder="Enter First Name" name="reg_firstName" required>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3">
                                             <label for="register-middleName" class="form-label">Middle Name</label>
-                                            <input type="text" class="form-control" id="register-middleName" placeholder="Enter Middle Name">
+                                            <input type="text" name="reg_middleName" class="form-control" id="register-middleName" placeholder="Enter Middle Name">
                                         </div>
                                     </div>
                                 </div>
@@ -88,25 +88,25 @@
 									<div class="col">
                                         <div class="mb-3">
                                             <label for="register-lastName" class="form-label">Last Name</label>
-                                            <input type="text" class="form-control" id="register-lastName" placeholder="Enter Last Name" required>
+                                            <input type="text" name="reg_lastName" class="form-control" id="register-lastName" placeholder="Enter Last Name" required>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3">
                                             <label for="register-suffix" class="form-label">Suffix</label>
-                                            <input type="text" class="form-control" id="register-suffix" placeholder="Enter Suffix">
+                                            <input type="text" name="reg_suffix" class="form-control" id="register-suffix" placeholder="Enter Suffix">
                                         </div>
                                     </div>
 								</div>
 
 								<div class="mb-3 mt-3">
 									<label for="register-companyID" class="index-form-label">Company ID</label>
-									<input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" id="register-companyID" class="form-control" placeholder="Enter Company ID" required>
+									<input type="number" min="0" name="reg_companyID" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" id="register-companyID" class="form-control" placeholder="Enter Company ID" required>
 								</div>
 								<div class="mb-3 mt-3">
 									<label for="register-password" class="index-form-label">Password</label>
 									<div class="input-group">
-										<input type="password" id="register-password" class="form-control" placeholder="Enter Password" required>
+										<input type="password" name="reg_password" class="reg_password" id="register-password" class="form-control" placeholder="Enter Password" required>
 										<span class="input-group-text" id="register-show-hide-password">
 											<i class="fa fa-eye-slash" aria-hidden="true"></i>
 										</span>
@@ -116,7 +116,7 @@
 								<div class="mb-3 mt-3">
 									<label for="register-confirmPassword" class="index-form-label">Confirm Password</label>
                                     <div class="input-group">
-                                        <input type="password" id="register-confirmPassword" class="form-control" placeholder="Confirm Password" required>
+                                        <input type="password" name="reg_confirm" id="register-confirmPassword" class="form-control" placeholder="Confirm Password" required>
                                         <span class="input-group-text" id="register-confirm-show-hide-password">
 											<i class="fa fa-eye-slash" aria-hidden="true"></i>
 										</span>
@@ -145,7 +145,7 @@
 
         <!-- Scripts -->
         <script src="/static/js/renderer.js"></script>
-        <script src="/static/js/index.js"></script>
+        <script src="../../public/js/index.js"></script>
 
 	</body>
 </html>

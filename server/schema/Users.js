@@ -25,7 +25,7 @@ const userSchema = mongoose.Schema({
         type: Number, 
         require: true,
         unique: true,   // This is to make sure that the userID is unique
-        max: 10,        // This is to make sure that the userID is only 10 characters long
+        // max: 12,        // This is to make sure that the userID is only 10 characters long COMMENTED IT OUT BECAUSE IT CAUSES ERROR
         index: true     // This is to make sure that the userID is indexed
     },
     password: {
