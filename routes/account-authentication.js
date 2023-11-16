@@ -1,5 +1,5 @@
 /* 
-    acccount-auth.js
+    acccount-authentication.js
     This file handles the registration and login of users.
 */
 

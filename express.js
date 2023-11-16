@@ -13,7 +13,7 @@ app.engine('hbs', engine({
     extname: 'hbs',
     //defaultView: 'default',
     //layoutsDir:'./views/layouts/',
-    partialsDir: './views/partials/'
+    partialsDir: __dirname + '/views/partials/',
 }));
 app.set('view engine', 'hbs');
 
@@ -57,13 +57,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true}));
 
-// Serve the main page after successful login
-app.get('/main', (req, res) => {
-    console.log('Current working directory:', process.cwd());
-    res.render("dashboard");
-    console.log("Tried :C")
-});
-
+// Set up routes
 app.use('/register', accountAuthenticationRoute);
 app.use('/login', accountAuthenticationRoute);
 app.use('/landing-page', landingPageRoute);

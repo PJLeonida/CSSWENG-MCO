@@ -23,8 +23,9 @@ body {
     font-family: "poppins", sans-serif;
 }
 
-.bx {
+.fa {
     font-size: 1.7rem;
+    margin-right: 0.5rem;
 }
 
 a {
@@ -166,6 +167,10 @@ body {
     color: var(--grey);
 }
 
+.fas {
+    cursor: pointer;
+}
+
 /***** END of MODAL *****/
 
 
@@ -252,7 +257,7 @@ body {
     transition: all 0.3s ease-in;
 }
 
-.sidebar .side-menu lia a .bx {
+.sidebar .side-menu lia a .fa {
     min-width: calc(80px - 12px);
     display: flex;
     justify-content: center;
@@ -405,11 +410,11 @@ body {
     color: var(--dark);
 }
 
-.content nav .bx.bx-menu {
+/* .content nav .bx.bx-menu {
     cursor: pointer;
     color: var(--dark);
     font-size: 2rem;
-}
+} */
 
 
 /* Search Bar in Content Nav */
