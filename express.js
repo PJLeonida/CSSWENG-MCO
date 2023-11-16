@@ -9,11 +9,18 @@ const port = process.env.PORT || 3000; // Use the value from .env or default to 
 
 // Setting up express and handlebars
 const express = require('express');
-const bodyParser = require('body-parser');
 // const session = require('express-session');
 // const cookieParser = require('cookie-parser');
 
 const app = express();
+
+
+// Set up JSON parser
+const bodyParser = require('body-parser');
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true}));
+
 
 // Setting up handlebars
 const { engine } = require ('express-handlebars');
@@ -47,6 +54,15 @@ app.get('/', (req, res) => {
     res.render('index');
 })
 
+// Set up routes
+app.use('/register', accountAuthenticationRoute);
+app.use('/login', accountAuthenticationRoute);
+app.use('/landing-page', landingPageRoute);
+app.use('/dashboard', dashboardRoute);
+app.use('/employee-list', employeeListRoute);
+
+
+
 // Serve the login page
 // app.get('/login', (req, res) => {
 //     res.render('index');
@@ -61,22 +77,5 @@ app.get('/', (req, res) => {
             posts: searchCollection
         })
 */
-
-// Set up JSON parser
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json())
-app.use(bodyParser.urlencoded({ extended: true}));
-
-// Set up routes
-app.use('/register', accountAuthenticationRoute);
-app.use('/login', accountAuthenticationRoute);
-app.use('/landing-page', landingPageRoute);
-app.use('/dashboard', dashboardRoute);
-app.use('/employee-list', employeeListRoute);
-
-//======================Server Listen========================//
-
-
-
 
 module.exports = app;
