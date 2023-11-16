@@ -1,8 +1,5 @@
         <div class="landing-page-container">
-            <!-- Left Sidebar -->
-            <div id="navbar-placeholder"></div>
-            {{!-- {{navbar}} --}}
-
+            {{> navbar}}
         </div>
         
 
@@ -12,13 +9,14 @@
                 <div class="nav-container">
                     <div class="profile-and-info">
                         <a href="#" class="profile">
-                            <img src="../public/img/default-profile-pic.jpg" alt="profile"/>
+                            <img src="/static/img/default-profile-pic.jpg" alt="profile"/>
                         </a>
         
                         <div class="profile-info">
-                            <h3> Hello, Persona! </h3>
+                            <h3> Hello, {{user.firstName}}! </h3>
                             <div id="date-time-placeholder"></div>
                         </div>
+
                     </div>
                     
                     <div class="div-logout">
@@ -32,8 +30,12 @@
             <!-- Main -->
             <main id="changing-container-placeholder">
                 <div class="header">
-                    <h1>Landing Page</h1>
+                    <h1>{{pageTitle}}</h1>
                 </div>
+
+                <!-- Change the main content here -->
+                {{!-- {{> partial }} --}}
+                {{> dashboard}}
             </main>
 
             
@@ -42,14 +44,6 @@
         
 
 
-        <!-- Reference script.js -->
-        <script src="../js/renderer.js"></script>
-
-        <script>
-            $(function() {
-                $("#navbar-placeholder").load("navbar.html");
-            });
-        </script>
         
         <script>
             function updateDateTime() {

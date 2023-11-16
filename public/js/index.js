@@ -1,48 +1,29 @@
 /* Login Form */
-// document.addEventListener('DOMContentLoaded', function() {
-//     const loginForm = document.getElementById('login-form');
-
-//     loginForm.addEventListener('submit', function(event) {
-//         event.preventDefault();
-
-//         // Get the entered username and password
-//         const username = document.getElementById('login-companyID').value;
-//         const password = document.getElementById('login-password').value;
-        
-        
-//         let isLoginSuccessful = false;
-
-//         // Perform client-side validation (e.g., check if fields are not empty)
-//         if (username === '' || password === '') {
-//             alert('Please fill in both fields.');
-//             return;
-//         } else {
-//             isLoginSuccessful = true;
-//         }
-       
-
-//         if (!isLoginSuccessful) {
-//             alert('Login failed!');
-//             console.log('Login failed!');
-//             return;
-//         } else {
-//             alert('Login successful!');
-//             console.log('Login successful!');
-//             window.location.href = 'landing-page.html';
-//         }
+document.addEventListener('DOMContentLoaded', function() {
+    // const loginForm = document.getElementById('login-form');
+    const loginPassword = document.getElementById('login-password');
+    const loginShowHidePassword = document.getElementById('login-show-hide-password');
 
 
-//         // Reset the form
-//         loginForm.reset();
-//     });
-// });
+    loginShowHidePassword.addEventListener('click', function() {
+        if (loginPassword.type === 'password') {
+            loginPassword.type = 'text';
+            // Change the icon to show the eye opened
+            loginShowHidePassword.innerHTML = '<i class="fas fa-eye"></i>';
+        } else {
+            loginPassword.type = 'password';
+            // Change the icon to show the eye closed
+            loginShowHidePassword.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        }
+    });
+});
 
 
 /* Register Form */
 document.addEventListener('DOMContentLoaded', function() {
-    const registerForm = document.getElementById('register-form');
+    // const registerForm = document.getElementById('register-form');
     const registerPassword = document.getElementById('register-password');
-    const registerConfirmPassword = document.getElementById('register-confirm-password');
+    const registerConfirmPassword = document.getElementById('register-confirmPassword');
 
     // Show/hide password
     const registerShowHidePassword = document.getElementById('register-show-hide-password');
@@ -81,81 +62,48 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    registerForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+    // registerForm.addEventListener('submit', function(event) {
+    //     event.preventDefault();
 
-        // Get the entered username and password
-        const firstName = document.getElementById('register-first-name').value;
-        const middleName = document.getElementById('register-middle-name').value;
-        const lastName = document.getElementById('register-last-name').value;
-        const suffix = document.getElementById('register-suffix').value;
-        const companyID = document.getElementById('register-companyID').value;
-        const password = document.getElementById('register-password').value;
-        const confirmPassword = document.getElementById('register-confirm-password').value;
+    //     // Get the entered username and password
+    //     const firstName = document.getElementById('register-firstName').value;
+    //     const middleName = document.getElementById('register-middleName').value;
+    //     const lastName = document.getElementById('register-lastName').value;
+    //     const suffix = document.getElementById('register-suffix').value;
+    //     const companyID = document.getElementById('register-companyID').value;
+    //     const password = document.getElementById('register-password').value;
+    //     const confirmPassword = document.getElementById('register-confirmPassword').value;
 
-        // Perform client-side validation (e.g., check if fields are not empty)
-        if (firstName === '' || lastName === '' || companyID === '' || password === '' || confirmPassword === '') {
-            alert('Please fill in all fields.');
-            return;
-        }
+    //     // Perform client-side validation (e.g., check if fields are not empty)
+    //     if (firstName === '' || lastName === '' || companyID === '' || password === '' || confirmPassword === '') {
+    //         firstName.setCustomValidity('Please fill out this field.');
+    //         return;
+    //     }
 
-        // Perform client-side validation (e.g., check if passwords match)
-        if (password !== confirmPassword) {
-            alert('Passwords do not match.');
-            return;
-        }
+    //     // Perform client-side validation (e.g., check if passwords match)
+    //     if (password !== confirmPassword) {
+    //         alert('Passwords do not match.');
+    //         return;
+    //     }
 
-        // Perform client-side validation (e.g., check if password is at least 8 characters long)
-        if (password.length < 8) {
-            alert('Password must be at least 8 characters long.');
-            return;
-        }
+    //     // Perform client-side validation (e.g., check if password is at least 8 characters long)
+    //     if (password.length < 8) {
+    //         alert('Password must be at least 8 characters long.');
+    //         return;
+    //     }
 
-        // Perform client-side validation (e.g., check if company ID is 10 characters long)
-        if (companyID.length !== 10) {
-            alert('Company ID must be 10 characters long.');
-            return;
-        }
+    //     // Perform client-side validation (e.g., check if company ID is 10 characters long)
+    //     if (companyID.length !== 10) {
+    //         alert('Company ID must be 10 characters long.');
+    //         return;
+    //     }
 
-        // Perform client-side validation (e.g., check if company ID is a number)
-        if (isNaN(companyID)) {
-            alert('Company ID must be a number.');
-            return;
-        }
+    //     // Perform client-side validation (e.g., check if company ID is a number)
+    //     if (isNaN(companyID)) {
+    //         alert('Company ID must be a number.');
+    //         return;
+    //     }
 
-        // Send the data to the main process (Electron) using IPC
-        // const { ipcRenderer } = require('electron');
 
-        // postrequest = {
-        //     firstName: firstName,
-        //     middleName: middleName,
-        //     lastName: lastName,
-        //     suffix: suffix,
-        //     companyID: companyID,
-        //     password: password,
-        // }
-
-        // console.log('WENT HERE', postrequest)
-
-        // ipcRenderer.send('register-form', postrequest);
-
-        // fetch(`http://localhost:${process.env.port}/register`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'X-Requested-With': 'XMLHttpRequest'
-        //     },
-        //     body: JSON.stringify(postrequest)
-        // })
-
-        // ipcRenderer.send('register', {
-        //     firstName,
-        //     middleName,
-        //     lastName,
-        //     suffix,
-        //     companyID,
-        //     password,
-        // });
-
-    });
+    // });
 });
