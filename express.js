@@ -25,8 +25,10 @@ app.use("/static", express.static('public'));
 
 
 // Set up routes from routes folder
-const register = require('./routes/account-authentication.js');
-const dashboard = require('./routes/dashboard.js');
+const accountAuthenticationRoute = require('./routes/account-authentication.js');   // Register and login
+const landingPageRoute = require('./routes/landing-page-route.js');
+const dashboardRoute = require('./routes/dashboard-route.js');
+
 
 /*============================================EXPRESS====================================================================*/ 
 
@@ -62,8 +64,10 @@ app.get('/main', (req, res) => {
     console.log("Tried :C")
 });
 
-app.use('/register', register);
-app.use('/dashboard', dashboard);
+app.use('/register', accountAuthenticationRoute);
+app.use('/login', accountAuthenticationRoute);
+app.use('/landing-page', landingPageRoute);
+app.use('/dashboard', dashboardRoute);
 
 //======================Server Listen========================//
 
