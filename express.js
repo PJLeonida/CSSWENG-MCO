@@ -1,11 +1,17 @@
 require('dotenv').config();
 const port = process.env.PORT || 3000; // Use the value from .env or default to 3000
 
-
-// Setting up express and handlebars
-const bodyParser = require('body-parser');
+// Set up express and handlebars
 const express = require('express');
 const app = express();
+
+
+// Set up JSON parser
+const bodyParser = require('body-parser');
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true}));
+
 
 // Setting up handlebars
 const { engine } = require ('express-handlebars');
@@ -35,6 +41,11 @@ app.get('/', (req, res) => {
     res.render('index');
 })
 
+app.use('/register', register);     // Register page and functionalities
+app.use('/dashboard', dashboard);   // Dashboard page and functionalities
+
+
+
 // Serve the login page
 // app.get('/login', (req, res) => {
 //     res.render('index');
@@ -49,24 +60,6 @@ app.get('/', (req, res) => {
             posts: searchCollection
         })
 */
-
-// Set up JSON parser
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json())
-app.use(bodyParser.urlencoded({ extended: true}));
-
-// Serve the main page after successful login
-app.get('/main', (req, res) => {
-    console.log('Current working directory:', process.cwd());
-    res.render("dashboard");
-    console.log("Tried :C")
-});
-
-app.use('/register', register);
-app.use('/dashboard', dashboard);
-
-//======================Server Listen========================//
-
 
 
 
