@@ -3,7 +3,11 @@
 const app = require('express')
 const router = app.Router()
 
-router.get('/', (req, res) => {
+router.get('/dashboard', (req, res) => {
+    // res.render('main', { 
+    //     pageTitle: 'Dashboard',
+    //     partial: 'dashboard'
+    // });
     res.render('dashboard');
 })
 
