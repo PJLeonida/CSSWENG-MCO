@@ -3,12 +3,13 @@
 const app = require('express')
 const router = app.Router()
 
-router.get('/dashboard', (req, res) => {
+router.get('/', (req, res) => {
     // res.render('main', { 
     //     pageTitle: 'Dashboard',
     //     partial: 'dashboard'
     // });
-    res.render('dashboard');
+    
+    res.redirect('landing-page');
 })
 
 

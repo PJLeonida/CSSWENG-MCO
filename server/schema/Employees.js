@@ -28,10 +28,10 @@ const employeeSchema = new mongoose.Schema({
         require: true
     },
 
-    deployment: {
+    /*deployment: {
         type: Schema.Types.ObjectId,
         ref: 'EmpDeployment',
-    },
+    },*/
 
     notes: {
         type: String
