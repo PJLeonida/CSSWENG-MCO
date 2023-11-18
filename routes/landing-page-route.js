@@ -9,7 +9,7 @@ const User = require('../server/schema/Users');
 router.get('/', (req, res) => {
     /*Get the right information in the db to here*/
     
-    res.render('landing-page');
+    res.redirect('/dashboard');
 })
 
 

@@ -77,8 +77,6 @@ document.addEventListener('DOMContentLoaded', async function (e) {
     e.preventDefault();
     // Call the function to get employee data
     const empList = await getEmployeeData();
-    console.log(empList);
-    console.log(typeof empList)
     initializeEmployeeListTable(empList);
 });
 

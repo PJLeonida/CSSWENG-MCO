@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
 
-const EmpDeployment = mongoose.Schema({
+const EmpDeployment = new mongoose.Schema({
     employee: {
         type: Schema.Types.ObjectId,
         ref: 'Employee'
