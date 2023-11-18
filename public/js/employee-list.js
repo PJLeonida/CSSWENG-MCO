@@ -1,7 +1,7 @@
 /* Sample Employee Data */
 //1234567890
 
-const dataEmployees = [
+/*const dataEmployees = [
     {
         id: 1,
         firstName: 'John',
@@ -26,7 +26,7 @@ const dataEmployees = [
         rate: 2000,
         totalRate: 400000
     }
-];
+];*/
 
 async function getEmployeeData() {
     try {

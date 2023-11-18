@@ -8,9 +8,7 @@ router.get('/', (req, res) => {
     //     pageTitle: 'Dashboard',
     //     partial: 'dashboard'
     // });
-    res.render('landing-page', {
-        
-    });
+    res.redirect('landing-page');
 })
 
 

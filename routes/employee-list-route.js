@@ -6,7 +6,7 @@ empCollection = require('../server/schema/Employees')
 
 router.get('/get-list', async(req,res) =>{
     try {
-        console.log('getList GET');
+        console.log('get-list GET');
         const employeeList = await empCollection.find().exec();
         console.log(employeeList);
         res.json(employeeList); // Send the array as JSON response
