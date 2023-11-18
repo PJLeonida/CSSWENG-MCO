@@ -1,4 +1,4 @@
-// Dashboard routing
+// Employee list routing
 
 const app = require('express')
 const router = app.Router()
