@@ -1,0 +1,55 @@
+        <div class="landing-page-container">
+            {{> navbar}}
+        </div>
+        
+
+        <!-- Content -->
+        <div class="content">
+            <nav>
+                <div class="nav-container">
+                    <div class="profile-and-info">
+                        <a href="#" class="profile">
+                            <img src="/static/img/default-profile-pic.jpg" alt="profile"/>
+                        </a>
+        
+                        <div class="profile-info">
+                            <h3> Hello, {{user.firstName}}! </h3>
+                            <div id="date-time-placeholder"></div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="div-logout">
+                        <button type="button" id="logout-btn" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModal" onclick="clickedLogoutBtn()">Logout</button>
+                    </div>
+                </div> 
+            </nav>
+            <!-- End of nav -->
+
+
+            <!-- Main -->
+            <main id="changing-container-placeholder">
+                <div class="header">
+                    <!--h1>{{pageTitle}}</h1-->
+                </div>
+
+                <!-- Change the main content here -->
+                {{!-- {{> partial }} --}}
+                {{> employee-table}}
+            </main>
+
+            
+            
+        </div> <!-- End of Content -->
+        
+        <script>
+            function updateDateTime() {
+                const dateTimeElement = document.getElementById('date-time-placeholder');
+                const now = new Date();
+                const dateTimeString = now.toLocaleString();
+                dateTimeElement.textContent = dateTimeString;
+            }
+
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+        </script>
