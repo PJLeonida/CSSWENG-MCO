@@ -9,9 +9,3 @@ sideLinksEL.forEach((links) => {
         li.classList.add("active");
     });
 });
-
-// function loadContent(page) {
-//     $.get(page, function(data) {
-//       $("#changing-container-placeholder").html(data);
-//     });
-// }

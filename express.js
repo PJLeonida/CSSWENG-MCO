@@ -36,31 +36,28 @@ app.use("/static", express.static('public'));
 const accountAuthenticationRoute = require('./routes/account-authentication.js');   // Register and login
 const landingPageRoute = require('./routes/landing-page-route.js');
 const dashboardRoute = require('./routes/dashboard-route.js');
+const createNewTrackerRoute = require('./routes/create-new-tracker-route.js');
 const employeeListRoute = require('./routes/employee-list-route.js');
-
+const projectListRoute = require('./routes/project-list-route.js');
 
 /*============================================EXPRESS====================================================================*/ 
 
 // Root route
 app.get('/', (req, res) => {
     console.log("SUCCESS");
-    res.render('index');
+    res.render('index', {
+        title: 'Login / Register',
+        script: '/static/js/index.js',
+    });
 })
 
-// Serve the login page
-// app.get('/login', (req, res) => {
-//     res.render('index');
-// });
+app.get('/about-page', (req, res) => {
+    res.render('about-page', {
+        title: 'About Page',
+        style: '/static/css/about-page.css'
+    }); 
+});
 
-/*
-        res.render("indexLogin", {
-            title: "Login",
-            script: "static/js/login.js",
-            image: user.image,
-    
-            posts: searchCollection
-        })
-*/
 
 // Set up JSON parser
 app.use(express.urlencoded({ extended: true }));
@@ -72,7 +69,9 @@ app.use('/register', accountAuthenticationRoute);
 app.use('/login', accountAuthenticationRoute);
 app.use('/landing-page', landingPageRoute);
 app.use('/dashboard', dashboardRoute);
+app.use('/create-new-tracker', createNewTrackerRoute);
 app.use('/employee-list', employeeListRoute);
+app.use('/project-list', projectListRoute);
 
 //======================Server Listen========================//
 

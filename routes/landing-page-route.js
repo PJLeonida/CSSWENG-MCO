@@ -8,10 +8,12 @@ const User = require('../server/schema/Users');
 
 router.get('/', (req, res) => {
     res.render('landing-page', { 
-        pageTitle: 'Landing Page',
-        partial: 'dashboard'
+        pageTitle: 'Dashboard',
+        partial: 'dashboard',
+        // script: '/static/js/landing-page.js'
+        script: '/static/js/navbar.js'
     });
-})
+});
 
 
 // router.get('/:firstName', async (req, res) => {
