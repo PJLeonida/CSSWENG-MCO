@@ -7,7 +7,10 @@ const router = app.Router();
 const User = require('../server/schema/Users');
 
 router.get('/', (req, res) => {
-    res.render('landing-page');
+    res.render('landing-page', { 
+        pageTitle: 'Landing Page',
+        partial: 'dashboard'
+    });
 })
 
 
