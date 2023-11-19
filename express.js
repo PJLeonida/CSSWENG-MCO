@@ -44,6 +44,8 @@ const accountAuthenticationRoute = require('./routes/account-authentication.js')
 const landingPageRoute = require('./routes/landing-page-route.js');
 const dashboardRoute = require('./routes/dashboard-route.js');
 const employeeListRoute = require('./routes/employee-list-route.js');
+const projectListRoute = require('./routes/project-list-route.js')
+/*UNIFINISHED CREATE NEW TRACKER */
 const createNewTracker = require('./routes/create-new-tracker-route.js');
 const about = require('./routes/about-route.js');
 
@@ -61,6 +63,8 @@ app.use('/login', accountAuthenticationRoute);
 app.use('/landing-page', landingPageRoute);
 app.use('/dashboard', dashboardRoute);
 app.use('/employee-list', employeeListRoute);
+app.use('/project-list', projectListRoute);
+/*UNIFINISHED CREATE NEW TRACKER */
 app.use('/create-new-tracker', createNewTracker);
 app.use('/about-page', about)
 

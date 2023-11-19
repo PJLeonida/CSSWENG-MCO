@@ -1,7 +1,31 @@
 
 
 
+            <div class="landing-page-container">
+                {{> navbar}}
+            </div>
+        <!-- Content -->
+        <div class="content">
+            <nav>
+                <div class="nav-container">
+                    <div class="profile-and-info">
+                        <a href="#" class="profile">
+                            <img src="/static/img/default-profile-pic.jpg" alt="profile"/>
+                        </a>
+        
+                        <div class="profile-info">
+                            <h3> Hello, {{user.firstName}}! </h3>
+                            <div id="date-time-placeholder"></div>
+                        </div>
 
+                    </div>
+                    
+                    <div class="div-logout">
+                        <button type="button" id="logout-btn" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModal" onclick="clickedLogoutBtn()">Logout</button>
+                    </div>
+                </div> 
+            </nav>
+            <!-- End of nav -->
             <!-- Main -->
             <main>
                 <div class="header">
@@ -25,32 +49,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td id="td-project-no">1</td>
-                                    <td id="td-project-name">Project A</td>
-                                    <td id="td-project-description">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
-                                    </td>
-                                    <td id="td-project-employees">5</td>
-                                    <td id="td-project-deployment">10</td>
-                                </tr>
-                                <tr>
-                                    <td id="td-project-no">2</td>
-                                    <td id="td-project-name">Project B</td>
-                                    <td id="td-project-description">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
-                                    </td>
-                                    <td id="td-project-employees">5</td>
-                                    <td id="td-project-deployment">10</td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </main>
+        </div> <!-- End of Content -->
 
-
-        <script src="../js/project-list.js"></script>
+        <script src="/static/js/project-list.js"></script>
 
         <script>
             initializeProjectListTable();

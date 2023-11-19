@@ -1,5 +1,5 @@
 /* Sample Project Data */
-const dataProjects = [
+/*const dataProjects = [
     {
         id: 1,
         title: 'Project 1',
@@ -14,20 +14,53 @@ const dataProjects = [
         numberOfEmployees: 20,
         totalDeploymentHours: 2000,
     }
-];
+];*/
 
+async function getProjectData() {
+    try {
+        const response = await fetch("/project-list/get-list", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        
+        if(response.status == 200){
+            console.log("Get Project list success");
+            return await response.json()
+        }else{
+            console.error(`An error has occured. Status code = ${response.status}`);
+            return { status: 'error', message: 'Error fetching data' };
+        }
+    } catch (error) {
+        console.error(error);
+        return {status: 'error', message: 'Error fetching data' };
+    }
+}
 
-function initializeProjectListTable() {
+function initializeProjectListTable(projlist) {
     const dataTable = document.querySelector('#project-list-table');
     const tbody = dataTable.querySelector('tbody');
-
-    dataProjects.forEach(project => {
+    var id = 0
+    projlist.forEach(project => {
         const row = tbody.insertRow();
 
-        row.insertCell().textContent = project.id;
-        row.insertCell().textContent = project.title;
+       // row.insertCell().textContent = project.id;
+        row.insertCell().textContent = id;
+        row.insertCell().textContent = project.projectName;
         row.insertCell().textContent = project.description;
         row.insertCell().textContent = project.numberOfEmployees;
         row.insertCell().textContent = project.totalDeploymentHours;
+
+        id += 1;
     });
 }
+
+document.addEventListener('DOMContentLoaded', async function (e) {
+    e.preventDefault();
+    // Call the function to get project data
+    const projlist = await getProjectData();
+    initializeProjectListTable(projlist);
+});
+
+

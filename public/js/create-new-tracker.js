@@ -102,7 +102,7 @@ function deleteEmployeeRow(button) {
     row.parentNode.removeChild(row);
 }
 
-
+/*Create new Project Function*/
 function replaceMainContentWithTemplate() { 
     const createNewTrackerBtn = document.getElementById('btn-create-new-tracker');
     
