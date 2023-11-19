@@ -1,9 +1,34 @@
 //create new tracker
 
-const app = require('express')
+const app = require('express');
 const router = app.Router()
+const projects = require('../server/schema/Projects');
+const deployments = require('../server/schema/EmpDeployment');
+const employees = require('../server/schema/Employees');
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+    
+
+        // Check what type of action the user is trying to do\
+        console.log('CREATE NEW PROJECT')
+        console.log(req.body);
+
+        // If the user is trying to register
+       
+        /*
+    projectName
+
+    totalmanpower
+
+    employees
+
+    utilization
+
+})
+*/
+})
+            
+
 /*
 Theres a create new project and a create new employee
 
@@ -44,9 +69,9 @@ FirstName: input
 
 })
 */
-})
 
-router.get('/', (req, res) => {
+
+router.get('/', async (req, res) => {
 
 
     res.render('placeholder')

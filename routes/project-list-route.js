@@ -4,12 +4,12 @@
 
 const app = require('express');
 const router = app.Router();
-projCollection = require('../server/schema/Projects')
+projects = require('../server/schema/Projects')
 
 router.get('/get-list', async(req,res) =>{
     try {
         console.log('get-list GET');
-        const projList = await projCollection.find().exec();
+        const projList = await projects.find().exec();
         console.log(projList);
         res.json(projList); // Send the array as JSON response
     } catch (error) {

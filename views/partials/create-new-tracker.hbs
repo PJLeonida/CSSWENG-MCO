@@ -89,16 +89,17 @@
                     -->
                 </div>
 
-                <form id="form-new-tracker">
+                <form action="/create-new-tracker" method="post" id="form-new-tracker" >
+                <!--input type="hidden" name="action" value="project"-->
                     <div class="bottom-data">
                         <div class="reports">
                             <div class="mb-3">
                                 <label for="newProjectName" class="form-label">Project Name</label>
-                                <input type="text" class="form-control" id="newProjectName" placeholder="Enter Project Name" required>
+                                <input type="text" class="form-control" id="newProjectName" name = "newp_projectName" placeholder="Enter Project Name" required>
                             </div>
 
                             <div class="mb-3">
-                                <label for="newProjectDescription" class="form-label">Project Description</label>
+                                <label for="newProjectDescription" class="form-label" name = "newp_projectDesc">Project Description</label>
                                 <input type="text" class="form-control" id="newProjectDescription" placeholder="Enter Project Description" required>
                             </div>
                         </div>
@@ -146,7 +147,7 @@
 
 
 
-        <script src="../js/create-new-tracker.js"></script>
+        <script src="/static/js/create-new-tracker.js"></script>
 
         <script>
             initializeNewTracker();
