@@ -80,7 +80,7 @@
 
                 <form action="/new-tracker" method="post" id="new-tracker-form">
                     {{!-- <div class="new-tracker-btns"> --}}
-                    <button type="submit" id="btn-create-new-tracker" class="btn btn-success mb-3 me-3">Create New Tracker</button>
+                    <button type="button" id="btn-create-new-tracker" class="btn btn-success mb-3 me-3">Create New Tracker</button>
                     <button type="button" id="btw-cancel-tracker" class="btn btn-danger mb-3 me-3">Discard Tracker</button>
                         <!--
                             data-bs-toggle="modal" data-bs-target="#createNewTrackerModal"
@@ -96,12 +96,11 @@
                         <div class="reports">
                             <div class="mb-3">
                                 <label for="new-project-name" class="form-label fw-bold">Project Name</label>
-                                <input type="text" name="new_project_name" class="form-control" id="new-project-name" placeholder="Enter Project Name" required>
+                                <input type="text" class="form-control" id="new-project-name" placeholder="Enter Project Name" required>
                             </div>
-
                             <div class="mb-3">
                                 <label for="new-project-desc" class="form-label fw-bold">Project Description</label>
-                                <input type="text" name="new_poject_desc" class="form-control" id="new-project-desc" placeholder="Enter Project Description" required>
+                                <input type="text" class="form-control" id="new-project-desc" placeholder="Enter Project Description" required>
                             </div>
                         </div>
                     </div>

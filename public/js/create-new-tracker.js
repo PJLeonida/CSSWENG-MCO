@@ -8,7 +8,8 @@
 */
 
 // Path: src/js/employee.js
-
+document.addEventListener('DOMContentLoaded',  function (e) {
+e.preventDefault();
 // Global variable to store the employee data
 let employeeListData = [];
 
@@ -100,9 +101,17 @@ document.getElementById('employee-form').addEventListener('submit', function(eve
     // });
 });
 
-document.getElementById('btn-create-new-tracker').addEventListener('submit', function() {
+document.getElementById('btn-create-new-tracker').addEventListener('click', function(event) {
     event.preventDefault();
-
+    const projectName =  document.getElementById('new-project-name').value
+    const projectDesc =  document.getElementById('new-project-desc').value
+    const empList =  employeeListData;
+    const data = JSON.stringify({
+        action: 'create-new-tracker',
+        new_project_name: projectName,
+        new_project_descr: projectDesc,
+        employeeListData: empList
+    })
     // Send AJAX request to server
     fetch('/new-tracker', {
         method: 'POST',
@@ -110,15 +119,12 @@ document.getElementById('btn-create-new-tracker').addEventListener('submit', fun
             'Content-Type': 'application/json'
         },
         // body: JSON.stringify(employeeListData)
-        body: JSON.stringify({
-            action: 'create-new-tracker',
-            new_project_name: document.getElementById('newProjectName').value,
-            new_project_descr: document.getElementById('newProjectDescription').value,
-            employeeListData: employeeListData
-        })
+        body: data
     });
 });
 
+
+});
 
 
 

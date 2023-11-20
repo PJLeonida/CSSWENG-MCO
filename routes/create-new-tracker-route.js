@@ -3,6 +3,11 @@
 const app = require('express')
 const router = app.Router()
 const Projects = require('../server/schema/Projects')
+const Deployments = require('../server/schema/EmpDeployment');
+const Employees = require('../server/schema/Employees');
+const bodyParser = require('body-parser');
+
+app().use(bodyParser.json());
 
 router.get('/', (req, res) => {
     res.render('landing-page', {
@@ -20,20 +25,22 @@ router.post('/', async (req, res) => {
     try {
 
         // Check what type of action the user is trying to do
-        const { action } = req.body;
+        const { action, 
+            new_project_name,
+            new_project_descr, 
+            employeeListData } = req.body;
         console.log('Type of action:', action);
         console.log(req.body);
 
+        /*=========CREATE PROJECT PHASE===================*/
         if (req.body && typeof req.body === 'object') {
 
             // Destructure form data
             // const { trackerName, trackerDescription, trackerDueDate, trackerPriority, trackerStatus } = req.body
         
-            const {
-                new_project_name,
-                new_project_descr, 
-                employeeListData
-            } = req.body
+            console.log("the employees")
+            console.log(employeeListData)
+            console.log(typeof employeeListData)
 
             // Check if all fields are filled
             const requiredFields = [new_project_name, new_project_descr];
@@ -55,20 +62,49 @@ router.post('/', async (req, res) => {
                 // projectStatus: 'To Do',
                 // projectMembers: [],
                 // projectTasks: []
-                employees: employeeListData
+                //employees: employeeListData
             });
 
             // Save new project
             await newProject.save();
-
-            console.log('New project created');
-
-            // display the details of the new project in the console
+            
+            //console.log('New project created');
             console.log(newProject);
+            console.log("======")
+            console.log(employeeListData.length);
+
+            /*=========CREATE EMPLOYEE PHASE===================*/
+            for (let i = 0; i < employeeListData.length; i++) {
+                console.log(employeeListData[i]);
+                employee = employeeListData[i];
+                console.log('---------------------------------');
+                const newEmployee = new Employees({
+                    //no: employee.no,
+                    firstName: employee.firstName,
+                    middleName: employee.middleName,
+                    lastName:  employee.lastName,
+                    suffix:  employee.suffix,
+                    position:  employee.position,
+                    //deployment: employee.deployment,
+                    rate:  employee.rate,
+                    totalRate:  employee.totalRate
+                });
+                await newEmployee.save();
+
+                const newDeployment = new Deployments({
+                    employee: newEmployee._id,
+                    projectAssign: newProject._id,
+                    firstName: newEmployee.firstName,
+                    middleName: newEmployee.middleName,
+                    lastName:  newEmployee.lastName,
+                    position:  newEmployee.position,
+                })
+                await newDeployment.save();
+            }
+           
 
             res.redirect('/dashboard');
         }
-    
     } catch (error) {
         console.error('Error creating new tracker:', error);
     }

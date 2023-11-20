@@ -1,5 +1,5 @@
 /* Sample Employee Data */
-const dataEmployees = [
+/*const dataEmployees = [
     {
         id: 1,
         firstName: 'John',
@@ -24,7 +24,7 @@ const dataEmployees = [
         rate: 2000,
         totalRate: 400000
     }
-];
+];*/
 
 
 function initializeEmployeeListTable() {
