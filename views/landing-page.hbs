@@ -33,9 +33,8 @@
                     <h1>{{pageTitle}}</h1>
                 </div>
 
-                <!-- Change the main content here -->
-                {{!-- {{> partial }} --}}
-                {{> dashboard}}
+                 <!-- Change the main content here -->
+                {{> (lookup . 'partial')}}
             </main>
 
             
