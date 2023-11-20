@@ -83,8 +83,8 @@ document.getElementById('employee-form').addEventListener('submit', function(eve
         row.insertCell().textContent = employeeListData[i].deployment;
         row.insertCell().textContent = employeeListData[i].rate;
         row.insertCell().textContent = employeeListData[i].totalRate;
-        row.insertCell().innerHTML = '<button class="btn btn-warning btn-sm btn-edit-employee" onclick="editEmployeeRow(this)" >Edit</button>';
-        row.insertCell().innerHTML = '<button class="btn btn-danger btn-sm btn-delete-employee" onclick="deleteEmployeeRow(this)">Delete</button>';
+        row.insertCell().innerHTML = '<button class="btn btn-warning btn-sm btn-edit-employee" id="btn-edit-employee">Edit</button>';
+        row.insertCell().innerHTML = '<button class="btn btn-danger btn-sm btn-delete-employee" id="btn-delete-employee">Delete</button>';
     }
 
     // employeeListData.forEach((employee, index) => {
@@ -123,208 +123,48 @@ document.getElementById('btn-create-new-tracker').addEventListener('click', func
     });
 });
 
-
 });
 
-
-
-
-
-
-
-
-// function initializeNewTracker() {
+//     // Get the employee form
 //     const employeeForm = document.getElementById('employee-form');
-//     const employeeTable = document.querySelector('#employee-table tbody');
 
-//     if (employeeForm) {
-//         employeeForm.addEventListener('submit', function(event) {
-//             event.preventDefault();
+//     // Get the employee data from the table that the user wants to edit
+//     const employeeFirstName = document.getElementById('employeeFirstName');
+//     const employeeMiddleName = document.getElementById('employeeMiddleName');
+//     const employeeLastName = document.getElementById('employeeLastName');
+//     const employeeSuffix = document.getElementById('employeeSuffix');
+//     const employeePosition = document.getElementById('employeePosition');
+//     const employeeDeployment = document.getElementById('employeeDeployment');
+//     const employeeRate = document.getElementById('employeeRate');
 
-//             const employeeFirstName = document.getElementById('employeeFirstName').value;
-//             const employeeMiddleName = document.getElementById('employeeMiddleName').value;
-//             const employeeLastName = document.getElementById('employeeLastName').value;
-//             const employeeSuffix = document.getElementById('employeeSuffix').value;
-//             const employeePosition = document.getElementById('employeePosition').value;
-//             const employeeDeployment = parseFloat(document.getElementById('employeeDeployment').value);
-//             const employeeRate = parseFloat(document.getElementById('employeeRate').value);
+//     // Display the employee data to the form
+//     employeeFirstName.value = employeeListData[0].firstName;
+//     employeeMiddleName.value = employeeListData[0].middleName;
+//     employeeLastName.value = employeeListData[0].lastName;
+//     employeeSuffix.value = employeeListData[0].suffix;
+//     employeePosition.value = employeeListData[0].position;
+//     employeeDeployment.value = employeeListData[0].deployment;
+//     employeeRate.value = employeeListData[0].rate;
 
-//             let employeeFullName = employeeFirstName + ' ' + employeeMiddleName + ' ' + employeeLastName + ' ' + employeeSuffix;
-//             let employeeTotalRate = employeeDeployment * employeeRate;
+//     // Update the employee data in the table
+//     employeeListData[0].firstName = employeeFirstName.value;
+//     employeeListData[0].middleName = employeeMiddleName.value;
+//     employeeListData[0].lastName = employeeLastName.value;
+//     employeeListData[0].suffix = employeeSuffix.value;
+//     employeeListData[0].position = employeePosition.value;
+//     employeeListData[0].deployment = employeeDeployment.value;
+//     employeeListData[0].rate = employeeRate.value;
+//     employeeListData[0].totalRate = employeeDeployment.value * employeeRate.value;
 
-//             /* Log to the console the values */
-//             console.log(employeeFirstName);
-//             console.log(employeeMiddleName);
-//             console.log(employeeLastName);
-//             console.log(employeeSuffix);
-//             console.log(employeePosition);
-//             console.log(employeeDeployment);
-//             console.log(employeeRate);
-//             console.log(employeeFullName);
-//             console.log(employeeTotalRate);
-            
-//             const employee = {
-//                 no: employeeTable.rows.length + 1, // Auto-generate a unique ID
-//                 fullname: employeeFullName,
-//                 position: employeePosition,
-//                 deployment: employeeDeployment,
-//                 rate: employeeRate,
-//                 totalRate: employeeTotalRate
-//             };
+//     // Log to the console the employee data
+//     console.log(employeeListData);
 
-//             const row = employeeTable.insertRow(); // Create a new row
+//     // Reset the form
+//     employeeForm.reset();
 
-//             // Insert cell data into the row
-//             row.insertCell().textContent = employee.no;
-//             row.insertCell().textContent = employee.fullname;
-//             row.insertCell().textContent = employee.position;
-//             row.insertCell().textContent = employee.deployment;
-//             row.insertCell().textContent = employee.rate;
-//             row.insertCell().textContent = employee.totalRate;
-//             row.insertCell().innerHTML = '<button class="btn btn-warning btn-sm btn-edit-employee" onclick="editEmployeeRow(this)" >Edit</button>';
-//             row.insertCell().innerHTML = '<button class="btn btn-danger btn-sm btn-delete-employee" onclick="deleteEmployeeRow(this)">Delete</button>';
+//     // Log to the console that the form was reset
+//     console.log('Form reset!');
 
-//             /* Reset the form */
-//             employeeForm.reset();
-
-//             /* Log to the console that the form was reset */
-//             console.log('Form reset!');
-//         });
-//     }
-// }
-
-// // function editEmployeeRow(button) {
-
-// //     console.log('Edit button clicked!');
-
-// //     const row = button.parentNode.parentNode;
-    
-// //     // Get the Employee Modal
-// //     const employeeModal = document.getElementById('employeeModal');
-
-// //     // Get the data from the row
-// //     const no = row.cells[0].innerHTML;
-// //     const fullname = row.cells[1].innerHTML;
-// //     const position = row.cells[2].innerHTML;
-// //     const deployment = row.cells[3].innerHTML;
-// //     const rate = row.cells[4].innerHTML;
-// //     const totalRate = row.cells[5].innerHTML;
-
-// //     // Populate the modal with the data
-// //     // document.getElementById('editEmployeeNo').value = no;
-// //     // document.getElementById('editEmployeeFullName').value = fullname;
-// //     document.getElementById('editEmployeePosition').value = position;
-// //     document.getElementById('editEmployeeDeployment').value = deployment;
-// //     document.getElementById('editEmployeeRate').value = rate;
-// //     // document.getElementById('editEmployeeTotalRate').value = totalRate;
-
-// //     // Show the modal
-// //     employeeModal.style.display = 'block';
-
-// // }
-
-
-// function deleteEmployeeRow(button) {
-//     const row = button.parentNode.parentNode;
-//     row.parentNode.removeChild(row);
-// }
-
-
-// function replaceMainContentWithTemplate() { 
-//     const createNewTrackerBtn = document.getElementById('btn-create-new-tracker');
-    
-//     createNewTrackerBtn.addEventListener('click', function() {
-//         const newProjectName = document.getElementById('newProjectName').value;
-//         const newProjectDescription = document.getElementById('newProjectDescription').value;
-
-//         let newProject = {
-//             name: newProjectName,
-//             description: newProjectDescription
-//         };
-
-//         // Get all the employee data from the table in function createNewTracker()
-//         const employeeTable = document.querySelector('#employee-table tbody');
-//         const employeeData = [];
-
-//         // Loop through the table and get the data
-//         for (let i = 0; i < employeeTable.rows.length; i++) {
-//             employeeData.push({
-//                 no: employeeTable.rows[i].cells[0].innerHTML,
-//                 fullname: employeeTable.rows[i].cells[1].innerHTML,
-//                 position: employeeTable.rows[i].cells[2].innerHTML,
-//                 deployment: employeeTable.rows[i].cells[3].innerHTML,
-//                 rate: employeeTable.rows[i].cells[4].innerHTML,
-//                 totalRate: employeeTable.rows[i].cells[5].innerHTML
-//             });
-//         }
-
-//         // Log to the console the tracker data
-//         console.log(newProject);
-//         console.log(employeeData);
-
-//         // Fetch the template
-//         fetch("../html/template-project-tracker.html")
-//             .then((response) => response.text())
-//             .then((template) => {
-//                 if (template) {
-
-//                     // Log the template after replacements
-//                     console.log("Replaced template:", template);
-
-//                     // Replace the template placeholder with the tracker data
-//                     template = template.replace("project-name-placeholder", newProject.name);
-//                     template = template.replace("project-description-placeholder", newProject.description);
-
-//                     // Create a temporary DOM element to parse the template HTML
-//                     const tempElement = document.createElement('div');
-//                     tempElement.innerHTML = template;
-
-//                     // Get the necessary scripts from the template
-//                     const scripts = tempElement.querySelectorAll('script');
-
-//                     // Get the employee table in the template
-//                     const employeeListTableTemplate = tempElement.querySelector('#employee-list-table-template tbody');
-
-//                     if (employeeListTableTemplate) {
-//                         // Loop through the employee data and insert it into the template
-//                         for (let i = 0; i < employeeData.length; i++) {
-//                             const row = employeeListTableTemplate.insertRow(); // Create a new row
-
-//                             // Insert cell data into the row
-//                             row.insertCell().textContent = employeeData[i].no;
-//                             row.insertCell().textContent = employeeData[i].fullname;
-//                             row.insertCell().textContent = employeeData[i].position;
-//                             row.insertCell().textContent = employeeData[i].deployment;
-//                             row.insertCell().textContent = employeeData[i].rate;
-//                             row.insertCell().textContent = employeeData[i].totalRate;
-//                         }
-
-//                         // Log the employee data to verify it
-//                         console.log("Employee data:", employeeData);
-
-//                         // Insert the template into the <main> tag
-//                         const mainElement = document.querySelector('main');
-//                         mainElement.innerHTML = tempElement.innerHTML;
-//                     } else {
-//                         console.error("Error: Employee table template not found.");
-//                     }
-//                 } else {
-//                     console.error("Error: Template HTML not retrieved.");
-//                 }
-//             })
-//             .catch((error) => {
-//                 console.error("Error fetching or replacing content:", error);
-//             });
-
-//         // Reset the input fields: newProjectName and newProjectDescription
-//         newProjectName.value = '';
-//         newProjectDescription.value = '';
-
-//         // Reset the employee table
-//         employeeTable.innerHTML = '';
-
-//         // Log to the console that the form was reset
-//         console.log('Everything reset!');
-
-//     });
+//     // Update the employee table after submitting the form
+//     // document.getElementById('employee-form').addEventListener('submit', function(event) {
 // }

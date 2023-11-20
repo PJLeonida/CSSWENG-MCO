@@ -289,6 +289,15 @@ body {
     color: var(--danger);
 }
 
+.sidebar .div-logout {
+    /* fix to align logout button to the bottom */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+ 
+
 /* Side Menu Project */
 .side-menu-project {
     width: 94%;
@@ -523,12 +532,7 @@ body {
     color: var(--dark);
 }
 
-/* .div-logout {
-    display: flex;
-    align-items: center;
-    grid-gap: 24px;
-}
-  */
+
 /* Card */
 main {
     width: 100%;

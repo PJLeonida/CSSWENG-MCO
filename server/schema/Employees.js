@@ -7,12 +7,18 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         require: true 
     },
-
+    middleName: {
+        type: String,
+        require: false
+    },
     lastName: {
         type: String,
         require: true
     },
-
+    suffix: {
+        type: String,
+        require: false
+    },
     position: {
         type: String, 
         require: true

@@ -103,7 +103,7 @@ router.post('/', async (req, res) => {
             }
            
 
-            res.redirect('/dashboard');
+            res.redirect('/template-project-tracker');
         }
     } catch (error) {
         console.error('Error creating new tracker:', error);

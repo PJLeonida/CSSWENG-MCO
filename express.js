@@ -78,6 +78,7 @@ app.use('/dashboard', dashboardRoute);
 app.use('/create-new-tracker', createNewTrackerRoute);
 app.use('/new-tracker', createNewTrackerRoute); 
 app.use('/project-list', projectListRoute);
+app.use('/employee-list', employeeListRoute);
 
 //======================Server Listen========================//
 
