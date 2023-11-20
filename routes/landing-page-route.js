@@ -7,9 +7,12 @@ const router = app.Router();
 const User = require('../server/schema/Users');
 
 router.get('/', (req, res) => {
-    /*Get the right information in the db to here*/
-    
-    res.redirect('/dashboard');
+    res.render('landing-page', { 
+        pageTitle: 'Dashboard',
+        partial: 'dashboard',
+        script: '/static/js/landing-page.js',
+        activePage: 'dashboard',
+    });
 })
 
 

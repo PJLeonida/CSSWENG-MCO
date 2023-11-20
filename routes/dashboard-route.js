@@ -74,14 +74,22 @@ router.get('/', async (req, res) => {
     const totalDeployments = await getTotalDeployments();
     const totalRate = await getTotalRate();
     console.log('Total number of projects:', totalProjects);
-    const data = {
+    /*const data = {
         totalProjects: totalProjects,
         totalEmployees: totalEmployees,
         totalDeployments: totalDeployments,
         totalRate: totalRate
-    }
-    
-    res.render('landing-page', data);
+    }*/
+    res.render('landing-page', { 
+        pageTitle: 'Dashboard',
+        partial: 'dashboard',
+        script: '/static/js/landing-page.js',
+        activePage: 'dashboard',
+        totalProjects: totalProjects,
+        totalEmployees: totalEmployees,
+        totalDeployments: totalDeployments,
+        totalRate: totalRate
+    });
 })
 
 
