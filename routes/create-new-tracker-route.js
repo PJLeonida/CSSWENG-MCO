@@ -8,10 +8,17 @@ const employees = require('../server/schema/Employees');
 
 router.post('/', async (req, res) => {
     
-
-        // Check what type of action the user is trying to do\
-        console.log('CREATE NEW PROJECT')
-        console.log(req.body);
+    try {
+        const newProject = {
+            newp_projectName,
+            newp_projectDesc
+        } = req.body
+        
+        console.log('GUMANA KA PLS IIYAK NA AKO')
+    } catch (error) {
+        console.error('Error registering:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
 
         // If the user is trying to register
        
@@ -72,9 +79,11 @@ FirstName: input
 
 
 router.get('/', async (req, res) => {
-
-
-    res.render('placeholder')
+    res.render('landing-page', {
+        pageTitle: 'Create New Tracker',
+        partial: 'create-new-tracker',
+        activePage: 'create-new-tracker',
+    });
 })
 
 

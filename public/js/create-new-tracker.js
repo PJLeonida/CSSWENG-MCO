@@ -102,7 +102,7 @@ function deleteEmployeeRow(button) {
     row.parentNode.removeChild(row);
 }
 
-/*Create new Project Function*/
+/*
 function replaceMainContentWithTemplate() { 
     const createNewTrackerBtn = document.getElementById('btn-create-new-tracker');
     
@@ -136,7 +136,7 @@ function replaceMainContentWithTemplate() {
         console.log(employeeData);
 
         // Fetch the template
-        fetch("../html/template-project-tracker.html")
+        fetch("../views/partials/template-project-tracker.hbs")
             .then((response) => response.text())
             .then((template) => {
                 if (template) {
@@ -156,7 +156,7 @@ function replaceMainContentWithTemplate() {
                     const scripts = tempElement.querySelectorAll('script');
 
                     // Get the employee table in the template
-                    const employeeListTableTemplate = tempElement.querySelector('#employee-list-table-template tbody');
+                    const employeeListTableTemplate = tempElement.querySelector('#employee-list-tbody');
 
                     if (employeeListTableTemplate) {
                         // Loop through the employee data and insert it into the template
@@ -200,4 +200,4 @@ function replaceMainContentWithTemplate() {
         console.log('Everything reset!');
 
     });
-}
+}*/

@@ -7,6 +7,10 @@ const Projects = new mongoose.Schema({
         require: true 
     },
 
+    projectDesc: {
+        type: String
+    },
+
     totalmanpower: {
         type: Number
     },

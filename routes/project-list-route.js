@@ -20,8 +20,10 @@ router.get('/get-list', async(req,res) =>{
 
 router.get('/', async (req, res) => {
     /*Get the right information in the db to here*/
-    
-    res.render('project-list');
+    res.render('landing-page', { 
+        pageTitle: 'Project List',
+        partial: 'project-list',
+        activePage: 'project-list',
+    });
 })
-
 module.exports = router;

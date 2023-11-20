@@ -18,7 +18,11 @@ router.get('/get-list', async(req,res) =>{
 
 router.get('/', async (req, res) => {
     console.log("employee-list GET")
-    res.render('employee-list');
+    res.render('landing-page', { 
+        pageTitle: 'Employee List',
+        partial: 'employee-list',
+        activePage: 'employee-list',
+    });
 })
 
 
