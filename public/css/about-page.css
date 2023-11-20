@@ -30,7 +30,7 @@ body.dark {
 body {
     background-color: var(--grey);
     overflow-x: hidden;
-    /* padding-top: 60px; */
+    padding-top: 60px;
     color: var(--dark);
 }
 

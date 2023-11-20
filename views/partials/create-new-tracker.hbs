@@ -74,29 +74,34 @@
             </div>
         </div>
 
-        <!-- New Tracker -->           
+        <!-- Create New Tracker -->           
             <div class="main-container">
+                
 
-                <div class="new-tracker-btns">
-                    <button type="button" id="btn-create-new-tracker" class="btn btn-success mb-3 me-3" onclick="clickedCreateNewTrackerBtn()">Create New Tracker</button>
-                    <button type="button" id="btw-cancel-tracker" class="btn btn-danger mb-3 me-3" onclick="clickedCancelTrackerBtn()">Cancel</button>
-                    <!--
-                        data-bs-toggle="modal" data-bs-target="#createNewTrackerModal"
-                        data-bs-toggle="modal" data-bs-target="#cancelTrackerModal"
-                    -->
-                </div>
+                <form action="/new-tracker" method="post" id="new-tracker-form">
+                    {{!-- <div class="new-tracker-btns"> --}}
+                    <button type="submit" id="btn-create-new-tracker" class="btn btn-success mb-3 me-3">Create New Tracker</button>
+                    <button type="button" id="btw-cancel-tracker" class="btn btn-danger mb-3 me-3">Discard Tracker</button>
+                        <!--
+                            data-bs-toggle="modal" data-bs-target="#createNewTrackerModal"
+                            data-bs-toggle="modal" data-bs-target="#cancelTrackerModal"
+                        -->
+                    {{!-- </div> --}}
 
-                <form id="form-new-tracker">
+
+
+                    <input type="hidden" name="action" value="create-new-tracker">
+                    
                     <div class="bottom-data">
                         <div class="reports">
                             <div class="mb-3">
-                                <label for="newProjectName" class="form-label">Project Name</label>
-                                <input type="text" class="form-control" id="newProjectName" placeholder="Enter Project Name" required>
+                                <label for="new-project-name" class="form-label fw-bold">Project Name</label>
+                                <input type="text" name="new_project_name" class="form-control" id="new-project-name" placeholder="Enter Project Name" required>
                             </div>
 
                             <div class="mb-3">
-                                <label for="newProjectDescription" class="form-label">Project Description</label>
-                                <input type="text" class="form-control" id="newProjectDescription" placeholder="Enter Project Description" required>
+                                <label for="new-project-desc" class="form-label fw-bold">Project Description</label>
+                                <input type="text" name="new_poject_desc" class="form-control" id="new-project-desc" placeholder="Enter Project Description" required>
                             </div>
                         </div>
                     </div>
@@ -107,7 +112,7 @@
                     <div class="reports">
                         <div class="div-options-employee">
                             <span class="new-tracker-to-do">
-                                Choose To Do:
+                                Employee List
                             </span>
                             <span>
                                 <button type="button" id="btn-enter-employee" class="btn btn-primary mb-3 me-3" data-bs-toggle="modal" data-bs-target="#enterEmployeeModal" onclick="clickedAddEmployeeBtn()">Add Employee</button>
@@ -140,21 +145,3 @@
                     </div>
                 </div>
             </div>
-
-
-
-        {{!-- <script src="../js/create-new-tracker.js"></script>
-
-        <script>
-            initializeNewTracker();
-        </script>
-
-        <!-- <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                replaceMainContentWithTemplate();
-            });
-        </script> -->
-
-        <script>
-            replaceMainContentWithTemplate();
-        </script> --}}

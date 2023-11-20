@@ -76,7 +76,7 @@ app.use('/logout', accountAuthenticationRoute);
 app.use('/landing-page', landingPageRoute);
 app.use('/dashboard', dashboardRoute);
 app.use('/create-new-tracker', createNewTrackerRoute);
-app.use('/employee-list', employeeListRoute);
+app.use('/new-tracker', createNewTrackerRoute); 
 app.use('/project-list', projectListRoute);
 
 //======================Server Listen========================//
