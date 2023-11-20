@@ -22,7 +22,9 @@ app.engine('hbs', engine({
     //defaultView: 'default',
     //layoutsDir:'./views/layouts/',
     partialsDir: __dirname + '/views/partials/',
-}));
+    helpers: {eq: function (v1, v2) {return v1 === v2; },} // Register helper function
+})); 
+
 app.set('view engine', 'hbs');
 
 // Setting up the hb view directory

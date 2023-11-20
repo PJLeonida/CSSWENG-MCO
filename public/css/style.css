@@ -565,7 +565,7 @@ main .cards li:hover {
     transform: translateY(-10px);
 }
 
-main .cards li .bx {
+main .cards li .fa {
     width: 4.5rem;
     height: 4.5rem;
     border-radius: 10px;
@@ -575,22 +575,22 @@ main .cards li .bx {
     justify-content: center;
 }
 
-main .cards li:nth-child(1) .bx {
+main .cards li:nth-child(1) .fa {
     background-color: var(--light-primary);
     color: var(--primary);
 }
 
-main .cards li:nth-child(2) .bx {
+main .cards li:nth-child(2) .fa {
     background-color: var(--light-warning);
     color: var(--warning);
 }
 
-main .cards li:nth-child(3) .bx {
+main .cards li:nth-child(3) .fa {
     background-color: var(--light-danger);
     color: var(--danger);
 }
 
-main .cards li:nth-child(4) .bx {
+main .cards li:nth-child(4) .fa {
     background-color: var(--light-success);
     color: var(--success);
 }
@@ -673,6 +673,10 @@ main .bottom-data .projects .project-list li .project-title {
 main .bottom-data .projects .project-list li.current{
     border-left: 5px solid var(--success);
 } */
+
+.main-container {
+    padding: 0;
+}
 
 
 /* Logout Modal */

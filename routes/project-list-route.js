@@ -6,7 +6,8 @@ const router = app.Router()
 router.get('/', (req, res) => {
     res.render('landing-page', { 
         pageTitle: 'Project List',
-        partial: 'project-list'
+        partial: 'project-list',
+        activePage: 'project-list',
     });
 });
 

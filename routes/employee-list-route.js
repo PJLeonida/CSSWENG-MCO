@@ -7,10 +7,9 @@ router.get('/', (req, res) => {
     res.render('landing-page', { 
         pageTitle: 'Employee List',
         partial: 'employee-list',
-        // make the transition to the employee-list page
-        // is smooth,not abrupt
+        activePage: 'employee-list',
     });
 })
 
 
-module.exports = router
+module.exports = router;

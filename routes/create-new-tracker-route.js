@@ -6,7 +6,8 @@ const router = app.Router()
 router.get('/', (req, res) => {
     res.render('landing-page', {
         pageTitle: 'Create New Tracker',
-        partial: 'create-new-tracker'
+        partial: 'create-new-tracker',
+        activePage: 'create-new-tracker',
     });
 });
 
