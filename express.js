@@ -50,8 +50,11 @@ app.get('/', (req, res) => {
     res.render('index', {
         title: 'Login / Register',
         script: '/static/js/index.js',
+        // style: '/static/css/index.css',
     });
 })
+
+
 
 app.get('/about-page', (req, res) => {
     res.render('about-page', {
@@ -69,6 +72,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 // Set up routes
 app.use('/register', accountAuthenticationRoute);
 app.use('/login', accountAuthenticationRoute);
+app.use('/logout', accountAuthenticationRoute);
 app.use('/landing-page', landingPageRoute);
 app.use('/dashboard', dashboardRoute);
 app.use('/create-new-tracker', createNewTrackerRoute);

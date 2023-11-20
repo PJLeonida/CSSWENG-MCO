@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
         pageTitle: 'Dashboard',
         partial: 'dashboard',
         script: '/static/js/landing-page.js',
+        style: '/static/css/style.css',
         activePage: 'dashboard',
     });
 });

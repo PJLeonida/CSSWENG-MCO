@@ -135,6 +135,25 @@
 			</div>
 		</div>{{!-- End of Register Modal --}}
 
+		{{!-- Logout Modal --}}
+        <div id="logoutModal" class="modal fade" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<!-- Modal Body -->
+					<div class="modal-body">
+						<div class="myform bg-dark p-3">
+							<h3 class="text-center logout-form-header">Are you sure to logout?</h3>
+                            <h5 class="text-center logout-form-header">Make sure to save all your chages!</h5>
+                            <div class="text-center logout-options">
+                                <a href="/" class="btn btn-success m-3 logout-btn">Logout</a>
+                                <button type="submit" class="btn btn-danger m-3 logout-btn" data-bs-dismiss="modal">Go Back</button>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 
 		<!-- Content -->
 		{{{body}}}

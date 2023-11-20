@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
     res.render('landing-page', {
         pageTitle: 'Create New Tracker',
         partial: 'create-new-tracker',
+        script: '/static/js/landing-page.js',
         activePage: 'create-new-tracker',
     });
 });
