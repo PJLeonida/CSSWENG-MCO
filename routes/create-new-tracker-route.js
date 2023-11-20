@@ -66,7 +66,7 @@ router.post('/', async (req, res) => {
             // display the details of the new project in the console
             console.log(newProject);
 
-            res.redirect('/dashboard');
+            res.redirect('/template-project-tracker');
         }
     
     } catch (error) {
