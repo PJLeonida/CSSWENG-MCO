@@ -104,7 +104,20 @@ document.addEventListener('DOMContentLoaded',  function (e) {
             },
             // body: JSON.stringify(employeeListData)
             body: data
-        });
+        }).then(response => {
+            if (response.ok) {
+                return response.json(); // Assuming your server sends JSON data
+            } else {
+                throw new Error('Failed to create tracker');
+            }
+        })
+        .then(data => {
+            if (data.redirect) {
+                window.location.href = data.redirect; // Redirect if the server sends a redirect URL
+            } else {
+                // Handle other data from the server if needed
+            }
+        })
     });
     
     });

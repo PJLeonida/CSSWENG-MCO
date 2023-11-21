@@ -117,6 +117,7 @@ router.post('/', async (req, res) => {
             // If all checks are passed, log the user in
             console.log('User logged in successfully!');
             res.redirect('/landing-page');
+            
         }
     } catch (error) {
         console.error('Error registering user:', error);

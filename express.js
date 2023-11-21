@@ -48,6 +48,7 @@ const dashboardRoute = require('./routes/dashboard-route.js');
 const createNewTrackerRoute = require('./routes/create-new-tracker-route.js');
 const employeeListRoute = require('./routes/employee-list-route.js');
 const projectListRoute = require('./routes/project-list-route.js')
+const templateProjectTrackerRoute = require('./routes/template-project-tracker-route.js');
 
 /*============================================EXPRESS====================================================================*/ 
 
@@ -89,6 +90,7 @@ app.use('/create-new-tracker', createNewTrackerRoute);
 app.use('/new-tracker', createNewTrackerRoute); 
 app.use('/project-list', projectListRoute);
 app.use('/employee-list', employeeListRoute);
+app.use('/template-project-tracker', templateProjectTrackerRoute);
 
 //======================Server Listen========================//
 
