@@ -66,8 +66,6 @@ app.get('/', (req, res) => {
 app.get('/about-page', (req, res) => {
     res.render('about-page', {
         title: 'About Page',
-        pageTitle: 'About',
-        partial: 'about-page',
         activePage: 'About page',
         style: '/static/css/about-page.css'
     }); 

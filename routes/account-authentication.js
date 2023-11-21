@@ -8,19 +8,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../server/schema/Users');
-// const passport = 
 
-
-
-
-// router.get('/', (req,res) => {
-//     res.send('SAMPLE');
-//     res.render('dashboard');
-// })
-
-// router.post('/', (req,res) => {
-
-// })
 
 
 // Function to handle user login and registration
