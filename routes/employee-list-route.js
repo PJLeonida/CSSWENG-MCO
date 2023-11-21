@@ -22,6 +22,7 @@ router.get('/', async (req, res) => {
         pageTitle: 'Employee List',
         partial: 'employee-list',
         activePage: 'employee-list',
+        script: '/static/js/employee-list.js'
     });
 })
 
