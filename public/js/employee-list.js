@@ -21,9 +21,6 @@ async function getEmployeeData() {
     }
 }
 
-
-
-
 function initializeEmployeeListTable(empList) {
     const dataTable = document.querySelector('#employee-list-table');
     const tbody = dataTable.querySelector('#employee-list-tbody');

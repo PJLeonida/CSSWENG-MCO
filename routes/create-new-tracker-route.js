@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
         partial: 'create-new-tracker',
         script: '/static/js/create-new-tracker.js',
         activePage: 'create-new-tracker',
+        script:'/static/js/create-new-tracker.js'
     });
 });
 
