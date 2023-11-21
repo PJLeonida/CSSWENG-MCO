@@ -29,7 +29,9 @@ app.engine('hbs', engine({
     //defaultView: 'default',
     //layoutsDir:'./views/layouts/',
     partialsDir: __dirname + '/views/partials/',
-}));
+    helpers: {eq: function (v1, v2) {return v1 === v2; },} // Register helper function
+})); 
+
 app.set('view engine', 'hbs');
 
 // Setting up the hb view directory
@@ -43,46 +45,54 @@ app.use("/static", express.static('public'));
 const accountAuthenticationRoute = require('./routes/account-authentication.js');   // Register and login
 const landingPageRoute = require('./routes/landing-page-route.js');
 const dashboardRoute = require('./routes/dashboard-route.js');
+const createNewTrackerRoute = require('./routes/create-new-tracker-route.js');
 const employeeListRoute = require('./routes/employee-list-route.js');
 const projectListRoute = require('./routes/project-list-route.js')
-/*UNIFINISHED CREATE NEW TRACKER */
-const createNewTracker = require('./routes/create-new-tracker-route.js');
-const about = require('./routes/about-route.js');
 
 /*============================================EXPRESS====================================================================*/ 
 
 // Root route
 app.get('/', (req, res) => {
     console.log("SUCCESS");
-    res.render('index');
+    res.render('index', {
+        title: 'Login / Register',
+        script: '/static/js/index.js',
+        // style: '/static/css/index.css',
+    });
 })
+
+
+
+app.get('/about-page', (req, res) => {
+    res.render('about-page', {
+        title: 'About Page',
+        pageTitle: 'About',
+        partial: 'about-page',
+        activePage: 'About page',
+        style: '/static/css/about-page.css'
+    }); 
+});
+
+
+// Set up JSON parser
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true}));
 
 // Set up routes
 app.use('/register', accountAuthenticationRoute);
 app.use('/login', accountAuthenticationRoute);
+app.use('/logout', accountAuthenticationRoute);
 app.use('/landing-page', landingPageRoute);
 app.use('/dashboard', dashboardRoute);
-app.use('/employee-list', employeeListRoute);
+app.use('/create-new-tracker', createNewTrackerRoute);
+app.use('/new-tracker', createNewTrackerRoute); 
 app.use('/project-list', projectListRoute);
-/*UNIFINISHED CREATE NEW TRACKER */
-app.use('/create-new-tracker', createNewTracker);
-app.use('/about-page', about)
+app.use('/employee-list', employeeListRoute);
+
+//======================Server Listen========================//
 
 
 
-// Serve the login page
-// app.get('/login', (req, res) => {
-//     res.render('index');
-// });
-
-/*
-        res.render("indexLogin", {
-            title: "Login",
-            script: "static/js/login.js",
-            image: user.image,
-    
-            posts: searchCollection
-        })
-*/
 
 module.exports = app;

@@ -124,4 +124,12 @@ router.post('/', async (req, res) => {
     }
 });
 
+
+// Function to handle user logout
+router.get('/logout', (req, res) => {
+    console.log('User logged out successfully!');
+    req.logout();
+    res.redirect('/');
+});
+
 module.exports = router;

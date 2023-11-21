@@ -18,7 +18,7 @@ const EmpDeployment = new mongoose.Schema({
         require: true
     },
 
-    projectassign: {
+    projectAssign: {
         type: Schema.Types.ObjectId,
         ref: 'Project'
     },

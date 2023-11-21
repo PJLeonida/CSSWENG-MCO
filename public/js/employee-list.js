@@ -1,32 +1,3 @@
-/* Sample Employee Data */
-//1234567890
-
-/*const dataEmployees = [
-    {
-        id: 1,
-        firstName: 'John',
-        middleName: 'Doe',
-        lastName: 'Smith',
-        suffix: 'Jr.',
-        projectName: 'Project 1',
-        position: 'Software Engineer',
-        deployment: 100,
-        rate: 1000,
-        totalRate: 100000
-    },
-    {
-        id: 2,
-        firstName: 'Jane',
-        middleName: 'Doe',
-        lastName: 'Smith',
-        suffix: 'Sr.',
-        projectName: 'Project 2',
-        position: 'Software Engineer',
-        deployment: 200,
-        rate: 2000,
-        totalRate: 400000
-    }
-];*/
 
 async function getEmployeeData() {
     try {
@@ -68,8 +39,6 @@ function initializeEmployeeListTable(empList) {
         row.insertCell().textContent = employee.deployment;
         row.insertCell().textContent = employee.rate;
         row.insertCell().textContent = employee.totalRate;
-
-        id += 1;
     });
 }
 
@@ -80,32 +49,3 @@ document.addEventListener('DOMContentLoaded', async function (e) {
     initializeEmployeeListTable(empList);
 });
 
-
-
-// if (dataTable) {
-//     dataTable.addEventListener('click', function(event) {
-//         if (event.target.classList.contains('btn-delete')) {
-//             const row = event.target.parentElement.parentElement;
-//             row.remove();
-//         }
-//     });
-// }
-
-// if (dataTable) {
-//     dataTable.addEventListener('click', function(event) {
-//         if (event.target.classList.contains('btn-delete')) {
-//             const row = event.target.parentElement.parentElement;
-//             const id = row.querySelector('td').textContent;
-//             const url = `/api/employees/${id}`;
-//             const options = {
-//                 method: 'DELETE'
-//             };
-
-//             fetch(url, options)
-//                 .then(response => response.json())
-//                 .then(data => {
-//                     row.remove();
-//                 });
-//         }
-//     });
-// }

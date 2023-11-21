@@ -75,7 +75,7 @@ body {
 }
 
 
-/* Index Page */
+/****** Index Page *****/
 .index-container {
     justify-content: center;
     align-items: center;
@@ -84,12 +84,12 @@ body {
 }
 
 
-/***** PRODUCT LOGO *****/
-.product-logo {
-    width: 472px;
-    height: 150px;
+/*** INDEX LOGO ***/
+.client-logo {
+    width: 550px;
+    height: 300px;
     margin-top: 100px;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
     flex-shrink: 0;
 }
 
@@ -105,7 +105,7 @@ body {
 }
 
 
-/***** MODAL *****/
+/*** MODAL ***/
 .myform {
     max-width: 100%;
 }
@@ -124,6 +124,7 @@ body {
 .modal-content {
     width: 80%;
     margin: 0px auto;
+    background-color: var(--light);
 }
 
 .index-form-header {
@@ -171,12 +172,14 @@ body {
     cursor: pointer;
 }
 
-/***** END of MODAL *****/
+/*** END of MODAL ***/
+
+/***** End of Index Page *****/
 
 
-/* End of Index Page */
-
+/***** Navbar *****/
 .sidebar {
+    margin-left: 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -186,7 +189,6 @@ body {
     z-index: 2;
     overflow-x: hidden;
     scrollbar-width: none;
-    box-shadow: 2px 0 10px var(--grey);
 }
 
 .sidebar::-webkit-scrollbar {
@@ -197,30 +199,41 @@ body {
     width: 60px;
 }
 
-.sidebar .logo {
+.sidebar .client-container {
+    background-color: var(--grey);
+    height: 4.5rem;
+    margin-top: 0.5rem;
+}
+
+.sidebar .client-container .logo {
     display: flex;
     align-items: center;
-    font-size: 1.7rem;
     height: 56px;
-    color: var(--dark);
     z-index: 1;
-    font-weight: 700;
-    margin: 1rem 0.5rem;
 }
 
 .sidebar .logo img {
     width: 25%;
-    margin: 1rem 0;
+    margin-top: 1rem;
+    margin-left: 1rem;
 }
 
-.sidebar .logo span {
-    margin-left: 0.5rem;
-    color: var(--success);
+.sidebar .logo span .client-name {
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    color: var(--dark);
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.sidebar .logo span .sub-client-name {
+    margin-left: 1rem;
+    color: var(--dark-grey);
 }
 
 .sidebar .side-menu {
     width: 100%;
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
 .sidebar .side-menu li {
@@ -242,14 +255,17 @@ body {
     display: flex;
     align-items: center;
     font-size: 1rem;
+    font-weight: bold;
     white-space: nowrap;
     overflow-x: hidden;
-    transition: all 0.3s ease;
-    color: var(--da);
+    transition: all 0.3s ease, color 0.3s ease;
+    color: var(--dark);
 }
 
 .sidebar .side-menu li.active a {
     color: var(--success);
+    background-color: var(--grey);
+    transition: color 0.3s ease;
 }
 
 .sidebar.close .side-menu li a {
@@ -257,20 +273,30 @@ body {
     transition: all 0.3s ease-in;
 }
 
-.sidebar .side-menu lia a .fa {
+.sidebar .side-menu li a .fa {
     min-width: calc(80px - 12px);
     display: flex;
     justify-content: center;
     font-size: 1.7rem;
+    margin-right: 0;
 }
 
 .sidebar.close .logo img {
     width: 100%;
 }
 
-.side-menu li a.logout {
+.side-menu li a .signout {
     color: var(--danger);
 }
+
+.sidebar .div-logout {
+    /* fix to align logout button to the bottom */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+ 
 
 /* Side Menu Project */
 .side-menu-project {
@@ -506,12 +532,7 @@ body {
     color: var(--dark);
 }
 
-.div-logout {
-    display: flex;
-    align-items: center;
-    grid-gap: 24px;
-}
- 
+
 /* Card */
 main {
     width: 100%;
@@ -565,7 +586,7 @@ main .cards li:hover {
     transform: translateY(-10px);
 }
 
-main .cards li .bx {
+main .cards li .fa {
     width: 4.5rem;
     height: 4.5rem;
     border-radius: 10px;
@@ -575,22 +596,22 @@ main .cards li .bx {
     justify-content: center;
 }
 
-main .cards li:nth-child(1) .bx {
+main .cards li:nth-child(1) .fa {
     background-color: var(--light-primary);
     color: var(--primary);
 }
 
-main .cards li:nth-child(2) .bx {
+main .cards li:nth-child(2) .fa {
     background-color: var(--light-warning);
     color: var(--warning);
 }
 
-main .cards li:nth-child(3) .bx {
+main .cards li:nth-child(3) .fa {
     background-color: var(--light-danger);
     color: var(--danger);
 }
 
-main .cards li:nth-child(4) .bx {
+main .cards li:nth-child(4) .fa {
     background-color: var(--light-success);
     color: var(--success);
 }
@@ -674,18 +695,20 @@ main .bottom-data .projects .project-list li.current{
     border-left: 5px solid var(--success);
 } */
 
+.main-container {
+    padding: 0;
+}
+
 
 /* Logout Modal */
-.modal-content {
-    background-color: var(--light);
-}
 
 .logout-form-header {
     color: var(--dark);
 }
 
-.logout-options {
-    grid-gap: 24px;
+.logout-options .logout-btn {
+    width: 75%;
+    background-color: var(--light);
 }
 
 

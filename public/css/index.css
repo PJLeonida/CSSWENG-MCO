@@ -1,0 +1,141 @@
+:root {
+    --light: #F6F6F9;
+    --grey: #EEEEEE;
+    --dark-grey: #AAAAAA;
+    --dark: #363949;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "poppins", sans-serif;
+}
+
+/*** Number Text Field ***/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+
+/* Utility Classes */
+body.dark {
+    --light: #181A1E;
+    --grey: #25252C;
+    --dark: #FBFBFB;
+}
+
+body {
+    background-color: var(--grey);
+    overflow-x: hidden;
+}
+
+/****** Index Page *****/
+.index-container {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--light);
+}
+
+
+/*** INDEX LOGO ***/
+.client-logo {
+    width: 550px;
+    height: 300px;
+    margin-top: 100px;
+    margin-bottom: 80px;
+    flex-shrink: 0;
+    /* Put a shadow around the logo */
+    /* box-shadow: 0 4px 6px 0px #BBF7D0; */
+}
+
+#login-btn, #register-btn{
+    width: 472px;
+    margin-bottom: 20px;
+}
+
+.copyright {
+    font-size: 1em;
+    color: var(--dark);
+    margin: 20px;
+}
+
+/*** MODAL ***/
+.myform {
+    max-width: 100%;
+}
+
+.modal-body {
+    padding: 0px;
+}
+
+.btn-close {
+    position: absolute;
+    right: 0;
+    padding: 1em;
+    
+}
+
+.modal-content {
+    width: 80%;
+    margin: 0px auto;
+    background-color: var(--light);
+}
+
+.index-form-header {
+    font-size:  2.3em;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.index-form-label {
+    color: var(--dark);
+}
+
+.myform {
+    padding: 2em;
+    max-width: 100%;
+    color: var(--light);
+    box-shadow: 0 4px 6px 0px rgba(22, 22, 26, 0.18);
+    @media(max-width: 576px) {
+        max-width: 90%;
+        margin: 0px auto;
+    }
+}
+
+.form-control {
+    background-color: inherit;
+    color: var(--dark);
+    padding-left:  0px;
+    border: 0px;
+    border-bottom: 1px solid var(--dark);
+}
+
+.myform .btn {
+    width: 100%;
+    font-weight: 800;
+    background-color: var(--dark);
+    border-radius: 0;
+    padding: 0.5em 0;
+}
+
+.myform .btn:hover {
+    color: var(--grey);
+}
+
+.fas {
+    cursor: pointer;
+}

@@ -6,26 +6,22 @@ const Projects = new mongoose.Schema({
         type: String,
         require: true 
     },
-
-    projectDesc: {
-        type: String
+    projectDescription: {
+        type: String,
+        require: false
     },
-
     totalmanpower: {
         type: Number
     },
-
     employees: {
         type: Schema.Types.ObjectId,
         ref: 'EmpDeployment'
     },
-
     utilization: {
         type: Number,
 
     }
-
 })
 
-const projects = mongoose.model("Project", Projects)
-module.exports = projects
+const projects = mongoose.model("Project", Projects);
+module.exports = projects;
