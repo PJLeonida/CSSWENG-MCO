@@ -12,6 +12,13 @@ document.addEventListener('DOMContentLoaded',  function (e) {
     e.preventDefault();
     // Global variable to store the employee data
     let employeeListData = [];
+
+    // Function to limit the new-project-end-date must be after the new-project-start-date
+    document.getElementById('new-project-start-date').addEventListener('change', function(event) {
+        event.preventDefault();
+        const startDate = document.getElementById('new-project-start-date').value;
+        document.getElementById('new-project-end-date').setAttribute('min', startDate);
+    });
     
     
     document.getElementById('employee-form').addEventListener('submit', function(event) {
