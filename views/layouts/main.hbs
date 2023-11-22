@@ -43,6 +43,14 @@
 								<div class="mb-3 mt-3">
 									<label for="login-companyID" class="index-form-label">Company ID</label>
 									<input type="number" name="companyID" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" id="login-companyID" class="form-control" placeholder="Enter Company ID" required>
+								
+									{{#if message}}
+										<div class="alert alert-danger mt-3" > <role="alert">
+											{{message}}
+										</div>
+									{{/if}}
+								
+								
 								</div>
 								<div class="mb-3 mt-3">
 									<label for="login-password" class="index-form-label">Password</label>
@@ -52,6 +60,13 @@
 											<i class="fas fa-eye-slash" aria-hidden="true"></i>
 										</span>
                                     </div>
+
+									{{#if message}}
+										<div class="alert alert-danger mt-3" > <role="alert">
+											{{message}}
+										</div>
+									{{/if}}
+									
 								</div>
 								<button type="submit" class="btn btn-success mt-3">Login</button>
 							</form>
@@ -79,8 +94,16 @@
                                     <div class="col">
                                         <div class="mb-3">
                                             <label for="register-firstName" class="form-label">First Name</label>
-                                            <input type="text" name="reg_firstName" class="form-control" id="register-firstName" placeholder="Enter First Name">
-                                        </div>
+                                            <input type="text" name="reg_firstName" class="form-control" id="register-firstName" placeholder="Enter First Name" required>
+											
+											{{#if message}}
+												<div class="alert alert-danger mt-3" > <role="alert">
+													{{message}}
+												</div>
+											{{/if}}
+										
+										
+										</div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3">
@@ -95,7 +118,13 @@
                                         <div class="mb-3">
                                             <label for="register-lastName" class="form-label">Last Name</label>
                                             <input type="text" name="reg_lastName" class="form-control" id="register-lastName" placeholder="Enter Last Name" required>
-                                        </div>
+
+											{{#if message}}
+												<div class="alert alert-danger mt-3" > <role="alert">
+													{{message}}
+												</div>
+											{{/if}}
+										</div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3">
@@ -117,6 +146,12 @@
 											<i class="fas fa-eye-slash" aria-hidden="true"></i>
 										</span>
 									</div>
+
+									{{#if message}}
+										<div class="alert alert-danger mt-3" > <role="alert">
+											{{message}}
+										</div>
+									{{/if}}
 									
 								</div>
 								<div class="mb-3 mt-3">
@@ -127,6 +162,12 @@
 											<i class="fas fa-eye-slash" aria-hidden="true"></i>
 										</span>
                                     </div>
+
+									{{#if message}}
+										<div class="alert alert-danger mt-3" > <role="alert">
+											{{message}}
+										</div>
+									{{/if}}
 								</div>
 								<button type="submit" class="btn btn-success mt-3">Register</button>
 							</form>
