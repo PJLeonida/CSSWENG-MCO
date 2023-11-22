@@ -85,4 +85,15 @@ router.get('/:projectID', async (req, res) => {
     });
 });
 
+
+// Use for design purposes only
+router.get('/', (req, res) => {
+    res.render('landing-page', { 
+        pageTitle: 'Project Tracker',
+        partial: 'template-project-tracker',
+        activePage: 'account-settings',
+        script: '/static/js/template-project-tracker.js'
+    });
+});
+
 module.exports = router;
