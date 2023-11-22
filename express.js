@@ -9,7 +9,12 @@ const port = process.env.PORT || 3000; // Use the value from .env or default to 
 
 // Setting up express and handlebars
 const express = require('express');
-// const cookieParser = require('cookie-parser');
+
+/**/
+const session = require('express-session');
+
+const cookieParser = require('cookie-parser');
+
 
 const app = express();
 
@@ -42,6 +47,14 @@ passport.deserializeUser(User.deserializeUser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 
+//setting up session
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveIniniialized: true,
+    projectID: " ",
+}));
+
 
 // Setting up handlebars
 const { engine } = require ('express-handlebars');
@@ -70,7 +83,6 @@ const createNewTrackerRoute = require('./routes/create-new-tracker-route.js');
 const employeeListRoute = require('./routes/employee-list-route.js');
 const projectListRoute = require('./routes/project-list-route.js')
 const accountSettingsRoute = require('./routes/account-settings-route.js');
-
 const templateProjectTrackerRoute = require('./routes/template-project-tracker-route.js');
 
 /*============================================EXPRESS====================================================================*/ 
@@ -106,6 +118,15 @@ app.use(express.json())
 app.use('/register', accountAuthenticationRoute);
 app.use('/login', accountAuthenticationRoute);
 app.use('/logout', accountAuthenticationRoute);
+app.use('/landing-page', landingPageRoute);
+app.use('/dashboard', dashboardRoute);
+app.use('/create-new-tracker', createNewTrackerRoute);
+app.use('/new-tracker', createNewTrackerRoute); 
+app.use('/project-list', projectListRoute);
+app.use('/employee-list', employeeListRoute);
+
+
+//======================Server Listen========================//
 app.use('/landing-page', verifyLogin, landingPageRoute);
 app.use('/dashboard', verifyLogin, dashboardRoute);
 app.use('/create-new-tracker', verifyLogin, createNewTrackerRoute);
@@ -128,6 +149,7 @@ function verifyLogin(req, res, next) {
          next();
     }
 }
+
 
 
 

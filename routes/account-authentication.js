@@ -89,6 +89,20 @@ router.post('/', async (req, res, next) => {
             if (requiredFields.some(value => value === '' || value.trim() === '')) {
                 return res.status(400).json({ message: 'Please fill out all fields' });
             }
+         
+            // Check if the company ID exists in the database
+            if (!await User.findOne({ companyID: log_companyID })) {
+                return res.status(400).json({ message: 'Invalid Company ID' });
+            }
+
+            // Check if the password is correct
+            if (!await bcrypt.compare(log_password, (await User.findOne({ companyID: log_companyID })).password)) {
+                return res.status(400).json({ message: 'Invalid Password' });
+            }
+
+            // If all checks are passed, log the user in
+            console.log('User logged in successfully!');
+            res.redirect('/landing-page');
             
             passport.authenticate('local',  {
                 successRedirect: '/landing-page',

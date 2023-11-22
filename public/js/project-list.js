@@ -45,12 +45,12 @@ function initializeProjectListTable(projlist) {
     projlist.forEach(project => {
         const row = tbody.insertRow();
 
-       // row.insertCell().textContent = project.id;
+
         row.insertCell().textContent = id;
         row.insertCell().textContent = project.projectName;
         row.insertCell().textContent = project.projectDescription;
         row.insertCell().textContent = project.numberOfEmployees;
-        row.insertCell().textContent = project.totalDeploymentHours;
+        row.insertCell().textContent = project.totalDeploymentHours; //In development
 
         id += 1;
     });

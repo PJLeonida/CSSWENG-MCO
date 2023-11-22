@@ -75,8 +75,8 @@ document.addEventListener('DOMContentLoaded',  function (e) {
         row.insertCell().textContent = employeeDeployment;
         row.insertCell().textContent = employeeRate;
         row.insertCell().textContent = employeeTotalRate;
-        row.insertCell().innerHTML = '<button class="btn btn-warning btn-sm btn-edit-employee" id="btn-edit-employee">Edit</button>';
-        row.insertCell().innerHTML = '<button class="btn btn-danger btn-sm btn-delete-employee" id="btn-delete-employee">Delete</button>';
+        row.insertCell().innerHTML = '<button class="btn disabled btn-warning btn-sm btn-edit-employee" id="btn-edit-employee">Edit</button>';
+        row.insertCell().innerHTML = '<button class="btn disabled btn-danger btn-sm btn-delete-employee" id="btn-delete-employee">Delete</button>';
         
 
     });
@@ -104,7 +104,20 @@ document.addEventListener('DOMContentLoaded',  function (e) {
             },
             // body: JSON.stringify(employeeListData)
             body: data
-        });
+        }).then(response => {
+            if (response.ok) {
+                return response.json(); // Assuming your server sends JSON data
+            } else {
+                throw new Error('Failed to create tracker');
+            }
+        })
+        .then(data => {
+            if (data.redirect) {
+                window.location.href = data.redirect; // Redirect if the server sends a redirect URL
+            } else {
+                // Handle other data from the server if needed
+            }
+        })
     });
     
-    });
+});

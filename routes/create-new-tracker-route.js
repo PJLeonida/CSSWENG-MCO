@@ -80,15 +80,14 @@ router.post('/', async (req, res) => {
                 employee = employeeListData[i];
                 console.log('---------------------------------');
                 const newEmployee = new Employees({
-                    //no: employee.no,
                     firstName: employee.firstName,
                     middleName: employee.middleName,
                     lastName:  employee.lastName,
                     suffix:  employee.suffix,
                     position:  employee.position,
-                    //deployment: employee.deployment,
+                    deployment: employee.deployment,
                     rate:  employee.rate,
-                    totalRate:  employee.totalRate
+                    totalRate:  employee.deployment * employee.rate
                 });
                 await newEmployee.save();
 
@@ -103,11 +102,11 @@ router.post('/', async (req, res) => {
                 await newDeployment.save();
             }
            
-
-            res.redirect('/template-project-tracker');
+            res.status(200).json({ redirect: '/template-project-tracker/' + newProject._id});
         }
     } catch (error) {
         console.error('Error creating new tracker:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
     }
 });
 
