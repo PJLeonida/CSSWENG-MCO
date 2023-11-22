@@ -115,15 +115,6 @@ app.use(express.json())
 app.use('/register', accountAuthenticationRoute);
 app.use('/login', accountAuthenticationRoute);
 app.use('/logout', accountAuthenticationRoute);
-app.use('/landing-page', landingPageRoute);
-app.use('/dashboard', dashboardRoute);
-app.use('/create-new-tracker', createNewTrackerRoute);
-app.use('/new-tracker', createNewTrackerRoute); 
-app.use('/project-list', projectListRoute);
-app.use('/employee-list', employeeListRoute);
-
-
-//======================Server Listen========================//
 app.use('/landing-page', verifyLogin, landingPageRoute);
 app.use('/dashboard', verifyLogin, dashboardRoute);
 app.use('/create-new-tracker', verifyLogin, createNewTrackerRoute);
@@ -131,6 +122,7 @@ app.use('/new-tracker', verifyLogin, createNewTrackerRoute);
 app.use('/project-list', verifyLogin, projectListRoute);
 app.use('/employee-list', verifyLogin, employeeListRoute);
 app.use('/account-settings', verifyLogin, accountSettingsRoute);
+app.use('/template-project-tracker', verifyLogin, templateProjectTrackerRoute);
 
 // Temporary route for design purposes
 // app.use('/account-settings', verifyLogin, templateProjectTrackerRoute);

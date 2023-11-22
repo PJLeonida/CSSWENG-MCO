@@ -17,18 +17,6 @@ const Projects = require('./server/schema/Projects.js');
 const Users = require('./server/schema/Users.js')
 
 
-// Set up express server
-
-// server.listen(port, function(error) {
-//     if (error){
-//         console.log("Error: ", error)
-//     }
-//     else{
-//         console.log("Server is listening on port " + port)
-//     }
-// });
-
-
 
 /*============================================Electron====================================================================*/ 
 
@@ -52,33 +40,12 @@ app.whenReady().then(() => {
     db_ops.connect()
     server.listen(port);
     createWindow();
-        // .then(() => {
-        //     console.log('Connected to database');
-        //     // Create the window
-        //     createWindow();
-        // })
-        // .catch((error) => {
-        //     console.log('Error connecting to database:', error);
-        // });
 });
 
-// App listener when all the window is closed,
-// closed the app completely
+// App listener when all the window is closed, closed the app completely
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit();
 })
-
-
-// ipcMain.on('register-form', (event, data) => {
-//     console.log('HERE', data);
-//     fetch(`http://localhost:${process.env.port}/register`, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify(data)
-//         })
-// })
 
 
 module.exports = port; // Export the port value

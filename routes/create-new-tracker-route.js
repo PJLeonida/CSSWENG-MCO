@@ -103,8 +103,7 @@ router.post('/', async (req, res) => {
                 await newDeployment.save();
             }
            
-
-            res.redirect('/template-project-tracker');
+            res.status(200).json({ redirect: '/template-project-tracker/' + newProject._id});
         }
     } catch (error) {
         console.error('Error creating new tracker:', error);

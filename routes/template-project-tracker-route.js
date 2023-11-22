@@ -81,6 +81,7 @@ router.get('/:projectID', async (req, res) => {
         totalPositions: totalPositions,
         totalDeployments: totalDeployments,
         totalRate: totalRate,
+        script: '/static/js/template-project-tracker.js',
     });
 });
 
