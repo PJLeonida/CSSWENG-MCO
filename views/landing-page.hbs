@@ -30,23 +30,17 @@
                 <form action="#">
                     <div class="form-input">
                         <input type="search" placeholder="Search..."/>
-                        <button type="submit"><i class="bx bx-search"></i></button>
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
-                </form> 
+                </form>
             </nav>
             <!-- End of Navbar -->
             
 
             <!-- Main Contents -->
             <main id="changing-container-placeholder">
-                <div class="header">
-                    <!-- Change the page title here -->
-                    <h1>{{ pageTitle }}</h1>
-                </div>
-
                 <!-- Change the main content here -->
                 {{> (lookup . 'partial')}}
-                
             </main>  
         </div>
         <!-- End of Content -->

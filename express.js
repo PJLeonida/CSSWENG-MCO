@@ -112,8 +112,10 @@ app.use('/create-new-tracker', verifyLogin, createNewTrackerRoute);
 app.use('/new-tracker', verifyLogin, createNewTrackerRoute); 
 app.use('/project-list', verifyLogin, projectListRoute);
 app.use('/employee-list', verifyLogin, employeeListRoute);
-// app.use('/account-settings', verifyLogin, accountSettingsRoute);
-app.use('/account-settings', verifyLogin, templateProjectTrackerRoute);
+app.use('/account-settings', verifyLogin, accountSettingsRoute);
+
+// Temporary route for design purposes
+// app.use('/account-settings', verifyLogin, templateProjectTrackerRoute);
 
 //======================Helper Functions========================//
 

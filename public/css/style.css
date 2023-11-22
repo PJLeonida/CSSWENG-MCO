@@ -382,16 +382,15 @@ body {
 }
 
 /* Search Project */
-/* form {
-    width: 100%;
+form {
+    width: 70%;
     margin-right: auto;
 }
 
 .form-input {
     display: flex;
     align-items: center;
-    height: 30px;
-    margin-bottom: 1rem;
+    height: 40px;
 }
 
 .form-input input {
@@ -399,7 +398,7 @@ body {
     padding: 0 16px;
     height: 100%;
     border: none;
-    background-color: var(--light);
+    background-color: var(--grey);
     border-radius: 36px 0 0 36px;
     outline: none;
     color: var(--dark);
@@ -424,7 +423,7 @@ body {
 
 .form-input button .bx-search {
     color: white;
-} */
+}
 
 /* Content */
 .content {
@@ -552,6 +551,12 @@ body {
     color: var(--dark);
 }
 
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
 
 /* Card */
 main {
@@ -563,7 +568,9 @@ main {
 main .header h1 {
     font-size: 2.4rem;
     font-weight: 600;
-    margin-bottom: 0.8rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    margin-bottom: 0.1rem;
     color: var(--dark);
 }
 
@@ -590,7 +597,7 @@ main .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     grid-gap: 1.5rem;
-    margin-top: 3rem;
+    margin-top: 1rem;
 }
 
 main .cards li {
@@ -644,6 +651,11 @@ main .cards li .info h3 {
 
 main .cards li .info p {
     color: var(--dark);
+}
+
+.template-btn-container {
+    margin: 0.5rem;
+    height: 90%;
 }
 
 /* Data */
