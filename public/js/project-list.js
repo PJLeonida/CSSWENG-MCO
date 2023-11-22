@@ -45,12 +45,12 @@ function initializeProjectListTable(projlist) {
     projlist.forEach(project => {
         const row = tbody.insertRow();
 
-
+       // row.insertCell().textContent = project.id;
         row.insertCell().textContent = id;
         row.insertCell().textContent = project.projectName;
         row.insertCell().textContent = project.projectDescription;
         row.insertCell().textContent = project.numberOfEmployees;
-        row.insertCell().textContent = project.totalDeploymentHours; //In development
+        row.insertCell().textContent = project.totalDeploymentHours;
 
         id += 1;
     });
@@ -62,5 +62,3 @@ document.addEventListener('DOMContentLoaded', async function (e) {
     const projlist = await getProjectData();
     initializeProjectListTable(projlist);
 });
-
-

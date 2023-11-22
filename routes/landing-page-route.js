@@ -72,6 +72,7 @@ router.get('/', async (req, res) => {
     const totalEmployees = await getTotalEmployees();
     const totalDeployments = await getTotalDeployments();
     const totalRate = await getTotalRate();
+    
     res.render('landing-page', { 
         pageTitle: 'Dashboard',
         partial: 'dashboard',

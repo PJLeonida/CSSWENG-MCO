@@ -318,82 +318,20 @@ body {
 }
  
 
-/* Side Menu Project */
-.side-menu-project {
-    width: 94%;
-    margin: 3rem 0.5rem 0rem 0.5rem;
-    padding: 20px;
-    background-color: var(--grey);
-    border-radius: 5px;
-}
-
-.menu-project-header {
-    color: var(--dark);
-}
-
-.side-menu-project .search-project {
-    width: 100%;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.five-recent-projects {
-    height: 230px; /* adjust this value according to your needs */
-    overflow: auto;
-    background-color: var(--light);
-    border-radius: 5px;
-    padding: 10px;
-    text-align: left;
-}
-
-.five-recent-projects ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.five-recent-projects li {
-    margin-bottom: 10px;
-    background-color: var(--grey);
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;    
-}
-
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #888; 
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-}
 
 /* Search Project */
-form {
+.search-form {
     width: 70%;
     margin-right: auto;
 }
 
-.form-input {
+.search-form .form-input {
     display: flex;
     align-items: center;
     height: 40px;
 }
 
-.form-input input {
+.search-form .form-input input {
     flex-grow: 1;
     padding: 0 16px;
     height: 100%;
@@ -406,7 +344,7 @@ form {
     font-family: inherit;
 }
 
-.form-input button {
+.search-form .form-input button {
     width: 80px;
     height: 100%;
     display: flex;
@@ -421,9 +359,6 @@ form {
     cursor: pointer;
 }
 
-.form-input button .bx-search {
-    color: white;
-}
 
 /* Content */
 .content {
