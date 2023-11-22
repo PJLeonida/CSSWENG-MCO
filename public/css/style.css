@@ -768,6 +768,15 @@ main .bottom-data .reports table {
     padding-right: 10px;
 }
 
+
+input[type="date"] {
+    color: var(--light);
+    opacity: 1;
+    background-color: var(--dark);
+    cursor: pointer;
+}
+
+
 /***** Account Settings *****/
 .account-container {
     /* Make the account photo holder

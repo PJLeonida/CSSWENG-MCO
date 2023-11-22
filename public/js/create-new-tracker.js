@@ -8,18 +8,39 @@
 */
 
 // Path: src/js/employee.js
+
+
+
+// Function that checks whenever the user clicks and interchanges the project status
+// every time the user choose ON-GOING, the new-project-end-date will be disabled
+// every time the user choose COMPLETED, the new-project-end-date will be enabled
+document.getElementById('new-project-status').addEventListener('change', function(event) {
+    event.preventDefault();
+
+    const projectStatus = document.getElementById('new-project-status').value;
+
+    if (projectStatus === 'ON-GOING') {
+        document.getElementById('new-project-end-date').setAttribute('disabled', true);
+    } else if (projectStatus === 'COMPLETED') {
+        document.getElementById('new-project-end-date').removeAttribute('disabled');
+        document.getElementById('new-project-end-date').setAttribute('required', true);
+    }
+});
+
+// Function to limit the new-project-end-date must be after the new-project-start-date
+document.getElementById('new-project-start-date').addEventListener('change', function(event) {
+    event.preventDefault();
+    
+    const startDate = document.getElementById('new-project-start-date').value;
+    
+    document.getElementById('new-project-end-date').setAttribute('min', startDate);
+});
+
 document.addEventListener('DOMContentLoaded',  function (e) {
     e.preventDefault();
     // Global variable to store the employee data
     let employeeListData = [];
 
-    // Function to limit the new-project-end-date must be after the new-project-start-date
-    document.getElementById('new-project-start-date').addEventListener('change', function(event) {
-        event.preventDefault();
-        const startDate = document.getElementById('new-project-start-date').value;
-        document.getElementById('new-project-end-date').setAttribute('min', startDate);
-    });
-    
     
     document.getElementById('employee-form').addEventListener('submit', function(event) {
         event.preventDefault();

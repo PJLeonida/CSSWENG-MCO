@@ -15,53 +15,53 @@
                     
                     <div class="modal-body">
                         <div class="myform bg-dark">
-                            <h5 class="employee-form-subheader mb-3 p-3">Employee Details</h5>
+                            <h5 class="employee-form-subheader mb-3 p-3 fw-bold ">Employee Details</h5>
                             <form id="employee-form">
                                 <div class="row px-3">
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label for="employeeFirstName" class="form-label">First Name</label>
+                                            <label for="employeeFirstName" class="form-label fw-bold ">First Name</label>
                                             <input type="text" class="form-control" id="employeeFirstName" placeholder="Enter First Name" required>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label for="employeeMiddleName" class="form-label">Middle Name</label>
+                                            <label for="employeeMiddleName" class="form-label fw-bold ">Middle Name</label>
                                             <input type="text" class="form-control" id="employeeMiddleName" placeholder="Enter Middle Name">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label for="employeeLastName" class="form-label">Last Name</label>
+                                            <label for="employeeLastName" class="form-label fw-bold ">Last Name</label>
                                             <input type="text" class="form-control" id="employeeLastName" placeholder="Enter Last Name" required>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label for="employeeSuffix" class="form-label">Suffix</label>
+                                            <label for="employeeSuffix" class="form-label fw-bold ">Suffix</label>
                                             <input type="text" class="form-control" id="employeeSuffix" placeholder="Enter Suffix">
                                         </div>
                                     </div>
                                 </div>
 
-                                <h5 class="employee-form-subheader mb-3 p-3">Employment Details</h5>
+                                <h5 class="employee-form-subheader mb-3 p-3 fw-bold">Employment Details</h5>
 
                                 <div class="row px-3">
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label for="employeePosition" class="form-label">Position</label>
+                                            <label for="employeePosition" class="form-label fw-bold ">Position</label>
                                             <input type="text" class="form-control" id="employeePosition" placeholder="Enter Employee's Position" required>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label for="employeeDeployment" class="form-label">Deployment (in Hours)</label>
+                                            <label for="employeeDeployment" class="form-label fw-bold ">Deployment (in Hours)</label>
                                             <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control" id="employeeDeployment" placeholder="Enter the Hours of Deployment" required>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label for="employeeRate" class="form-label">Rate (per Hour)</label>
+                                            <label for="employeeRate" class="form-label fw-bold ">Rate (per Hour)</label>
                                             <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control" id="employeeRate" placeholder="Enter the Cost of Rate per Hour" required>
                                         </div>
                                     </div>
@@ -98,24 +98,39 @@
                     <input type="hidden" name="action" value="create-new-tracker">
                     
                     <div class="bottom-data">
-                        <div class="reports">
+                        <div class="reports project-details">
                             <div class="mb-3">
-                                <label for="new-project-name" class="form-label fw-bold new-tracker-to-do">Project Name</label>
+                                <label for="new-project-name" class="form-label fw-bold fs-4 new-tracker-to-do">Project Name</label>
                                 <input type="text" class="form-control" id="new-project-name" placeholder="Enter Project Name" required>
                             </div>
                             <div class="mb-3">
-                                <label for="new-project-desc" class="form-label fw-bold new-tracker-to-do">Project Description</label>
+                                <label for="new-project-desc" class="form-label fw-bold fs-4 new-tracker-to-do">Project Description</label>
                                 <input type="text" class="form-control" id="new-project-desc" placeholder="Enter Project Description" required>
                             </div>
-                        </div>
-                        <div class="reports">
+                            <!-- Project Location -->
                             <div class="mb-3">
-                                <label for="new-project-start-date" class="form-label fw-bold new-tracker-to-do">Start Date</label>
-                                <input type="date" class="form-control" id="new-project-start-date" required>
+                                <label for="new-project-location" class="form-label fw-bold fs-4 new-tracker-to-do">Project Location</label>
+                                <input type="text" class="form-control" id="new-project-location" placeholder="Enter Project Location" required>
+                            </div>
+                        </div>
+
+                        <!-- Project Duration -->
+                        <div class="reports project-duration">
+                            <div class="mb-3">
+                                <label for="new-project-status" class="form-label fw-bold fs-4 new-tracker-to-do">Project Status</label>
+                                <select class="form-select mb-3" id="new-project-status" required>
+                                    <option value="" selected disabled hidden>Choose Status</option>
+                                    <option value="ON-GOING">ON-GOING</option>
+                                    <option value="COMPLETED">COMPLETED</option>
+                                </select>
                             </div>
                             <div class="mb-3">
-                                <label for="new-project-end-date" class="form-label fw-bold new-tracker-to-do">End Date</label>
-                                <input type="date" class="form-control" id="new-project-end-date" required>
+                                <label for="new-project-start-date" class="form-label fw-bold fs-4 new-tracker-to-do">Start Date</label>
+                                <input type="date" class="form-control" id="new-project-start-date">
+                            </div>
+                            <div class="mb-3">
+                                <label for="new-project-end-date" class="form-label fw-bold fs-4 new-tracker-to-do">End Date</label>
+                                <input type="date" class="form-control" id="new-project-end-date">
                             </div>
                         </div>
                     </div>
@@ -125,7 +140,7 @@
                 <div class="bottom-data">
                     <div class="reports">
                         <div class="div-options-employee">
-                            <span class="new-tracker-to-do">
+                            <span class="new-tracker-to-do fs-4">
                                 Employee List
                             </span>
                             <span>
