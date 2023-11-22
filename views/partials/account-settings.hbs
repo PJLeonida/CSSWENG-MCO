@@ -7,17 +7,116 @@
             <!-- Container -->
             <div class="account-container">
                 <div class="account-photo-holder">
+                    <h1 class="profile-pic-title fw-bold">Profile Photo</h1>
                     <div class="account-photo">
-                        <img src="/static/img/default-profile-pic.jpg" alt="profile-picture">
+                        <img id="avatar" src="/static/img/default-profile-pic.jpg" alt="profile-picture">
                     </div>
-                    <div class="account-photo-text">
-                        <h1>Change Photo</h1>
-                        {{!-- <h2>Employee</h2> --}}
+                    
+
+                    <div class="account-photo-upload">
+                        <form id="uploadForm">
+                            <div>
+                                <label for="img">Import Image</label>
+                                <input type="file" id="img" name="img" accept="image/*">
+                            </div>
+                            <div>
+                                <btn class="btn btn-primary" type="submit">Save Image</btn>
+                            </div>
+                            
+                        </form>
                     </div>
+
                 </div>
 
-                <div class="account-details">
-                    Account Details
+                <div class="account-details-holder">
+                    <h1 class="profile-pic-title fw-bold">Account Details</h1>
+
+                    <form action="#" method="post" id="edit-account-form">
+								
+                        <input type="hidden" name="action" value="save-edited-account">
+                        
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="acc-firstName" class="form-label">First Name</label>
+                                    <input type="text" name="acc_firstName" class="form-control" id="acc-firstName" placeholder="Enter First Name" required>
+                                    
+                                    {{#if message}}
+                                        <div class="alert alert-danger mt-3" > <role="alert">
+                                            {{message}}
+                                        </div>
+                                    {{/if}}
+                                
+                                
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="acc-middleName" class="form-label">Middle Name</label>
+                                    <input type="text" name="acc_middleName" class="form-control" id="acc-middleName" placeholder="Enter Middle Name">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="acc-lastName" class="form-label">Last Name</label>
+                                    <input type="text" name="acc_lastName" class="form-control" id="acc-lastName" placeholder="Enter Last Name" required>
+
+                                    {{#if message}}
+                                        <div class="alert alert-danger mt-3" > <role="alert">
+                                            {{message}}
+                                        </div>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="acc-suffix" class="form-label">Suffix</label>
+                                    <input type="text" name="acc_suffix" class="form-control" id="acc-suffix" placeholder="Enter Suffix">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 mt-3">
+                            <label for="acc-companyID" class="index-form-label">Company ID</label>
+                            <input type="number" min="0" name="acc_companyID" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" id="acc-companyID" class="form-control" placeholder="Enter Company ID" required>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="acc-password" class="index-form-label">Password</label>
+                            <div class="input-group">
+                                <input type="password" name="password" id="acc-password" class="form-control" placeholder="Enter Password" required>
+                                <span class="input-group-text" id="acc-show-hide-password">
+                                    <i class="fas fa-eye-slash" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            {{#if message}}
+                                <div class="alert alert-danger mt-3" > <role="alert">
+                                    {{message}}
+                                </div>
+                            {{/if}}
+                            
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="acc-confirmPassword" class="index-form-label">Confirm Password</label>
+                            <div class="input-group">
+                                <input type="password" name="acc_confirm" id="acc-confirm-password" class="form-control" placeholder="Confirm Password" required>
+                                <span class="input-group-text" id="acc-confirm-show-hide-password">
+                                    <i class="fas fa-eye-slash" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            {{#if message}}
+                                <div class="alert alert-danger mt-3" > <role="alert">
+                                    {{message}}
+                                </div>
+                            {{/if}}
+                        </div>
+                        <button type="submit" class="btn btn-success mt-3">Save Changes</button>
+                    </form>
+                    
 
                 </div>
                 

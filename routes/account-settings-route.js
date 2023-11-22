@@ -6,6 +6,7 @@ router.get('/', (req, res) => {
         pageTitle: 'Account Settings',
         partial: 'account-settings',
         activePage: 'account-settings',
+        script: '/static/js/account-settings.js'
     });
 });
 
