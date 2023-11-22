@@ -1,10 +1,17 @@
+<!--
+    landing-page.hbs
+    Purpose:
+        - This is the main page of the website that contains the navbar and the main content of the website.
+        - The main content is dynamically changed depending on the page (partials) that the user is currently in.
+-->
+
         <div class="landing-page-container">
             {{> navbar}}
         </div>
-        
 
         <!-- Content -->
         <div class="content">
+            <!-- Start of Navbar -->
             <nav>
                 <div class="nav-container">
                     <div class="profile-and-info">
@@ -13,35 +20,32 @@
                         </a>
         
                         <div class="profile-info">
-                            <h3> Hello, {{user.firstName}}! </h3>
+                            <h3> Hello, (fixed my name)! </h3>
                             <div id="date-time-placeholder"></div>
                         </div>
-
                     </div>
-                    
-                    {{!-- <div class="div-logout">
-                        <button type="button" id="logout-btn" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModal" onclick="clickedLogoutBtn()">Logout</button>
-                    </div> --}}
-                </div> 
-            </nav>
-            <!-- End of nav -->
-
-
-            <!-- Main -->
-            <main id="changing-container-placeholder">
-                <div class="header">
-                    <h1>{{pageTitle}}</h1>
                 </div>
 
+                <!-- Create a search bar here -->
+                <form action="#">
+                    <div class="form-input">
+                        <input type="search" placeholder="Search..."/>
+                        <button type="submit"><i class="bx bx-search"></i></button>
+                    </div>
+                </form> 
+            </nav>
+            <!-- End of Navbar -->
+            
+
+            <!-- Main Contents -->
+            <main id="changing-container-placeholder">
                 <!-- Change the main content here -->
                 {{> (lookup . 'partial')}}
-                
-            </main>
-
-            
-            
-        </div> <!-- End of Content -->
+            </main>  
+        </div>
+        <!-- End of Content -->
         
+        <!-- Scripts -->
         <script>
             function updateDateTime() {
                 const dateTimeElement = document.getElementById('date-time-placeholder');

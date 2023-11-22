@@ -1,5 +1,6 @@
 // Template of the project tracker route
 
+<<<<<<< DerekBranchV3
 const app = require('express');
 const projects = require('../server/schema/Projects');
 const employees = require('../server/schema/Employees');
@@ -27,9 +28,6 @@ async function getProjectTotalEmployees(employeeListData) {
     return employeeListData.length;
 }
 
-
-
-
 async function getProjectTotalProjectPositions(employeeListData){
     try {
         const positions = employeeListData.map(employee => employee.position);
@@ -40,9 +38,6 @@ async function getProjectTotalProjectPositions(employeeListData){
         throw error;
     }
 }
-
-
-
 
 async function getProjectTotalDeployments(employeeListData){
     try {
@@ -61,7 +56,6 @@ async function getProjectTotalRate(employeeListData) {
         throw error; 
     }
 }
-
 
 router.get('/get-employee-list', async (req,res) => {
     console.log('get employee list triggered')
@@ -88,7 +82,6 @@ router.get('/:projectID', async (req, res) => {
         totalPositions: totalPositions,
         totalDeployments: totalDeployments,
         totalRate: totalRate,
-        script: '/static/js/template-project-tracker.js',
     });
 });
 

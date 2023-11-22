@@ -1,4 +1,18 @@
-<!-- DASHBOARD -->
+<!-- 
+    dashboard.hbs
+    Purpose:
+        - This is the partial page that contains the dashboard.
+        - It displays the summary of the data.
+-->
+
+            <div class="header">
+                <span class="flex-container">
+                    <h1>{{ pageTitle }}</h1>
+                </span>
+            </div>
+
+
+            <!-- Container -->
             <div class="main-container">
                 <!-- Cards -->
                 <ul class="cards">
@@ -36,6 +50,7 @@
                 </ul>
                 <!-- End of cards -->
 
+
                 <!-- Data -->
                 <div class="bottom-data">
                     <div class="reports">
@@ -53,11 +68,11 @@
                                 <canvas class="chart" id="chartAllDeployments" style="width:100%;max-width:400px"></canvas>
                               </div>
                             </div>
-                        </div> <!-- End of row --> 
-                    </div> <!-- End of reports -->
-                </div> <!-- End of bottom-data -->
-            </div> <!-- End of Container --> 
-
-
-        <!-- Reference charts.js -->
-        {{!-- <script src="/static/js/charts.js"></script> --}}
+                        </div> 
+                        <!-- End of row --> 
+                    </div> 
+                    <!-- End of reports -->
+                </div> 
+                <!-- End of bottom-data -->
+            </div> 
+            <!-- End of Container --> 
