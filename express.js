@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000; // Use the value from .env or default to 
 
 // Setting up express and handlebars
 const express = require('express');
-// const session = require('express-session');
+const session = require('express-session');
 // const cookieParser = require('cookie-parser');
 
 const app = express();
@@ -70,6 +70,7 @@ const dashboardRoute = require('./routes/dashboard-route.js');
 const createNewTrackerRoute = require('./routes/create-new-tracker-route.js');
 const employeeListRoute = require('./routes/employee-list-route.js');
 const projectListRoute = require('./routes/project-list-route.js')
+const accountSettingsRoute = require('./routes/account-settings-route.js');
 
 /*============================================EXPRESS====================================================================*/ 
 
@@ -110,6 +111,7 @@ app.use('/create-new-tracker', verifyLogin, createNewTrackerRoute);
 app.use('/new-tracker', verifyLogin, createNewTrackerRoute); 
 app.use('/project-list', verifyLogin, projectListRoute);
 app.use('/employee-list', verifyLogin, employeeListRoute);
+app.use('/account-settings', verifyLogin, accountSettingsRoute);
 
 //======================Helper Functions========================//
 

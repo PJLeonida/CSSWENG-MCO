@@ -42,7 +42,7 @@
 
 								<div class="mb-3 mt-3">
 									<label for="login-companyID" class="index-form-label">Company ID</label>
-									<input type="text" name="companyID" id="login-companyID" class="form-control" placeholder="Enter Company ID" required>
+									<input type="number" name="log_companyID" min="0" name="reg_companyID" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" id="login-companyID" class="form-control" placeholder="Enter Company ID" required>
 								</div>
 								<div class="mb-3 mt-3">
 									<label for="login-password" class="index-form-label">Password</label>
@@ -53,7 +53,7 @@
 										</span>
                                     </div>
 								</div>
-								<button type="submit" class="btn btn-light mt-3">Login</button>
+								<button type="submit" class="btn btn-success mt-3">Login</button>
 							</form>
 						</div>
 					</div>
@@ -128,7 +128,7 @@
 										</span>
                                     </div>
 								</div>
-								<button type="submit" class="btn btn-light mt-3">Register</button>
+								<button type="submit" class="btn btn-success mt-3">Register</button>
 							</form>
 						</div>
 					</div>

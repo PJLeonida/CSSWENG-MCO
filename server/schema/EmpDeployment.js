@@ -35,6 +35,6 @@ const EmpDeployment = new mongoose.Schema({
 
 })
 
-const empDeployment = mongoose.model("EmpDeployment", EmpDeployment)
+const empDeployment = mongoose.model("EmpDeployment", EmpDeployment);
 
-module.exports = empDeployment
+module.exports = empDeployment;
