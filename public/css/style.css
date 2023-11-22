@@ -178,7 +178,7 @@ body {
     color: var(--dark);
 }
 
-.register-form .btn {
+#register-form .btn {
     background-color: var(--dark);
     color: var(--light);
 }

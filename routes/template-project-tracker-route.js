@@ -9,3 +9,5 @@ router.get('/', (req, res) => {
         partial: 'template-project-tracker',
     });
 });
+
+module.exports = router;
