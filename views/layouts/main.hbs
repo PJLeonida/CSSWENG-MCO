@@ -158,6 +158,26 @@
 		</div>
 		{{!-- End of Logout Modal --}}
 
+		{{!-- Save Modal --}}
+		<div id="saveTrackerModal" class="modal fade" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<!-- Modal Body -->
+					<div class="modal-body">
+						<div class="myform bg-dark p-3">
+							<h3 class="text-center logout-form-header">Are you sure to save all the changes?</h3>
+                            <div class="text-center logout-options">
+                                <a href="#" class="btn btn-success m-3 logout-btn">Save Changes</a>
+                                <button type="submit" class="btn btn-danger m-3 logout-btn" data-bs-dismiss="modal">Keep Editing</button>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{!-- End of Save Modal --}}
+
+
 		{{!-- Cancel Modal --}}
 		<div id="cancelTrackerModal" class="modal fade" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">
@@ -165,11 +185,10 @@
 					<!-- Modal Body -->
 					<div class="modal-body">
 						<div class="myform bg-dark p-3">
-							<h3 class="text-center logout-form-header">Are you sure to logout?</h3>
-                            <h5 class="text-center logout-form-header">Make sure to save all your chages!</h5>
+							<h3 class="text-center logout-form-header">Are you sure to cancel editing?</h3>
                             <div class="text-center logout-options">
-                                <a href="#" class="btn btn-success m-3 logout-btn">Logout</a>
-                                <button type="submit" class="btn btn-danger m-3 logout-btn" data-bs-dismiss="modal">Go Back</button>
+                                <a href="#" class="btn btn-success m-3 logout-btn">Keep Editing</a>
+                                <button type="submit" class="btn btn-danger m-3 logout-btn" data-bs-dismiss="modal">Cancel Editing</button>
                             </div>
 						</div>
 					</div>
