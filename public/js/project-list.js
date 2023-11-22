@@ -45,7 +45,7 @@ function initializeProjectListTable(projlist) {
     projlist.forEach(project => {
         const row = tbody.insertRow();
 
-       // row.insertCell().textContent = project.id;
+
         row.insertCell().textContent = id;
         row.insertCell().textContent = project.projectName;
         row.insertCell().textContent = project.projectDescription;
