@@ -7,7 +7,6 @@ async function getEmployeeData() {
             }
         })
         if(response.status == 200){
-            console.log("Get Employee list success");
             return await response.json()
         }else{
             console.error(`An error has occured. Status code = ${response.status}`);
@@ -20,8 +19,8 @@ async function getEmployeeData() {
 }
 
 function initializeEmployeeListTable(empList) {
-    const dataTable = document.querySelector('#employee-list-table');
-    const tbody = dataTable.querySelector('#employee-list-tbody');
+    //const dataTable = document.querySelector('#employee-list-table');
+    const tbody = document.querySelector('#employee-list-tbody');
     var id = 0
     empList.forEach(employee => {
         const row = tbody.insertRow();
@@ -29,14 +28,13 @@ function initializeEmployeeListTable(empList) {
         const fullName = `${employee.firstName ?? ''} ${employee.middleName ?? ''} ${employee.lastName ?? ''} ${employee.suffix ?? ''}`;
         row.insertCell().textContent = id;
         row.insertCell().textContent = fullName;
-        row.insertCell().textContent = employee.projectName;
         row.insertCell().textContent = employee.position;
         row.insertCell().textContent = employee.deployment;
         row.insertCell().textContent = employee.rate;
         row.insertCell().textContent = employee.totalRate;
-        row.insertCell().innerHTML = '<button class="btn btn-warning btn-sm btn-edit-employee" id="btn-edit-employee">Edit</button>';
-        row.insertCell().innerHTML = '<button class="btn btn-danger btn-sm btn-delete-employee" id="btn-delete-employee">Delete</button>';
-
+        row.insertCell().innerHTML = '<button class="btn disabled btn-warning btn-sm btn-edit-employee" id="btn-edit-employee">Edit</button>';
+        row.insertCell().innerHTML = '<button class="btn disabled btn-danger btn-sm btn-delete-employee" id="btn-delete-employee">Delete</button>';
+        
         id += 1;
     });
 }

@@ -9,8 +9,10 @@ const port = process.env.PORT || 3000; // Use the value from .env or default to 
 
 // Setting up express and handlebars
 const express = require('express');
-// const session = require('express-session');
-// const cookieParser = require('cookie-parser');
+/**/
+const session = require('express-session');
+
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -20,6 +22,14 @@ const bodyParser = require('body-parser');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true}));
+
+//setting up session
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveIniniialized: true,
+    projectID: " ",
+}));
 
 
 // Setting up handlebars

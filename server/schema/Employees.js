@@ -29,15 +29,15 @@ const employeeSchema = new mongoose.Schema({
         require: true
     },
 
-    totalrate: {
+    totalRate: {
         type: Number,
         require: true
     },
 
-    /*deployment: {
-        type: Schema.Types.ObjectId,
-        ref: 'EmpDeployment',
-    },*/
+    deployment: {
+        type: Number,
+        require: true
+    },
 
     notes: {
         type: String

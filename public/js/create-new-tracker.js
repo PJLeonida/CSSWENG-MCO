@@ -75,8 +75,8 @@ document.addEventListener('DOMContentLoaded',  function (e) {
         row.insertCell().textContent = employeeDeployment;
         row.insertCell().textContent = employeeRate;
         row.insertCell().textContent = employeeTotalRate;
-        row.insertCell().innerHTML = '<button class="btn btn-warning btn-sm btn-edit-employee" id="btn-edit-employee">Edit</button>';
-        row.insertCell().innerHTML = '<button class="btn btn-danger btn-sm btn-delete-employee" id="btn-delete-employee">Delete</button>';
+        row.insertCell().innerHTML = '<button class="btn disabled btn-warning btn-sm btn-edit-employee" id="btn-edit-employee">Edit</button>';
+        row.insertCell().innerHTML = '<button class="btn disabled btn-danger btn-sm btn-delete-employee" id="btn-delete-employee">Delete</button>';
         
 
     });
@@ -120,4 +120,4 @@ document.addEventListener('DOMContentLoaded',  function (e) {
         })
     });
     
-    });
+});

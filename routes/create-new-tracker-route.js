@@ -80,15 +80,14 @@ router.post('/', async (req, res) => {
                 employee = employeeListData[i];
                 console.log('---------------------------------');
                 const newEmployee = new Employees({
-                    //no: employee.no,
                     firstName: employee.firstName,
                     middleName: employee.middleName,
                     lastName:  employee.lastName,
                     suffix:  employee.suffix,
                     position:  employee.position,
-                    //deployment: employee.deployment,
+                    deployment: employee.deployment,
                     rate:  employee.rate,
-                    totalRate:  employee.totalRate
+                    totalRate:  employee.deployment * employee.rate
                 });
                 await newEmployee.save();
 

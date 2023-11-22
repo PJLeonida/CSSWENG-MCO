@@ -50,7 +50,7 @@ function initializeProjectListTable(projlist) {
         row.insertCell().textContent = project.projectName;
         row.insertCell().textContent = project.projectDescription;
         row.insertCell().textContent = project.numberOfEmployees;
-        row.insertCell().textContent = project.totalDeploymentHours;
+        row.insertCell().textContent = project.totalDeploymentHours; //In development
 
         id += 1;
     });
