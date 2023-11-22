@@ -10,9 +10,6 @@ const port = process.env.PORT || 3000; // Use the value from .env or default to 
 // Setting up express and handlebars
 const express = require('express');
 
-/**/
-const session = require('express-session');
-
 const cookieParser = require('cookie-parser');
 
 
