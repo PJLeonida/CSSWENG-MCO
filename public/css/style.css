@@ -784,3 +784,43 @@ main .bottom-data .reports table {
     font-weight: bold;
     padding-right: 10px;
 }
+
+
+/***** Account Settings *****/
+.account-container {
+    /* Make the account photo holder
+    and account details side by side */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* align-items: center; */
+    height: 75vh;
+    /* background-color: var(--light); */
+    
+}
+
+
+.account-photo-holder {
+    width: 35%;
+    height: 100%;
+    background-color: var(--light);
+}
+
+.account-photo {
+    width: 100%;
+    height: 50%;
+    /* background-color: var(--grey); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-photo-text, .account-details {
+    color: var(--dark);
+}
+
+.account-details {
+    width: 60%;
+    background-color: var(--light);
+}

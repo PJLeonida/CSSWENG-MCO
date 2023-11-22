@@ -1,13 +1,13 @@
-// Template of the project tracker route
-
 const app = require('express')
 const router = app.Router()
 
 router.get('/', (req, res) => {
     res.render('landing-page', { 
-        pageTitle: 'Project Tracker',
-        partial: 'template-project-tracker',
+        pageTitle: 'Account Settings',
+        partial: 'account-settings',
+        activePage: 'account-settings',
     });
 });
+
 
 module.exports = router;

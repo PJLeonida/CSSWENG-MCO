@@ -16,6 +16,64 @@ document.addEventListener('DOMContentLoaded', function() {
             loginShowHidePassword.innerHTML = '<i class="fas fa-eye-slash"></i>';
         }
     });
+
+    
+    // Check if company IDN is valid
+    const loginCompanyID = document.getElementById('login-companyID');
+
+    loginCompanyID.addEventListener('keyup', function() {
+        if (loginCompanyID.value.length !== 10) {
+            loginCompanyID.setCustomValidity('Company ID must be 10 characters long.');
+        } else {
+            loginCompanyID.setCustomValidity('');
+        }
+    });
+
+
+    // Sent an AJAX request to the server to check if the username and password are correct
+    // if the username and password are correct, redirect the user to the dashboard page
+    // if the username and password are incorrect, display an error message
+    // loginForm.addEventListener('submit', function(event) {
+    //     event.preventDefault();
+
+    //     // Get the entered username and password
+    //     const username = document.getElementById('login-username').value;
+    //     const password = document.getElementById('login-password').value;
+
+    //     // Perform client-side validation (e.g., check if fields are not empty)
+    //     if (username === '' || password === '') {
+    //         alert('Please fill out this field.');
+    //         return;
+    //     }
+
+    //     // Perform client-side validation (e.g., check if password is at least 8 characters long)
+    //     if (password.length < 8) {
+    //         alert('Password must be at least 8 characters long.');
+    //         return;
+
+    //     }
+
+    //     // Send an AJAX request to the server
+    //     const xhr = new XMLHttpRequest();
+    //     xhr.open('POST', '/login');
+    //     xhr.setRequestHeader('Content-Type', 'application/json');
+    //     xhr.onload = function() {
+    //         const response = JSON.parse(xhr.responseText);
+
+    //         if (response.success) {
+    //             // Redirect the user to the dashboard page
+    //             window.location.href = '/dashboard';
+    //         } else {
+    //             alert('Incorrect username or password.');
+    //         }
+    //     };
+    //     xhr.send(JSON.stringify({
+    //         username: username,
+    //         password: password
+    //     }));
+    // });
+
+
 });
 
 
@@ -62,48 +120,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // registerForm.addEventListener('submit', function(event) {
-    //     event.preventDefault();
+    // Check if company ID is valid
+    const registerCompanyID = document.getElementById('register-companyID');
 
-    //     // Get the entered username and password
-    //     const firstName = document.getElementById('register-firstName').value;
-    //     const middleName = document.getElementById('register-middleName').value;
-    //     const lastName = document.getElementById('register-lastName').value;
-    //     const suffix = document.getElementById('register-suffix').value;
-    //     const companyID = document.getElementById('register-companyID').value;
-    //     const password = document.getElementById('register-password').value;
-    //     const confirmPassword = document.getElementById('register-confirmPassword').value;
-
-    //     // Perform client-side validation (e.g., check if fields are not empty)
-    //     if (firstName === '' || lastName === '' || companyID === '' || password === '' || confirmPassword === '') {
-    //         firstName.setCustomValidity('Please fill out this field.');
-    //         return;
-    //     }
-
-    //     // Perform client-side validation (e.g., check if passwords match)
-    //     if (password !== confirmPassword) {
-    //         alert('Passwords do not match.');
-    //         return;
-    //     }
-
-    //     // Perform client-side validation (e.g., check if password is at least 8 characters long)
-    //     if (password.length < 8) {
-    //         alert('Password must be at least 8 characters long.');
-    //         return;
-    //     }
-
-    //     // Perform client-side validation (e.g., check if company ID is 10 characters long)
-    //     if (companyID.length !== 10) {
-    //         alert('Company ID must be 10 characters long.');
-    //         return;
-    //     }
-
-    //     // Perform client-side validation (e.g., check if company ID is a number)
-    //     if (isNaN(companyID)) {
-    //         alert('Company ID must be a number.');
-    //         return;
-    //     }
+    registerCompanyID.addEventListener('keyup', function() {
+        if (registerCompanyID.value.length !== 10) {
+            registerCompanyID.setCustomValidity('Company ID must be 10 characters long.');
+        } else {
+            registerCompanyID.setCustomValidity('');
+        }
+    });
 
 
-    // });
+    // Sent an AJAX request to the server to check if the username and password are correct
 });
