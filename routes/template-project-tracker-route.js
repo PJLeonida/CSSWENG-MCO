@@ -1,6 +1,5 @@
 // Template of the project tracker route
 
-<<<<<<< DerekBranchV3
 const app = require('express');
 const projects = require('../server/schema/Projects');
 const employees = require('../server/schema/Employees');

@@ -127,8 +127,6 @@ app.use('/employee-list', employeeListRoute);
 
 
 //======================Server Listen========================//
-
-=======
 app.use('/landing-page', verifyLogin, landingPageRoute);
 app.use('/dashboard', verifyLogin, dashboardRoute);
 app.use('/create-new-tracker', verifyLogin, createNewTrackerRoute);
