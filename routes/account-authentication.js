@@ -93,7 +93,6 @@ router.post('/', async (req, res, next) => {
             passport.authenticate('local',  {
                 successRedirect: '/landing-page',
                 failureRedirect: '/',
-                failureFlash: true // Redirect to dashboard or any other page on successful registration
             })(req,res,next);
         }
     } catch (error) {

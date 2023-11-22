@@ -168,6 +168,26 @@ body {
     color: var(--grey);
 }
 
+.login-form .btn {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.login-form .btn:hover {
+    background-color: var(--light);
+    color: var(--dark);
+}
+
+.register-form .btn {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+#register-form .btn:hover {
+    background-color: var(--light);
+    color: var(--dark);
+}
+
 .fas {
     cursor: pointer;
 }
@@ -708,7 +728,13 @@ main .bottom-data .projects .project-list li.current{
 
 .logout-options .logout-btn {
     width: 75%;
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.logout-options .logout-btn:hover {
     background-color: var(--light);
+    color: var(--dark);
 }
 
 
@@ -779,8 +805,57 @@ main .bottom-data .reports table {
     color: var(--dark);
 }
 
+#enter-employee-btn {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+#enter-employee-btn:hover {
+    background-color: var(--light);
+    color: var(--dark);
+}
+
 .new-tracker-to-do {
     font-size: xx-large;
     font-weight: bold;
     padding-right: 10px;
+}
+
+/***** Account Settings *****/
+.account-container {
+    /* Make the account photo holder
+    and account details side by side */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* align-items: center; */
+    height: 75vh;
+    /* background-color: var(--light); */
+    
+}
+
+
+.account-photo-holder {
+    width: 35%;
+    height: 100%;
+    background-color: var(--light);
+}
+
+.account-photo {
+    width: 100%;
+    height: 50%;
+    /* background-color: var(--grey); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-photo-text, .account-details {
+    color: var(--dark);
+}
+
+.account-details {
+    width: 60%;
+    background-color: var(--light);
 }

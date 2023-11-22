@@ -15,6 +15,7 @@ router.post('/', async(req, res) => {
     if (requiredFields.some(value => value === '' || value.trim() === '')) {
         return res.status(400).json({ message: 'Please fill out all fields' });
     }
+    
     passport.authenticate('local', (err, user, info) => {
         if (err) {
             res.render('/', { errorMessage: info.message }); // Handle unexpected errors
@@ -31,6 +32,6 @@ router.post('/', async(req, res) => {
             // Redirect to a success page or do something else
             res.redirect('/landing-page');
         });
-        });
+    });
             
-})
+});
