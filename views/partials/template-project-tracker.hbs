@@ -4,41 +4,54 @@
         - This is the partial page that contains the template for the project tracker.
         - This is used to display the information of each project tracker.
 -->
+
             
+            <div class="header">
+                <span class="flex-container">
+                    <h1>{{ pageTitle }}</h1>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end template-btn-container">
+                        <button class="btn btn-warning me-md-2" id="edit-tracker-btn" type="button">Edit Tracker</button>
+                        <button class="btn btn-success" id="save-tracker-btn" type="button" disabled>Save Changes</button>
+                        <button class="btn btn-danger" id="cancel-tracker-btn" type="button" data-bs-toggle="modal" data-bs-target="#deleteTrackerModal" disabled>Cancel Editing</button>
+                    </div>
+                </span>
+            </div>
+
             
+
             <!-- Main -->
             <div class="main-container">
                 <!-- Cards -->
                 <ul class="cards">
                     <li>
-                        <i class="bx bx-group"></i>
+                        <i class="fa fa-solid fa-users"></i>
                         <span class="info">
-                            <h3>1, 200</h3>
+                            <h3>{{totalEmployees}}</h3>
                             <p>Total Employees</p>
                         </span>
                     </li>
 
                     <li>
-                        <i class="bx bx-cart-add"></i>
+                        <i class="fa fa-solid fa-table-list"></i>
                         <span class="info">
-                            <h3>9, 973</h3>
-                            <p>No. of Project Roles</p>
+                            <h3>{{totalProjects}}</h3>
+                            <p>Total Projects</p>
                         </span>
                     </li>
 
                     <li>
-                        <i class="bx bx-line-chart"></i>
+                        <i class="fa fa-solid fa-chart-line"></i>
                         <span class="info">
-                            <h3>5, 373</h3>
+                            <h3>{{totalDeployments}}</h3>
                             <p>Total Deployment</p>
                         </span>
                     </li>
 
                     <li>
-                        <i class="bx bx-dollar-circle"></i>
+                        <i class="fa fa-solid fa-sack-dollar"></i>
                         <span class="info">
-                            <h3>₱56, 373</h3>
-                            <p>Total Rate</p>
+                            <h3>{{totalRate}}</h3>
+                            <p>Total Cost</p>
                         </span>
                     </li>
                 </ul>
@@ -78,6 +91,8 @@
                                     <th>Deployment (in Hrs)</th>
                                     <th>Rate (per Hr)</th>
                                     <th>Total Rate</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody id="employee-list-tbody">
@@ -87,3 +102,48 @@
                 </div>
             </div> 
             <!-- End of Main --> 
+
+            <script>
+                // Get references to the buttons
+                const editButton = document.getElementById('edit-tracker-btn');
+                const saveButton = document.getElementById('save-tracker-btn');
+                const cancelButton = document.getElementById('cancel-tracker-btn');
+
+                // Add event listener to the edit button
+                editButton.addEventListener('click', function() {
+                    // Disable edit button
+                    editButton.disabled = true;
+                    editButton.style.color = '#FFFFFF';
+
+                    // Enable save and cancel buttons
+                    saveButton.disabled = false;
+                    saveButton.style.color = '#000000';
+                    cancelButton.disabled = false;
+                    cancelButton.style.color = '#000000';
+                });
+
+                // Add event listener to the cancel button and save button
+                cancelButton.addEventListener('click', function() {
+                    // Disable save and cancel buttons
+                    saveButton.disabled = true;
+                    saveButton.style.color = '#FFFFFF';
+                    cancelButton.disabled = true;
+                    cancelButton.style.color = '#FFFFFF';
+
+                    // Enable edit button
+                    editButton.disabled = false;
+                    editButton.style.color = '#000000';
+                });
+
+                saveButton.addEventListener('click', function() {
+                    // Disable save and cancel buttons
+                    saveButton.disabled = true;
+                    saveButton.style.color = '#FFFFFF';
+                    cancelButton.disabled = true;
+                    cancelButton.style.color = '#FFFFFF';
+
+                    // Enable edit button
+                    editButton.disabled = false;
+                    editButton.style.color = '#000000';
+                });
+            </script>

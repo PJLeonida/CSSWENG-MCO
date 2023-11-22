@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
     res.render('landing-page', { 
         pageTitle: 'Project Tracker',
         partial: 'template-project-tracker',
+        script: '/static/js/template-project-tracker.js',
     });
 });
 
