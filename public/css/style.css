@@ -887,3 +887,14 @@ input[type="date"] {
     margin-left: 2rem;
     margin-right: 2rem;
 }
+
+
+/* charts */
+.chart-container {
+    width: 90%;
+    height: 20rem;
+    background-color: var(--dark);
+    margin-top: 0;
+    margin-left: 1.5rem;
+    margin-right: 1rem;
+}

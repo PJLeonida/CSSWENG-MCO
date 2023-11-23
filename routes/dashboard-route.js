@@ -84,6 +84,7 @@ router.get('/', async (req, res) => {
         pageTitle: 'Dashboard',
         partial: 'dashboard',
         activePage: 'dashboard',
+        script: '/static/js/charts.js',
         totalProjects: totalProjects,
         totalEmployees: totalEmployees,
         totalDeployments: totalDeployments,
