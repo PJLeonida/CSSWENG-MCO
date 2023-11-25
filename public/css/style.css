@@ -697,6 +697,20 @@ main .bottom-data .reports table th {
 
 main .bottom-data .reports table td {
     padding: 10px 8px;
+
+    /* Set the limit of the text and put ... (elipses) in the end */
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 0;
+    max-width: 200px;
+    text-align: left; */
+
+    /* Set the limit of the text and put in the next line the remaining text */
+    word-wrap: break-word;
+    overflow: hidden;
+    max-width: 200px;
+    text-align: left;
 }
 
 /* .content main .bottom-data .reports table .img-content {
@@ -816,12 +830,16 @@ input[type="date"] {
 
 }
 
-.account-photo img {
-    background-color: var(--grey);
+.account-photo #image-preview {
+    display: block;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
     margin-top: 2rem;
     margin-bottom: 2rem;
     padding: 0.5rem;
-    border-radius: 70%;
+    background-color: var(--grey);
 }
 
 .account-photo-upload {

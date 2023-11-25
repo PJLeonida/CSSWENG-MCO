@@ -86,7 +86,7 @@ const templateProjectTrackerRoute = require('./routes/template-project-tracker-r
 
 // Root route
 app.get('/', (req, res) => {
-    console.log("SUCCESS");
+    console.log("App is running!");
     res.render('index', {
         title: 'Login / Register',
         script: '/static/js/index.js',
