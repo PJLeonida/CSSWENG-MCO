@@ -27,13 +27,22 @@ document.getElementById('new-project-status').addEventListener('change', functio
     }
 });
 
-// Function to limit the new-project-end-date must be after the new-project-start-date
+// Function to limit the new-project-end-date must be after the new-project-start-date but not the current date
 document.getElementById('new-project-start-date').addEventListener('change', function(event) {
     event.preventDefault();
     
     const startDate = document.getElementById('new-project-start-date').value;
-    
+
     document.getElementById('new-project-end-date').setAttribute('min', startDate);
+
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth() + 1;
+    const currentDay = currentDate.getDate();
+
+    const currentDateFormatted = `${currentYear}-${currentMonth}-${currentDay}`;
+
+    document.getElementById('new-project-end-date').setAttribute('max', currentDateFormatted);
 });
 
 document.addEventListener('DOMContentLoaded',  function (e) {

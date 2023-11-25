@@ -41,7 +41,7 @@ async function getProjectData() {
 function initializeProjectListTable(projlist) {
     const dataTable = document.querySelector('#project-list-table');
     const tbody = dataTable.querySelector('tbody');
-    var id = 0
+    var id = 1
     projlist.forEach(project => {
         const row = tbody.insertRow();
 

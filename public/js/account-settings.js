@@ -1,8 +1,36 @@
 // Temprarily displayed the uploaded image
+document.addEventListener('DOMContentLoaded', function() {
+    const imageUpload = document.getElementById('image-upload');
+    const imagePreview = document.getElementById('image-preview');
 
-document.getElementById("avatar").onchange = function() {
-    document.getElementById("uploadForm").submit();
-};
+    imageUpload.addEventListener('change', function() {
+
+        const file = this.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            imagePreview.style.display = 'block';
+
+            reader.addEventListener('load', function() {
+                imagePreview.setAttribute('src', this.result);
+            });
+
+            reader.onerror = function() {
+                console.log('Error: ', reader.error);
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            imagePreview.style.display = null;
+            imagePreview.setAttribute('src', '');
+        }
+
+
+    });
+
+
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     const accPassword = document.getElementById('acc-password');
