@@ -16,6 +16,7 @@
     }
 ];*/
 
+
 async function getProjectData() {
     try {
         const response = await fetch("/project-list/get-list", {
@@ -41,12 +42,22 @@ async function getProjectData() {
 function initializeProjectListTable(projlist) {
     const dataTable = document.querySelector('#project-list-table');
     const tbody = dataTable.querySelector('tbody');
+    console.log('Went to initializeProjectListTable')
     var id = 1
     projlist.forEach(project => {
         const row = tbody.insertRow();
 
        // row.insertCell().textContent = project.id;
         row.insertCell().textContent = id;
+
+        // Create and attach an anchor tag with _id of project name
+        const projectNameCell = row.insertCell();
+        const projectNameLink = document.createElement('a');
+        projectNameLink.textContent = project.projectName;
+        projectNameLink.href = `/template-project-tracker/${project._id}`; // Set the href attribute to the desired link destination
+        projectNameCell.appendChild(projectNameLink); // Append the anchor tag to the cell
+
+
         row.insertCell().textContent = project.projectName;
         row.insertCell().textContent = project.projectDescription;
         row.insertCell().textContent = project.numberOfEmployees;
@@ -56,9 +67,24 @@ function initializeProjectListTable(projlist) {
     });
 }
 
+// async function get_projectID(projectname) {
+//     try {
+//         const projectID =  await Projects.findOne({ 'projectName': projectname })
+//         if (!projectID) {
+//             console.log('Project not found')
+//         }
+//         return projectID._id
+
+//     } catch (error) {
+//         // Handle any errors that occurred during the query
+//         console.error('Error finding project:', error.message);
+//         throw error;
+//     }
+// }
+
 document.addEventListener('DOMContentLoaded', async function (e) {
     e.preventDefault();
-    // Call the function to get project data
+    // Call the function to get project 
     const projlist = await getProjectData();
     initializeProjectListTable(projlist);
 });
