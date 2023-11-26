@@ -53,12 +53,12 @@ router.post('/register', async (req, res, next) => {
             unrequiredFields.forEach(value => value = '');
         }
 
-        // Check if the password and confirm password fields match
-        if (password !== reg_confirm) {
-            return res.status(400).json({ message: 'Passwords do not match' });
-        } else if (password.length < 8) {
-            return res.status(400).json({ message: 'Password must be at least 8 characters long' });
-        }
+            // Check if the password and confirm password fields match
+            if (password !== reg_confirm) {
+                // return res.status(400).json({ message: 'Passwords do not match' });
+            } else if (password.length < 8) {
+                // return res.status(400).json({ message: 'Password must be at least 8 characters long' });
+            }
 
         // Create a new user
         const newUser = new User({
