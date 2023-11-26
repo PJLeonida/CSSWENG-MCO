@@ -141,6 +141,13 @@
 								<div class="mb-3 mt-3">
 									<label for="register-companyID" class="index-form-label">Company ID</label>
 									<input type="number" min="0" name="companyID" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" id="register-companyID" class="form-control" placeholder="Enter Company ID" required>
+
+									{{!-- {{#if message}} --}}
+										<div class="alert alert-danger mt-3" id="error-message" style="display: none" > <role="alert">
+											{{!-- {{message}} --}}
+										</div>
+									{{!-- {{/if}} --}}
+								
 								</div>
 								<div class="mb-3 mt-3">
 									<label for="register-password" class="index-form-label">Password</label>
