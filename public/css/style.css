@@ -542,6 +542,19 @@ main .cards li {
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease-in;
+
+    /* make the contents of the card be side by side */
+    display: flex;
+    flex-direction: row;
+    
+    /* adjust the space between the i and the info */
+    grid-gap: 0.5rem;
+
+    /* wrap the h3 */
+    /* flex-wrap: wrap; */
+
+    /* if the text is too long, continue in the next line */
+    /* word-wrap: break-word; */
 }
 
 main .cards li:hover {
@@ -582,6 +595,12 @@ main .cards li .info h3 {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--dark);
+
+    /* wrap the content of the h3, if it is too long, continue in the next line */
+    word-wrap: break-word;
+    overflow: hidden;
+    max-width: 150px;
+    text-align: left;
 }
 
 main .cards li .info p {
@@ -614,7 +633,7 @@ main .bottom-data .header {
     display: flex;
     align-items: center;
     grid-gap: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 main .bottom-data .reports {

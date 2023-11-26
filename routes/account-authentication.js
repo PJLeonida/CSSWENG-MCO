@@ -55,9 +55,9 @@ router.post('/', async (req, res, next) => {
 
             // Check if the password and confirm password fields match
             if (password !== reg_confirm) {
-                return res.status(400).json({ message: 'Passwords do not match' });
+                // return res.status(400).json({ message: 'Passwords do not match' });
             } else if (password.length < 8) {
-                return res.status(400).json({ message: 'Password must be at least 8 characters long' });
+                // return res.status(400).json({ message: 'Password must be at least 8 characters long' });
             }
 
             // Create a new user
