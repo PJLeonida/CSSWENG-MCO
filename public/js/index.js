@@ -98,6 +98,7 @@ $("#login-submit-btn").on('click', async function (event) {
                 case 401:
                     $("#login-password-message").html('Password is incorrect.');
                     $("#login-password-message").css('display', 'block');
+                    $("#login-companyID-message").css('display', 'none');
                     break;
                 default:
                     console.log('Error');
