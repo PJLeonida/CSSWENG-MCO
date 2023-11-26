@@ -40,20 +40,16 @@
 						<button type="button" class="btn-close " data-bs-dismiss="modal"></button>
 						<div class="myform bg-dark">
 							<h1 class="text-center index-form-header">Login Form</h1>
-							<form action="/login" method="post" class="login-form">
+							<form action="/login" method="post" id="login-form" class="login-form">
 
 								<input type="hidden" name="action" value="login">
 
 								<div class="mb-3 mt-3">
 									<label for="login-companyID" class="index-form-label">Company ID</label>
 									<input type="number" name="companyID" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" id="login-companyID" class="form-control" placeholder="Enter Company ID" required>
-								
-									{{#if message}}
-										<div class="alert alert-danger mt-3" > <role="alert">
-											{{message}}
-										</div>
-									{{/if}}
-								
+
+									<!-- Error Message -->
+									<div class="alert alert-danger mt-3" id="login-companyID-message" style="display:none"><role="alert"></div>
 								
 								</div>
 								<div class="mb-3 mt-3">
@@ -65,14 +61,11 @@
 										</span>
                                     </div>
 
-									{{#if message}}
-										<div class="alert alert-danger mt-3" > <role="alert">
-											{{message}}
-										</div>
-									{{/if}}
+									<!-- Error Message -->
+									<div class="alert alert-danger mt-3" id="login-password-message" style="display:none"> <role="alert"></div>
 									
 								</div>
-								<button type="submit" class="btn btn-success mt-3">Login</button>
+								<button type="submit" class="btn btn-success mt-3" id="login-submit-btn">Login</button>
 							</form>
 						</div>
 					</div>
@@ -100,11 +93,11 @@
                                             <label for="register-firstName" class="form-label">First Name</label>
                                             <input type="text" name="reg_firstName" class="form-control" id="register-firstName" placeholder="Enter First Name" required>
 											
-											{{#if message}}
-												<div class="alert alert-danger mt-3" > <role="alert">
-													{{message}}
+											{{!-- {{#if message}} --}}
+												<div class="alert alert-danger mt-3"> <role="alert">
+													{{!-- {{message}} --}}
 												</div>
-											{{/if}}
+											{{!-- {{/if}} --}}
 										
 										
 										</div>
@@ -123,11 +116,11 @@
                                             <label for="register-lastName" class="form-label">Last Name</label>
                                             <input type="text" name="reg_lastName" class="form-control" id="register-lastName" placeholder="Enter Last Name" required>
 
-											{{#if message}}
-												<div class="alert alert-danger mt-3" > <role="alert">
-													{{message}}
+											{{!-- {{#if message}} --}}
+												<div class="alert alert-danger mt-3"> <role="alert">
+													{{!-- {{message}} --}}
 												</div>
-											{{/if}}
+											{{!-- {{/if}} --}}
 										</div>
                                     </div>
                                     <div class="col">

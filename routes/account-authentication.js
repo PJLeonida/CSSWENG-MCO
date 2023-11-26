@@ -4,6 +4,7 @@
 */
 
 // Third party imports.
+const bcrypt = require('bcrypt');
 const express = require('express');
 const router = express.Router();
 const User = require('../server/schema/Users');
@@ -81,25 +82,99 @@ router.post('/', async (req, res, next) => {
                 });
             })
 
-        } else if(action === 'login') { // If the user is trying to login
+        } else if (action === 'login') {
             const { companyID, password } = req.body;
-            
-            // Check if all fields are filled
+
             const requiredFields = [companyID, password];
             if (requiredFields.some(value => value === '' || value.trim() === '')) {
                 return res.status(400).json({ message: 'Please fill out all fields' });
             }
-            
-            passport.authenticate('local',  {
-                successRedirect: '/landing-page',
-                failureRedirect: '/',
-            })(req,res,next);
+
+            const user = await User.findOne({ companyID: companyID });
+
+            if (!user) {
+                return res.status(401).json({ message: 'Incorrect company ID or password' });
+            }
+
+            // Use the authenticate method from passport-local-mongoose to check if the password is correct
+            user.authenticate(password, (err, result) => {
+                if (err) {
+                    console.error('Error checking if password is correct:', err);
+                    return res.status(500).json({ message: 'Internal Server Error' });
+                }
+
+                if (result) {
+                    // Authentication succeeded
+                    req.logIn(user, (err) => {
+                        if (err) {
+                            console.error('Error during login:', err);
+                            return next(err);
+                        }
+                        console.log('Authentication succeeded');
+                        res.redirect('/landing-page');
+                    });
+                } else {
+                    // Authentication failed
+                    return res.status(401).json({ message: 'Incorrect company ID or password' });
+                }
+            });
         }
     } catch (error) {
         console.error('Error registering user:', error);
         res.status(500).json({ message: 'Internal Server Error' });
     }
 });
+
+
+
+router.get('/isCompanyID', async (req, res) => {
+    try {
+        const companyID = req.query.companyID;
+        console.log('Received company ID:', companyID);
+
+        const companyIDExists = await User.findOne({ companyID: companyID });
+        console.log('Company ID exists:', companyIDExists);
+
+        if (companyIDExists) {
+            res.sendStatus(200);
+        } else {
+            res.sendStatus(404);
+        }
+    } catch (error) {
+        console.error('Error checking if company ID exists:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
+
+router.get('/isPassword', async (req, res) => {
+    try {
+        // Get the company ID and password from the request body
+        const companyID = req.query.companyID;
+        const password = req.query.password;
+
+        // Find the user with the company ID
+        const user = await User.findOne({ companyID: companyID });
+
+        // Use the authenticate method from passport-local-mongoose to check if the password is correct
+        user.authenticate(password, async (err, result) => {
+            if (err) {
+                console.error('Error checking if password is correct:', err);
+                return res.status(500).json({ message: 'Internal Server Error' });
+            }
+
+            if (result) {
+                res.sendStatus(200);
+            } else {
+                res.sendStatus(401);
+            }
+        });
+    } catch (error) {
+        console.error('Error checking if user exists:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
 
 
 // Function to handle user logout
