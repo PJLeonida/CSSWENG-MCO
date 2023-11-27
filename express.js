@@ -118,9 +118,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 
 // Set up middleware to handle requests to routes
-app.use('/register', registerRoute);
-app.use('/login', loginRoute);
-app.use('/logout', logoutRoute);
+app.use('/user', registerRoute);
 app.use('/landing-page', verifyLogin, landingPageRoute);
 app.use('/dashboard', verifyLogin, dashboardRoute);
 app.use('/create-new-tracker', verifyLogin, createNewTrackerRoute);
