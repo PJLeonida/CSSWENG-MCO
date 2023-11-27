@@ -20,6 +20,9 @@ const User = require('./server/schema/Users.js')
 const session = require('express-session')
 const passport = require('passport')
 
+const LocalStrategy = require('passport-local').Strategy;
+
+
 /* Setup session manager and request authentication middleware */ 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -35,7 +38,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Configure passport-local-mongoose
-passport.use(User.createStrategy());
+// passport.use(User.createStrategy());
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 // ========================================================
@@ -73,7 +77,9 @@ app.use("/static", express.static('public'));
 
 
 // Set up routes from routes folder
-const accountAuthenticationRoute = require('./routes/account-authentication.js');   // Register and login
+const registerRoute = require('./routes/account-authentication.js');   // Register and login
+const loginRoute = require('./routes/account-authentication.js');      // Register and login
+const logoutRoute = require('./routes/account-authentication.js');     // Logout
 const landingPageRoute = require('./routes/landing-page-route.js');
 const dashboardRoute = require('./routes/dashboard-route.js');
 const createNewTrackerRoute = require('./routes/create-new-tracker-route.js');
@@ -112,7 +118,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 
 // Set up middleware to handle requests to routes
+app.use('/register', registerRoute);
+app.use('/login', loginRoute);
+app.use('/logout', logoutRoute);
+
 app.use('/user', accountAuthenticationRoute);
+
 app.use('/landing-page', verifyLogin, landingPageRoute);
 app.use('/dashboard', verifyLogin, dashboardRoute);
 app.use('/create-new-tracker', verifyLogin, createNewTrackerRoute);
