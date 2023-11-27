@@ -67,6 +67,7 @@ router.get('/get-employee-list', async (req,res) => {
 router.get('/:projectID', async (req, res) => {
     const projectID = req.params.projectID;
     req.session.projectID = projectID;
+    const project = await projects.findById(projectID);
     const employeeListData = await getProjectEmployees(projectID)
     const totalEmployees = await getProjectTotalEmployees(employeeListData);
     const totalPositions = await getProjectTotalProjectPositions(employeeListData);
@@ -74,7 +75,7 @@ router.get('/:projectID', async (req, res) => {
     const totalRate = await getProjectTotalRate(employeeListData);
 
     res.render('landing-page', { 
-        pageTitle: 'Project Tracker',
+        pageTitle: project.projectName.toUpperCase(),
         partial: 'template-project-tracker',
         activePage: 'template-project-tracker',
         totalEmployees: totalEmployees,

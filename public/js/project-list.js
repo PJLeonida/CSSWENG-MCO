@@ -42,7 +42,6 @@ async function getProjectData() {
 function initializeProjectListTable(projlist) {
     const dataTable = document.querySelector('#project-list-table');
     const tbody = dataTable.querySelector('tbody');
-    console.log('Went to initializeProjectListTable')
     var id = 1
     projlist.forEach(project => {
         const row = tbody.insertRow();
@@ -67,20 +66,6 @@ function initializeProjectListTable(projlist) {
     });
 }
 
-// async function get_projectID(projectname) {
-//     try {
-//         const projectID =  await Projects.findOne({ 'projectName': projectname })
-//         if (!projectID) {
-//             console.log('Project not found')
-//         }
-//         return projectID._id
-
-//     } catch (error) {
-//         // Handle any errors that occurred during the query
-//         console.error('Error finding project:', error.message);
-//         throw error;
-//     }
-// }
 
 document.addEventListener('DOMContentLoaded', async function (e) {
     e.preventDefault();
