@@ -47,12 +47,12 @@ router.post('/', async (req, res) => {
             // Check if all fields are filled
             const requiredFields = [new_project_name, new_project_descr];
             if (requiredFields.some(value => value === '' || (typeof value === 'string' && value.trim() === ''))) {
-                console.log('Please fill in all fields');
+                res.status(400).json({ message: 'Please fill out all fields' });
             }
 
             // Check if the project name is already in use
             if (await Projects.findOne({ projectName: new_project_name })) {
-                console.log('Project name already in use');
+                res.status(400).json({ message: 'Project name already in use' });
             }
 
             // Create new project

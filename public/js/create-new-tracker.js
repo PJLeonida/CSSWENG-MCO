@@ -118,7 +118,68 @@ document.addEventListener('DOMContentLoaded',  function (e) {
 
     });
     
+    $("#btn-create-new-tracker").on('click', async function (event) {
+        event.preventDefault();
+    
+        const projectName = $("#new-project-name").val();
+        const projectDesc = $("#new-project-desc").val();
+        const projectLoc = $("#new-project-location").val();
+        const empList =  employeeListData;
+    
+        // Define an object to map field IDs to error message IDs
+        const fieldErrorMap = {
+            'new-project-name': 'project-name-message',
+            'new-project-desc': 'project-desc-message',
+            'new-project-location': 'project-location-message'
+        };
+    
+        // Iterate through each field and check if it's empty
+        let hasErrors = false;
+        for (const [field, errorMessage] of Object.entries(fieldErrorMap)) {
+            const value = $(`#${field}`).val();
+            if (value === '') {
+                $(`#${errorMessage}`).html('Please fill out this field.').css('display', 'block');
+                hasErrors = true;
+            } else {
+                $(`#${errorMessage}`).css('display', 'none');
+            }
+        }
+    
+        // Check if there are errors before making the fetch request
+        if (hasErrors) {
+            return;
+        }
 
+        const data = JSON.stringify({
+            action: 'create-new-tracker',
+            new_project_name: projectName,
+            new_project_descr: projectDesc,
+            employeeListData: empList
+        })
+
+        fetch('/new-tracker', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // body: JSON.stringify(employeeListData)
+            body: data
+        }).then(response => {
+            if (response.ok) {
+                return response.json(); // Assuming your server sends JSON data
+            } else {
+                throw new Error('Failed to create tracker');
+            }
+        })
+        .then(data => {
+            if (data.redirect) {
+                window.location.href = data.redirect; // Redirect if the server sends a redirect URL
+            } else {
+                // Handle other data from the server if needed
+            }
+        })
+    });
+    /*
     document.getElementById('btn-create-new-tracker').addEventListener('click', function(event) {
         event.preventDefault();
         const projectName =  document.getElementById('new-project-name').value
@@ -126,7 +187,7 @@ document.addEventListener('DOMContentLoaded',  function (e) {
         const empList =  employeeListData;
         // Log to the console that the form was reset
         //console.log('Form reset!');
-    
+        
         const data = JSON.stringify({
             action: 'create-new-tracker',
             new_project_name: projectName,
@@ -155,5 +216,5 @@ document.addEventListener('DOMContentLoaded',  function (e) {
                 // Handle other data from the server if needed
             }
         })
-    });
+    });*/
 });
