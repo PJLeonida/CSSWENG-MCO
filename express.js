@@ -77,9 +77,7 @@ app.use("/static", express.static('public'));
 
 
 // Set up routes from routes folder
-const registerRoute = require('./routes/account-authentication.js');   // Register and login
-const loginRoute = require('./routes/account-authentication.js');      // Register and login
-const logoutRoute = require('./routes/account-authentication.js');     // Logout
+const userRoute = require('./routes/account-authentication.js');   // Register, Login, Logout
 const landingPageRoute = require('./routes/landing-page-route.js');
 const dashboardRoute = require('./routes/dashboard-route.js');
 const createNewTrackerRoute = require('./routes/create-new-tracker-route.js');
@@ -118,7 +116,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 
 // Set up middleware to handle requests to routes
-app.use('/user', registerRoute);
+app.use('/user', userRoute);
 app.use('/landing-page', verifyLogin, landingPageRoute);
 app.use('/dashboard', verifyLogin, dashboardRoute);
 app.use('/create-new-tracker', verifyLogin, createNewTrackerRoute);
