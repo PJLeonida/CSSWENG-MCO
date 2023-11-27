@@ -76,12 +76,12 @@
 
 		<!-- Register Modal -->
 		<div id="registerModal" class="modal fade" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-dialog modal-dialog-centered modal-lg">
 				<div class="modal-content">
 					<!-- Modal Body -->
 					<div class="modal-body">
 						<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-						<div class="myform bg-dark">
+						<div class="myform bg-dark ">
 							<h1 class="text-center index-form-header">Registration Form</h1>
 							<form action="/register" method="post" id="register-form">
 								
@@ -93,13 +93,9 @@
                                             <label for="register-firstName" class="form-label">First Name</label>
                                             <input type="text" name="reg_firstName" class="form-control" id="register-firstName" placeholder="Enter First Name" required>
 											
-											{{!-- {{#if message}} --}}
-												<div class="alert alert-danger mt-3"> <role="alert">
-													{{!-- {{message}} --}}
-												</div>
-											{{!-- {{/if}} --}}
-										
-										
+											<!-- Error Message -->
+											<div class="alert alert-danger mt-3" id="register-firstName-message" style="display:none" role="alert"></div>
+
 										</div>
                                     </div>
                                     <div class="col">
@@ -116,11 +112,9 @@
                                             <label for="register-lastName" class="form-label">Last Name</label>
                                             <input type="text" name="reg_lastName" class="form-control" id="register-lastName" placeholder="Enter Last Name" required>
 
-											{{!-- {{#if message}} --}}
-												<div class="alert alert-danger mt-3"> <role="alert">
-													{{!-- {{message}} --}}
-												</div>
-											{{!-- {{/if}} --}}
+											<!-- Error Message -->
+											<div class="alert alert-danger mt-3" id="register-lastName-message" style="display:none" role="alert"></div>
+
 										</div>
                                     </div>
                                     <div class="col">
@@ -135,11 +129,8 @@
 									<label for="register-companyID" class="index-form-label">Company ID</label>
 									<input type="number" min="0" name="companyID" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" id="register-companyID" class="form-control" placeholder="Enter Company ID" required>
 
-									{{!-- {{#if message}} --}}
-										<div class="alert alert-danger mt-3" id="error-message" style="display: none" > <role="alert">
-											{{!-- {{message}} --}}
-										</div>
-									{{!-- {{/if}} --}}
+									<!-- Error Message -->
+									<div class="alert alert-danger mt-3" id="register-companyID-message" style="display:none" role="alert"></div>
 								
 								</div>
 								<div class="mb-3 mt-3">
@@ -151,11 +142,8 @@
 										</span>
 									</div>
 
-									{{#if message}}
-										<div class="alert alert-danger mt-3" > <role="alert">
-											{{message}}
-										</div>
-									{{/if}}
+									<!-- Error Message -->
+									<div class="alert alert-danger mt-3" id="register-password-message" style="display:none" role="alert"></div>
 									
 								</div>
 								<div class="mb-3 mt-3">
@@ -167,13 +155,11 @@
 										</span>
                                     </div>
 
-									{{#if message}}
-										<div class="alert alert-danger mt-3" > <role="alert">
-											{{message}}
-										</div>
-									{{/if}}
+									<!-- Error Message -->
+									<div class="alert alert-danger mt-3" id="register-confirmPassword-message" style="display:none" role="alert"></div>
+
 								</div>
-								<button type="submit" class="btn btn-success mt-3">Register</button>
+								<button type="submit" class="btn btn-success mt-3" id="register-submit-btn">Register</button>
 							</form>
 						</div>
 					</div>
