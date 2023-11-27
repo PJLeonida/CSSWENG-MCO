@@ -40,6 +40,7 @@
 						<button type="button" class="btn-close " data-bs-dismiss="modal"></button>
 						<div class="myform bg-dark">
 							<h1 class="text-center index-form-header">Login Form</h1>
+
 							<form action="/login" method="post" id="login-form" class="login-form">
 
 								<input type="hidden" name="action" value="login">
@@ -83,7 +84,7 @@
 						<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
 						<div class="myform bg-dark ">
 							<h1 class="text-center index-form-header">Registration Form</h1>
-							<form action="/register" method="post" id="register-form">
+							<form action="/user/register" method="post" id="register-form">
 								
 								<input type="hidden" name="action" value="register">
 								
@@ -179,7 +180,7 @@
 							<h3 class="text-center logout-form-header">Are you sure to logout?</h3>
                             <h5 class="text-center logout-form-header">Make sure to save all your chages!</h5>
                             <div class="text-center logout-options">
-                                <a href="/logout" class="btn btn-success m-3 logout-btn">Logout</a>
+                                <a href='/user/logout' class="btn btn-success m-3 logout-btn">Logout</a>
                                 <button type="submit" class="btn btn-danger m-3 logout-btn" data-bs-dismiss="modal">Go Back</button>
                             </div>
 						</div>
