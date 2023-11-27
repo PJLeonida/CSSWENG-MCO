@@ -43,14 +43,14 @@ $("#login-submit-btn").on('click', async function (event) {
     }
 
     // Check if the company ID exists
-    const companyIDResponse = await fetch(`/login/isCompanyID?companyID=${companyID}`, {
+    const companyIDResponse = await fetch(`/user/isCompanyID?companyID=${companyID}`, {
         method: 'GET'
     });
 
     switch (companyIDResponse.status) {
         case 200:
             // Check if the password is correct
-            const passwordResponse = await fetch(`/login/isPassword?companyID=${companyID}&password=${loginPassword}`, {
+            const passwordResponse = await fetch(`/user/isPassword?companyID=${companyID}&password=${loginPassword}`, {
                 method: 'GET'
             });
 

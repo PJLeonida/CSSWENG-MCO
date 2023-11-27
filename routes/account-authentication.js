@@ -12,7 +12,7 @@ const passport = require('passport')
 
 
 // Function to handle user login and registration
-router.post('/', async (req, res, next) => {
+router.post('/register', async (req, res, next) => {
     try {
 
         // Check what type of action the user is trying to do
@@ -103,7 +103,7 @@ router.post('/', async (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
     const { companyID, password } = req.body;
-
+    console.log('Went here')
     const requiredFields = [companyID, password];
     if (requiredFields.some(value => value === '' || value.trim() === '')) {
         return res.status(400).json({ message: 'Please fill out all fields' });
