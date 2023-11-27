@@ -13,3 +13,5 @@ router.get('/', (req, res) => {
         name: req.user.firstName
     });
 });
+
+module.exports = router;
