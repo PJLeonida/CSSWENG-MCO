@@ -12,7 +12,7 @@ const passport = require('passport')
 
 
 // Function to handle user login and registration
-router.post('/register', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
     try {
 
         // Check what type of action the user is trying to do
@@ -20,7 +20,6 @@ router.post('/register', async (req, res, next) => {
         console.log('Type of action:', action);
 
         // If the user is trying to register
-
         if (action === 'register') {
             // Destructure form data
             const { 
@@ -68,6 +67,7 @@ router.post('/register', async (req, res, next) => {
                 suffix: reg_suffix,
                 companyID: companyID,
                 // password: password, // REMOVE IN FINAL BUILD BECAUSE OF PASSPORT
+            });
 
             User.register(newUser, password, async (err, user) => {
                 try {
@@ -144,6 +144,7 @@ router.post('/register', async (req, res, next) => {
 });
 
 
+
 router.get('/isCompanyID', async (req, res) => {
     try {
         const companyID = req.query.companyID;
@@ -192,8 +193,10 @@ router.get('/isPassword', async (req, res) => {
     }
 });
 
+
+
 // Function to handle user logout
-router.get('/logout', (req, res) => {   
+router.get('/', (req, res) => {   
     req.logout(() => {console.log('User logged out successfully!');});
     res.redirect('/');
 });
