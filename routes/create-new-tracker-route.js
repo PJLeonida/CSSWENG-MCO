@@ -15,7 +15,8 @@ router.get('/', (req, res) => {
         partial: 'create-new-tracker',
         script: '/static/js/create-new-tracker.js',
         activePage: 'create-new-tracker',
-        script:'/static/js/create-new-tracker.js'
+        script:'/static/js/create-new-tracker.js',
+        name: req.user.firstName
     });
 }); 
 
@@ -58,11 +59,11 @@ router.post('/', async (req, res) => {
             // Check if all fields are filled
             const requiredFields = [new_project_name, new_project_descr];
             if (requiredFields.some(value => value === '' || (typeof value === 'string' && value.trim() === ''))) {
-                return res.status(400).json({ message: 'Please fill out all fields' });
+                res.status(400).json({ message: 'Please fill out all fields' });
             }
             // Check if the project name is already in use
-            if (await Projects.findOne({ name: new_project_name })) {
-                return res.status(400).json({ message: 'Project name already in use.' });
+            if (await Projects.findOne({ projectName: new_project_name })) {
+                res.status(400).json({ message: 'Project name already in use' });
             }
 
             // Create new project

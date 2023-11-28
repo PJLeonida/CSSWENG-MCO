@@ -16,6 +16,7 @@
     }
 ];*/
 
+
 async function getProjectData() {
     try {
         const response = await fetch("/project-list/get-list", {
@@ -51,18 +52,31 @@ function initializeProjectListTable(projlist) {
 
        // row.insertCell().textContent = project.id;
         row.insertCell().textContent = id;
-        row.insertCell().textContent = project.name;
+
+        // Create and attach an anchor tag with _id of project name
+        const projectNameCell = row.insertCell();
+        const projectNameLink = document.createElement('a');
+        projectNameLink.textContent = project.name;
+        projectNameLink.href = `/template-project-tracker/${project._id}`; // Set the href attribute to the desired link destination
+        projectNameCell.appendChild(projectNameLink); // Append the anchor tag to the cell
+
+        row.insertCell().textContent = project.location
         row.insertCell().textContent = project.description;
         row.insertCell().textContent = project.totalEmployees;
         row.insertCell().textContent = project.totalDeployment;
+        row.insertCell().textContent = 'ONGOING';
+        row.insertCell().textContent = project.startDate;
+        row.insertCell().textContent = project.dueDate;
+
 
         id += 1;
     });
 }
 
+
 document.addEventListener('DOMContentLoaded', async function (e) {
     e.preventDefault();
-    // Call the function to get project data
+    // Call the function to get project 
     const projlist = await getProjectData();
     initializeProjectListTable(projlist);
 });

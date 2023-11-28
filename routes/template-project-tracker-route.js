@@ -57,6 +57,10 @@ async function getProjectTotalRate(employeeListData) {
     }
 }
 
+async function getProjectTotalEmployees(employeeListData) {
+    return employeeListData.length;
+}
+
 router.get('/get-employee-list', async (req,res) => {
     console.log('get employee list triggered')
     const projectID = req.session.projectID;
@@ -71,15 +75,15 @@ router.get('/get-employee-list', async (req,res) => {
 router.get('/:projectID', async (req, res) => {
     const projectID = req.params.projectID;
     req.session.projectID = projectID;
-    const project = await getProject(projectID)
-    const employeeListData = await getProjectEmployees(project.name);
-    const totalEmployees = employeeListData.length;
+    const project = await projects.findById(projectID);
+    const employeeListData = await getProjectEmployees(projectID)
+    const totalEmployees = await getProjectTotalEmployees(employeeListData);
     const totalPositions = await getProjectTotalProjectPositions(employeeListData);
     const totalDeployments = await getProjectTotalDeployments(employeeListData);
     const totalRate = await getProjectTotalRate(employeeListData);
 
     res.render('landing-page', { 
-        pageTitle: 'Project Tracker',
+        pageTitle: project.name.toUpperCase(),
         partial: 'template-project-tracker',
         activePage: 'template-project-tracker',
         totalEmployees: totalEmployees,
@@ -87,6 +91,7 @@ router.get('/:projectID', async (req, res) => {
         totalDeployments: totalDeployments,
         totalRate: totalRate,
         script: '/static/js/template-project-tracker.js',
+        name: req.user.firstName
     });
 });
 

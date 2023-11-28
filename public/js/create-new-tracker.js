@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded',  function (e) {
         const empList =  employeeListData;
         // Log to the console that the form was reset
         //console.log('Form reset!');
-    
+        
         const data = JSON.stringify({
             action: 'create-new-tracker',
             new_project_name: projectName,
