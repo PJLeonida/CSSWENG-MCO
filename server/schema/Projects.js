@@ -2,14 +2,49 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const Projects = new mongoose.Schema({
-    projectName: {
+    name: {
         type: String,
-        require: true 
+        required: true 
     },
-    projectDescription: {
+    description: {
         type: String,
         require: false
     },
+
+    location: {
+        type: String,
+        require: true
+    },
+
+    status:{
+        type: String,
+        require: true
+    },
+
+    employees:{
+        type: [{ type: Schema.Types.ObjectId, ref: 'Employees' }],
+        default: []
+    },
+
+    totalEmployees:{
+        type: Number
+    },
+
+    totalDeployment:{
+        type: Number
+    },
+
+    startDate:{
+        type: Date,
+        require: true
+    },
+
+    dueDate:{
+        type: Date,
+        require: true
+    },
+    
+    /*
     totalmanpower: {
         type: Number
     },
@@ -20,7 +55,7 @@ const Projects = new mongoose.Schema({
     utilization: {
         type: Number,
 
-    }
+    }*/
 })
 
 const projects = mongoose.model("Project", Projects);

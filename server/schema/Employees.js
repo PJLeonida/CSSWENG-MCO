@@ -3,40 +3,24 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const employeeSchema = new mongoose.Schema({
-    firstName: {
+    name: {
         type: String,
-        require: true 
-    },
-    middleName: {
-        type: String,
-        require: false
-    },
-    lastName: {
-        type: String,
-        require: true
-    },
-    suffix: {
-        type: String,
-        require: false
-    },
-    position: {
-        type: String, 
-        require: true
+        required: true 
     },
 
-    rate: {
-        type: Number,
-        require: true
+    deployments: {
+        type: [{ type: Schema.Types.ObjectId, ref: 'Deployements' }],
+        default: []
     },
 
-    totalRate: {
-        type: Number,
-        require: true
+    currentProjects: {
+        type: [String],
+        default: []
     },
 
-    deployment: {
-        type: Number,
-        require: true
+    pastProjects:{
+        type: [String],
+        default: []
     },
 
     notes: {

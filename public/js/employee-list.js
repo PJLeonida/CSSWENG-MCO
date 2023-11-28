@@ -22,21 +22,28 @@ async function getEmployeeData() {
 }
 
 function initializeEmployeeListTable(empList) {
+    /*cant do this yet because there are null values
+    empList.sort(function(a,b){
+        return a.name.localeCompare(b.name);
+    });*/
+    
     const dataTable = document.querySelector('#employee-list-table');
     const tbody = dataTable.querySelector('#employee-list-tbody');
     var id = 0
     empList.forEach(employee => {
         const row = tbody.insertRow();
 
-        const fullName = `${employee.firstName ?? ''} ${employee.middleName ?? ''} ${employee.lastName ?? ''} ${employee.suffix ?? ''}`;
         row.insertCell().textContent = id;
-        row.insertCell().textContent = fullName;
-        row.insertCell().textContent = employee.projectName;
+        row.insertCell().textContent = employee.employee;
+        row.insertCell().textContent = employee.project;
         row.insertCell().textContent = employee.position;
-        row.insertCell().textContent = employee.deployment;
+        row.insertCell().textContent = employee.deploymentHrs;
         row.insertCell().textContent = employee.rate;
         row.insertCell().textContent = employee.totalRate;
+
+        id += 1;
     });
+    
 }
 
 document.addEventListener('DOMContentLoaded', async function (e) {

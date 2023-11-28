@@ -14,6 +14,7 @@
 // Function that checks whenever the user clicks and interchanges the project status
 // every time the user choose ON-GOING, the new-project-end-date will be disabled
 // every time the user choose COMPLETED, the new-project-end-date will be enabled
+
 document.getElementById('new-project-status').addEventListener('change', function(event) {
     event.preventDefault();
 
@@ -47,21 +48,22 @@ document.getElementById('new-project-start-date').addEventListener('change', fun
 
 document.addEventListener('DOMContentLoaded',  function (e) {
     e.preventDefault();
-    // Global variable to store the employee data
     let employeeListData = [];
+    let editEmployee = [];
+    let counter = 1;
+    // Global variable to store the employee data
 
-    
+
     document.getElementById('employee-form').addEventListener('submit', function(event) {
         event.preventDefault();
-    
-        const employeeFirstName = document.getElementById('employeeFirstName').value;
-        const employeeMiddleName = document.getElementById('employeeMiddleName').value;
-        const employeeLastName = document.getElementById('employeeLastName').value;
-        const employeeSuffix = document.getElementById('employeeSuffix').value;
-        const employeePosition = document.getElementById('employeePosition').value;
+        
+        const employeeFirstName = document.getElementById('employeeFirstName').value.toUpperCase();
+        const employeeMiddleName = document.getElementById('employeeMiddleName').value.toUpperCase();
+        const employeeLastName = document.getElementById('employeeLastName').value.toUpperCase();
+        const employeeSuffix = document.getElementById('employeeSuffix').value.toUpperCase();
+        const employeePosition = document.getElementById('employeePosition').value.toUpperCase();
         const employeeDeployment = parseFloat(document.getElementById('employeeDeployment').value);
         const employeeRate = parseFloat(document.getElementById('employeeRate').value);
-    
         let employeeTotalRate = employeeDeployment * employeeRate;
     
         // Log to the console the values
@@ -73,20 +75,43 @@ document.addEventListener('DOMContentLoaded',  function (e) {
         console.log(employeeDeployment);
         console.log(employeeRate);
         console.log(employeeTotalRate);
-    
-        // Add the employee data to the global variable
-        employeeListData.push({
-            no: employeeListData.length + 1, // Auto-generate a unique ID
-            firstName: employeeFirstName,
-            middleName: employeeMiddleName,
-            lastName: employeeLastName,
-            suffix: employeeSuffix,
-            position: employeePosition,
-            deployment: employeeDeployment,
-            rate: employeeRate,
-            totalRate: employeeTotalRate
-        });
-    
+        let index = document.getElementById('enter-employee-btn').dataset.index;
+
+        
+
+        //checking if it is to edit for an employee (if dataset index represents an employee from 1 to n)
+        if(index > 0){
+            console.log('edit employee')
+            const temp_employee= {
+                no: index,
+                firstName : employeeFirstName,
+                middleName : employeeMiddleName,
+                lastName :employeeLastName,
+                suffix : employeeSuffix,
+                position : employeePosition,
+                deployment : employeeDeployment,
+                rate : employeeRate,
+                totalRate : employeeTotalRate
+            }
+            updateEmployee(temp_employee);
+        }
+        else{ // else, create new employee (0 indicates that)
+            // Add the employee data to the global variable
+            console.log('create employee')
+            const temp_employee= {
+                no: counter,
+                firstName : employeeFirstName,
+                middleName : employeeMiddleName,
+                lastName :employeeLastName,
+                suffix : employeeSuffix,
+                position : employeePosition,
+                deployment : employeeDeployment,
+                rate : employeeRate,
+                totalRate : employeeTotalRate
+            }
+           createNewEmployee(temp_employee);
+        }
+       
         // Log to the console the employee data
         console.log(employeeListData);
     
@@ -95,7 +120,12 @@ document.addEventListener('DOMContentLoaded',  function (e) {
     
         // Log to the console that the form was reset
         console.log('Form reset!');
-    
+    });
+
+    //=========================CREATE EMPLOYEE==============================//
+    function createNewEmployee(temp_employee){
+        employeeListData.push(temp_employee);
+
         // Get the employee table
         const employeeListTable = document.getElementById('employee-table');
     
@@ -106,23 +136,121 @@ document.addEventListener('DOMContentLoaded',  function (e) {
         const row = employeeListTableBody.insertRow(); // Create a new row
     
         // Insert cell data into the row
+        row.setAttribute('class', 'employeeRow_'+counter);
+        counter += 1;
         row.insertCell().textContent = employeeListData.length;
-        row.insertCell().textContent = employeeFirstName + ' ' + employeeMiddleName + ' ' + employeeLastName + ' ' + employeeSuffix;
-        row.insertCell().textContent = employeePosition;
-        row.insertCell().textContent = employeeDeployment;
-        row.insertCell().textContent = employeeRate;
-        row.insertCell().textContent = employeeTotalRate;
-        row.insertCell().innerHTML = '<button class="btn btn-warning btn-sm btn-edit-employee" id="btn-edit-employee">Edit</button>';
-        row.insertCell().innerHTML = '<button class="btn btn-danger btn-sm btn-delete-employee" id="btn-delete-employee">Delete</button>';
+        row.insertCell().textContent = temp_employee.firstName + ' ' + temp_employee.middleName + ' ' + temp_employee.lastName + ' ' + temp_employee.suffix;
+        row.insertCell().textContent = temp_employee.position;
+        row.insertCell().textContent = temp_employee.deployment;
+        row.insertCell().textContent = temp_employee.rate;
+        row.insertCell().textContent = temp_employee.totalRate;
+        row.insertCell().innerHTML = '<button type="button" data-index="' + temp_employee.no + '"class="btn btn-warning btn-sm btn-edit-employee" id="btn-edit-employee' + temp_employee.no + '" data-bs-toggle="modal" data-bs-target="#enterEmployeeModal">Edit</button>';
+        row.insertCell().innerHTML = '<button  data-index="' + temp_employee.no + '"class="btn btn-danger btn-sm btn-delete-employee" id="btn-delete-employee' + temp_employee.no + '">Delete</button>';
         
+        
+        let editBtn = document.getElementById('btn-edit-employee' + temp_employee.no)
+        let deleteBtn = document.getElementById('btn-delete-employee' + temp_employee.no)
+        //add an edit button if edit button clicked, display the form
+        editBtn.addEventListener("click", async (e) => {
+            let selectedEmployee = employeeListData.find(employee => String(employee.no) ===  editBtn.dataset.index);
 
-    });
+            if (selectedEmployee) {
+                console.log('Selected Employee:', selectedEmployee);
+               //submit button: <button type="submit" id="enter-employee-btn" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#enterEmployeeModal">Enter Employee</button>
+               //x button: <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+               
+               //display the form with employee's info
+                document.getElementById('employeeFirstName').value = selectedEmployee.firstName;
+                document.getElementById('employeeMiddleName').value = selectedEmployee.middleName;
+                document.getElementById('employeeLastName').value = selectedEmployee.lastName;
+                document.getElementById('employeeSuffix').value = selectedEmployee.suffix;
+                document.getElementById('employeePosition').value = selectedEmployee.position;
+                document.getElementById('employeeDeployment').value = selectedEmployee.deployment;
+                document.getElementById('employeeRate').value = selectedEmployee.rate;
+                //this indicates the employee number to be edited. 0 indicates create It will reset to 0 when you click x on the edit tracker form.
+                document.getElementById('enter-employee-btn').dataset.index = selectedEmployee.no;
+                //let modal = new bootstrap.Modal(document.getElementById('enterEmployeeModal'));
+                //modal.show();
+            } else {
+                console.log('Employee not found in the array on create employee');
+            }
+        })
+
+        deleteBtn.addEventListener("click", async (e) => {
+            let selectedEmployee = employeeListData.find(employee => String(employee.no) ===  editBtn.dataset.index);
+            if (selectedEmployee) {
+                const employeeListTable = document.getElementById('employee-table');
+                const employeeListTableBody = employeeListTable.querySelector('tbody');
+                const empRow = employeeListTableBody.querySelector('.employeeRow_'+selectedEmployee.no); // Get employee's respective row
+                empRow.remove();
+
+                employeeListData = employeeListData.filter(item => item.no !== selectedEmployee.no);
+                
+                let id = 1;
+                for (var i = 0; i < employeeListTableBody.rows.length; i++) {
+                    var row = employeeListTableBody.rows[i];
+                    row.cells[0].innerHTML = id; // Assuming the ID is in the first cell
+                }
+
+                console.log(employeeListData)
+
+            } else {
+                console.log('Employee not found in the array on create employee');
+            }
+        })
+        //add a delete button if edit button clicked, display the form
+        
+        editEmployee.push(editBtn)
+    }
+    //=========================UPDATE EMPLOYEE==============================//
+    function updateEmployee(temp_employee){
+        let selectedEmployee = employeeListData.find(employee => String(employee.no) ===  temp_employee.no);
+        if (selectedEmployee) {
+             selectedEmployee.firstName = temp_employee.firstName;
+             selectedEmployee.middleName = temp_employee.middleName;
+             selectedEmployee.lastName = temp_employee.lastName
+             selectedEmployee.suffix = temp_employee.suffix
+             selectedEmployee.position = temp_employee.position
+             selectedEmployee.deployment = temp_employee.deployment
+             selectedEmployee.rate = temp_employee.rate
+             selectedEmployee.totalRate = temp_employee.totalRate
+             // Get the employee table
+             const employeeListTable = document.getElementById('employee-table');
     
+             // Get the table body
+             const employeeListTableBody = employeeListTable.querySelector('tbody');
+             const empRow = employeeListTableBody.querySelector('.employeeRow_'+selectedEmployee.no); // Get employee's respective row
+             console.log(empRow[0])
+             empRow.cells[1].textContent = temp_employee.firstName + ' ' + temp_employee.middleName + ' ' + temp_employee.lastName + ' ' + temp_employee.suffix;
+             empRow.cells[2].textContent = temp_employee.position;
+             empRow.cells[3].textContent = temp_employee.deployment;
+             empRow.cells[4].textContent = temp_employee.rate;
+             empRow.cells[5].textContent = temp_employee.totalRate;
+             document.getElementById('enter-employee-btn').dataset.index = 0;
+        } else {
+            console.log('Employee not found in the array on update employee');
+        }
+
+    }
+
+    //the x button of the employee form, it resets the form
+    document.getElementById('x').addEventListener('click', function(event){
+         document.getElementById('employee-form').reset();
+         document.getElementById('enter-employee-btn').dataset.index = 0;
+    })
+
 
     document.getElementById('btn-create-new-tracker').addEventListener('click', function(event) {
         event.preventDefault();
-        const projectName =  document.getElementById('new-project-name').value
+
+        const projectName =  document.getElementById('new-project-name').value.toUpperCase();
         const projectDesc =  document.getElementById('new-project-desc').value
+        const projectLocation = document.getElementById('new-project-location').value.toUpperCase();
+        const projectStatus = document.getElementById('new-project-status').value.toUpperCase();
+        const projectStartDate = document.getElementById('new-project-start-date').value
+        const projectEndDate = document.getElementById('new-project-end-date').value
+
+        
         const empList =  employeeListData;
         // Log to the console that the form was reset
         //console.log('Form reset!');
@@ -131,6 +259,10 @@ document.addEventListener('DOMContentLoaded',  function (e) {
             action: 'create-new-tracker',
             new_project_name: projectName,
             new_project_descr: projectDesc,
+            new_project_location: projectLocation,
+            new_project_status :projectStatus,
+            new_project_start_date:projectStartDate,
+            new_project_end_date:projectEndDate,
             employeeListData: empList
         })
         // Send AJAX request to server
@@ -143,7 +275,7 @@ document.addEventListener('DOMContentLoaded',  function (e) {
             body: data
         }).then(response => {
             if (response.ok) {
-                return response.json(); // Assuming your server sends JSON data
+                return response.json(); 
             } else {
                 throw new Error('Failed to create tracker');
             }

@@ -24,12 +24,10 @@ function initializeEmployeeListTable(empList) {
     var id = 0
     empList.forEach(employee => {
         const row = tbody.insertRow();
-
-        const fullName = `${employee.firstName ?? ''} ${employee.middleName ?? ''} ${employee.lastName ?? ''} ${employee.suffix ?? ''}`;
         row.insertCell().textContent = id;
-        row.insertCell().textContent = fullName;
+        row.insertCell().textContent = employee.employee;
         row.insertCell().textContent = employee.position;
-        row.insertCell().textContent = employee.deployment;
+        row.insertCell().textContent = employee.deploymentHrs;
         row.insertCell().textContent = employee.rate;
         row.insertCell().textContent = employee.totalRate;
         row.insertCell().innerHTML = '<button class="btn btn-warning btn-sm btn-edit-employee" id="btn-edit-employee" disabled>Edit</button>';
@@ -45,10 +43,7 @@ document.addEventListener('DOMContentLoaded', async function (e) {
     // Call the function to get employee data
     const empList = await getEmployeeData();
     initializeEmployeeListTable(empList);
-});
 
-
-document.addEventListener('DOMContentLoaded', function (e) {
     // Get references to the buttons
     const editButton = document.getElementById('edit-tracker-btn');
     const saveButton = document.getElementById('save-tracker-btn');

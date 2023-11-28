@@ -39,6 +39,10 @@ async function getProjectData() {
 }
 
 function initializeProjectListTable(projlist) {
+    /*cant do this yet because there are null values
+    projlist.sort(function(a,b){
+        return a.name.localeCompare(b.name);
+    });*/
     const dataTable = document.querySelector('#project-list-table');
     const tbody = dataTable.querySelector('tbody');
     var id = 1
@@ -47,10 +51,10 @@ function initializeProjectListTable(projlist) {
 
        // row.insertCell().textContent = project.id;
         row.insertCell().textContent = id;
-        row.insertCell().textContent = project.projectName;
-        row.insertCell().textContent = project.projectDescription;
-        row.insertCell().textContent = project.numberOfEmployees;
-        row.insertCell().textContent = project.totalDeploymentHours;
+        row.insertCell().textContent = project.name;
+        row.insertCell().textContent = project.description;
+        row.insertCell().textContent = project.totalEmployees;
+        row.insertCell().textContent = project.totalDeployment;
 
         id += 1;
     });

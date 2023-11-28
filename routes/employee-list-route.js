@@ -2,12 +2,12 @@
 
 const app = require('express')
 const router = app.Router()
-employees = require('../server/schema/Employees')
+deployments = require('../server/schema/EmpDeployment')
 
 router.get('/get-list', async(req,res) =>{
     try {
         console.log('get-list GET');
-        const employeeList = await employees.find().exec();
+        const employeeList = await deployments.find().exec();
         console.log(employeeList);
         res.json(employeeList); // Send the array as JSON response
     } catch (error) {

@@ -3,34 +3,44 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const EmpDeployment = new mongoose.Schema({
-    employee: {
+    employeeRef: {
         type: Schema.Types.ObjectId,
         ref: 'Employee'
     },
 
-    firstName: {
+    employee: {
+        type: String,
+        required: true
+    },
+
+    position: {
         type: String,
         require: true
     },
 
-    lastName: {
-        type: String,
-        require: true
-    },
-
-    projectAssign: {
-        type: Schema.Types.ObjectId,
-        ref: 'Project'
-    },
-
-    role: {
-        type: String,
-        require: true
-    },
-
-    deploymenthrs: {
+    deploymentHrs: {
         type: Number,
         require: true
+    },
+
+    rate: {
+        type: Number,
+        require: true
+    },
+
+    totalRate: {
+        type: Number,
+        require: true
+    },
+
+    project: {
+        type: String,
+        required: true
+    },
+
+    projectRef: {
+        type: Schema.Types.ObjectId,
+        ref: 'Project'
     }
 
 })
