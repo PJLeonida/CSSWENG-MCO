@@ -66,7 +66,7 @@ router.post('/', async (req, res) => {
             console.log(typeof employeeListData)
 
             // Check if all fields are filled
-            const requiredFields = [new_project_name, new_project_descr];
+            const requiredFields = [new_project_name, new_project_descr, new_project_location, new_project_start_date, new_project_end_date];
             if (requiredFields.some(value => value === '' || (typeof value === 'string' && value.trim() === ''))) {
                 res.status(400).json({ message: 'Please fill out all fields' });
             }

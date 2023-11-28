@@ -253,8 +253,32 @@ document.addEventListener('DOMContentLoaded',  function (e) {
 
         
         const empList =  employeeListData;
-        // Log to the console that the form was reset
-        //console.log('Form reset!');
+        
+        // Define an object to map field IDs to error message IDs
+        const fieldErrorMap = {
+            'new-project-name': 'project-name-message',
+            'new-project-desc': 'project-desc-message',
+            'new-project-location': 'project-location-message',
+            'new-project-start-date': 'project-start-date-message',
+            'new-project-end-date': 'project-end-date-message'
+        };
+    
+        // Iterate through each field and check if it's empty
+        let hasErrors = false;
+        for (const [field, errorMessage] of Object.entries(fieldErrorMap)) {
+            const value = $(`#${field}`).val();
+            if (value === '') {
+                $(`#${errorMessage}`).html('Please fill out this field.').css('display', 'block');
+                hasErrors = true;
+            } else {
+                $(`#${errorMessage}`).css('display', 'none');
+            }
+        }
+    
+        // Check if there are errors before making the fetch request
+        if (hasErrors) {
+            return;
+        }
         
         const data = JSON.stringify({
             action: 'create-new-tracker',
