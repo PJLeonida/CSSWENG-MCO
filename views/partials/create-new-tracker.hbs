@@ -135,6 +135,8 @@
                                     <option value="ON-GOING">ON-GOING</option>
                                     <option value="COMPLETED">COMPLETED</option>
                                 </select>
+                                <!-- Error Message -->
+								<div class="alert alert-danger mt-3" id="project-status-message" style="display:none" role="alert"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="new-project-start-date" class="form-label fw-bold fs-4 new-tracker-to-do">Start Date</label>
@@ -164,6 +166,8 @@
                             <span>
                                 <button type="button" id="btn-enter-employee" class="btn btn-primary mb-3 me-3" data-bs-toggle="modal" data-bs-target="#enterEmployeeModal">Add Employee</button>
                             </span>
+                            <!-- Error Message -->
+								<div class="alert alert-danger mt-3" id="employee-list-message" style="display:none" role="alert"></div>
                         </div>
 
                         <table id="employee-table">
