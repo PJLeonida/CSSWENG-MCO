@@ -18,21 +18,16 @@
                         <a href="#" class="profile">
                             <img src="/static/img/default-profile-pic.jpg" alt="profile"/>
                         </a>
-        
-                        <div class="profile-info">
-                            <h3> Hello, {{ name }}! </h3>
-                            <div id="date-time-placeholder"></div>
-                        </div>
+                        
+                        <h3> Hello, {{ name }}! </h3>
+                        
+                    </div>
+
+                    <div class="d-flex flex-column justify-content-end my-3 date-time">
+                        <div class="d-flex justify-content-end date-placeholder fw-bold" id="date-placeholder"></div>
+                        <div class="d-flex justify-content-end time-placeholder fw-bold" id="time-placeholder"></div>
                     </div>
                 </div>
-
-                {{!-- <!-- Create a search bar here -->
-                <form action="#" class="search-form">
-                    <div class="form-input">
-                        <input type="search" placeholder="Search..."/>
-                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
-                </form> --}}
             </nav>
             <!-- End of Navbar -->
             
@@ -48,12 +43,31 @@
         <!-- Scripts -->
         <script>
             function updateDateTime() {
-                const dateTimeElement = document.getElementById('date-time-placeholder');
+                const dateElement = document.getElementById('date-placeholder');
+                const timeElement = document.getElementById('time-placeholder');
+
                 const now = new Date();
-                const dateTimeString = now.toLocaleString();
-                dateTimeElement.textContent = dateTimeString;
+
+                // Format the date as "<day> <month name> <year>"
+                const day = now.getDate();
+                const monthIndex = now.getMonth();
+                const year = now.getFullYear();
+
+                const monthNames = [
+                    'January', 'February', 'March', 'April', 'May', 'June',
+                    'July', 'August', 'September', 'October', 'November', 'December'
+                ];
+
+                const monthName = monthNames[monthIndex];
+
+                const dateString = `${day} ${monthName} ${year}`;
+                const timeString = now.toLocaleTimeString();
+
+                dateElement.textContent = dateString;
+                timeElement.textContent = timeString;
             }
 
             updateDateTime();
+
             setInterval(updateDateTime, 1000);
         </script>
