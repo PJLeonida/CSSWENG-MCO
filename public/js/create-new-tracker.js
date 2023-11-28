@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded',  function (e) {
         const employeeRate = parseFloat(document.getElementById('employeeRate').value);
         let employeeTotalRate = employeeDeployment * employeeRate;
     
+
         // Log to the console the values
         console.log(employeeFirstName);
         console.log(employeeMiddleName);
@@ -182,9 +183,9 @@ document.addEventListener('DOMContentLoaded',  function (e) {
                 const employeeListTable = document.getElementById('employee-table');
                 const employeeListTableBody = employeeListTable.querySelector('tbody');
                 const empRow = employeeListTableBody.querySelector('.employeeRow_'+selectedEmployee.no); // Get employee's respective row
-                empRow.remove();
+                empRow.remove();//remove employee from table
 
-                employeeListData = employeeListData.filter(item => item.no !== selectedEmployee.no);
+                employeeListData = employeeListData.filter(item => item.no !== selectedEmployee.no);//remove employee from array
                 
                 let id = 1;
                 for (var i = 0; i < employeeListTableBody.rows.length; i++) {
