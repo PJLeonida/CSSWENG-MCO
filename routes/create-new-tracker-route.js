@@ -9,6 +9,15 @@ const bodyParser = require('body-parser');
 
 app().use(bodyParser.json());
 
+// Function to format date to YYYY-MM-DD
+function formatDateWithoutTime(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
 router.get('/', (req, res) => {
     res.render('landing-page', {
         pageTitle: 'Create New Tracker',
@@ -71,8 +80,8 @@ router.post('/', async (req, res) => {
                 name: new_project_name,
                 description: new_project_descr,
                 location: new_project_location,
-                startDate: new_project_start_date,
-                dueDate: new_project_end_date,
+                startDate: formatDateWithoutTime(new_project_start_date),
+                dueDate: formatDateWithoutTime(new_project_end_date),
                 //projectPriority: 'Low',
                 status: new_project_status,
                 //projectMembers: [],
