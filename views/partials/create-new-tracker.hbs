@@ -81,19 +81,31 @@
 
 
 
-            <div class="header">
+            {{!-- <div class="header">
                 <span class="flex-container">
                     <h1>{{ pageTitle }}</h1>
                 </span>
-            </div>
+            </div> --}}
 
 
             <!-- Create New Tracker -->           
             <div class="main-container">
 
                 <form action="/new-tracker" method="post" id="new-tracker-form">
-                    <button type="submit" id="btn-create-new-tracker" class="btn btn-success mb-3 me-3">Create New Tracker</button>
-                    <button type="button" id="btw-cancel-tracker" class="btn btn-danger mb-3 me-3" data-bs-toggle="modal" data-bs-target="#discardTrackerModal" >Discard Tracker</button>
+
+                    <div class="header d-flex justify-content-between align-items-center">
+                        <span class="d-flex justify-content-start">
+                            <h1>{{ pageTitle }}</h1>
+                        </span>
+
+                        <div class="d-flex mt-2">
+                            <button type="submit" id="btn-create-new-tracker" class="btn btn-success mb-3 me-3"><i class="fa fa-solid fa-square-plus"></i>Create Project Tracker</button>
+                            <button type="button" id="btw-cancel-tracker" class="btn btn-danger mb-3 me-3" data-bs-toggle="modal" data-bs-target="#discardTrackerModal"><i class="fa fa-solid fa-trash"></i>Discard Tracker</button>
+                        </div>
+                    </div>
+                    
+                    {{!-- <button type="submit" id="btn-create-new-tracker" class="btn btn-success mb-3 me-3"><i class="fa fa-solid fa-square-plus"></i>Create Project Tracker</button>
+                    <button type="button" id="btw-cancel-tracker" class="btn btn-danger mb-3 me-3" data-bs-toggle="modal" data-bs-target="#discardTrackerModal" >Discard Tracker</button> --}}
 
                     <input type="hidden" name="action" value="create-new-tracker">
                     

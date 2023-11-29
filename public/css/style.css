@@ -779,6 +779,13 @@ main .bottom-data .reports table {
 
 
 /* New Tracker */
+
+#btn-create-new-tracker, #btw-cancel-tracker {
+    /* center content */
+    display: flex;
+    justify-content: center;
+}
+
 .myform {
     max-width: 100%;
 }
