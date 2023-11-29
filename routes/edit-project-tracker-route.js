@@ -6,6 +6,7 @@ const Projects = require('../server/schema/Projects')
 const Deployments = require('../server/schema/EmpDeployment');
 const Employees = require('../server/schema/Employees');
 const bodyParser = require('body-parser');
+const { route } = require('./create-new-tracker-route');
 app().use(bodyParser.json());
 
 // Function to format date to YYYY-MM-DD
@@ -201,6 +202,32 @@ router.post('/', async (req,res) => {
             console.error(`Error deleting employee ${employee._id}:`, err);
         }
     })
+})
+
+router.post("/delete-current-project", async (req,res) =>{
+
+    const projectID = req.session.projectID
+
+    try{
+        let result = await Deployments.deleteMany({ projectRef: projectID });
+        if (result.deletedCount > 1) {
+            console.log('Deployments deleted successfully');
+        } else {
+            console.log('Deployment not found or not deleted');
+        }
+
+        result = await Projects.deleteOne({ _id: projectID });
+        if (result.deletedCount === 1) {
+            console.log('Project deleted successfully');
+        } else {
+            console.log('Project not found or not deleted');
+        }
+
+        res.status(200).json({ redirect: '/dashboard'});
+    }
+    catch (err) {
+        console.error(`Error deleting project ${projectID}:`, err);
+    }
 })
 /*
 // Function to handle creation of new tracker

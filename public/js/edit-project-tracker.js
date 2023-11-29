@@ -38,26 +38,48 @@ async function getProjectEmployees(){
     }
 }
 
+async function deleteTracker() {
+    try {
+        const response = await fetch("/edit-project-tracker/delete-current-project", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (response.status === 200) {
+            const data = await response.json(); // Parse the response JSON
 
-document.getElementById('new-project-status').addEventListener('change', function(event) {
-    event.preventDefault();
-
-    const projectStatus = document.getElementById('new-project-status').value;
-    console.log(projectStatus);
-    if (projectStatus === 'ON-GOING') {
-        document.getElementById('new-project-end-date').setAttribute('disabled', true);
-    } else if (projectStatus === 'COMPLETED') {
-        document.getElementById('new-project-end-date').removeAttribute('disabled');
-        document.getElementById('new-project-end-date').setAttribute('required', true);
+            if (data.redirect) {
+                window.location.href = data.redirect; // Redirect if the server sends a redirect URL
+            } else {
+                // Handle other data from the server if needed
+            }
+        } else {
+            console.error(`An error has occurred. Status code = ${response.status}`);
+            // Handle error case or return an error object
+            return { status: 'error', message: 'Error deleting data' };
+        }
+    } catch (error) {
+        console.error(error);
+        // Handle error case or return an error object
+        return { status: 'error', message: 'Error deleting data' };
     }
-});
-
-
-
-
+}
 
 
 document.addEventListener('DOMContentLoaded', async function (e){
+    document.getElementById('new-project-status').addEventListener('change', function(event) {
+        event.preventDefault();
+    
+        const projectStatus = document.getElementById('new-project-status').value;
+        console.log(projectStatus);
+        if (projectStatus === 'ON-GOING') {
+            document.getElementById('new-project-end-date').setAttribute('disabled', true);
+        } else if (projectStatus === 'COMPLETED') {
+            document.getElementById('new-project-end-date').removeAttribute('disabled');
+            document.getElementById('new-project-end-date').setAttribute('required', true);
+        }
+    });
 /*=======================initializeForm function=====================*/
     function initializeForm(){
     
@@ -371,6 +393,10 @@ document.addEventListener('DOMContentLoaded', async function (e){
     document.getElementById('x').addEventListener('click', function(event){
         document.getElementById('employee-form').reset();
         document.getElementById('enter-employee-btn').dataset.index = 0;
+    })
+
+    document.getElementById('btw-delete-tracker').addEventListener('click', async function(event) {
+        await deleteTracker();
     })
 
     document.getElementById('btn-create-new-tracker').addEventListener('click', function(event) {
