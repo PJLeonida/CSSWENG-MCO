@@ -181,7 +181,7 @@ router.post('/', async (req,res) => {
 
                 //update employee
                 let result = await Employees.updateOne({ _id: employee.employeeRef}, { $set:{ name: employee.employee }});
-                if (result.deletedCount === 1) {
+                if (result.nModified === 1) {
                     console.log('Employee updated successfully');
                 } else {
                     console.log('Employee not found or not updated');
@@ -189,13 +189,14 @@ router.post('/', async (req,res) => {
 
                 //update deployment
                 result = await Deployments.updateMany({ employeeRef: employee.employeeRef }, { $set: updatedDeployment });
-                if (result.deletedCount === 1) {
+                if (result.nModified === 1) {
                     console.log('Deployment updated successfully');
                 } else {
-                    console.log('Deployment not found or not updated');
+                    console.log('Deployment updated or not updated');
                 }
             }
 
+            res.status(200).json({ redirect: '/template-project-tracker/' + projectID});
         }catch (err) {
             console.error(`Error deleting employee ${employee._id}:`, err);
         }

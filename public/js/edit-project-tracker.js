@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', async function (e){
         const projectStatus = document.getElementById('new-project-status').value.toUpperCase();
         const projectStartDate = document.getElementById('new-project-start-date').value
         const projectEndDate = document.getElementById('new-project-end-date').value
-
+        const employeeError = document.getElementById("employee-list-message")
         
         const empList =  employeeListData;
         const deleteList = deletedEmployeeIDs;
@@ -396,9 +396,13 @@ document.addEventListener('DOMContentLoaded', async function (e){
             'new-project-desc': 'project-desc-message',
             'new-project-location': 'project-location-message',
             'new-project-start-date': 'project-start-date-message',
+            'new-project-status': 'project-status-message',
             'new-project-end-date': 'project-end-date-message'
         };
-    
+        // to remove error message when a valid project entry occurs
+        for (const [field, errorMessage] of Object.entries(fieldErrorMap)) {
+                $(`#${errorMessage}`).css('display', 'none');
+        }
         // Iterate through each field and check if it's empty
         let hasErrors = false;
         for (const [field, errorMessage] of Object.entries(fieldErrorMap)) {
@@ -406,21 +410,31 @@ document.addEventListener('DOMContentLoaded', async function (e){
             if (value === '') {
                 $(`#${errorMessage}`).html('Please fill out this field.').css('display', 'block');
                 hasErrors = true;
+            }else if (value === null){
+                $(`#${errorMessage}`).html('Please select either ON-GOING or COMPLETED').css('display', 'block');
+                hasErrors = true;
+            } else if (value === 'ON-GOING'){
+                break;
             } else {
                 $(`#${errorMessage}`).css('display', 'none');
             }
         }
-    
+        
+        if (empList.length === 0){
+            employeeError.textContent = 'Add at least 1 employee for the project';
+            employeeError.style.display = 'block';
+            hasErrors = true;
+        } else {
+            employeeError.textContent = '';
+            employeeError.style.display = 'none';
+            hasErrors = false;
+        }
+
         // Check if there are errors before making the fetch request
         if (hasErrors) {
             return;
         }
-        /*
-            status
-    totalEmployees
-    totalDeployment
-    totalRate
-        */
+       
         const data = JSON.stringify({
             new_project_name: projectName,
             new_project_descr: projectDesc,

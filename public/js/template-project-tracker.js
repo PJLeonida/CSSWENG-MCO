@@ -52,9 +52,6 @@ function initializeEmployeeListTable(empList) {
         row.insertCell().textContent = employee.deploymentHrs;
         row.insertCell().textContent = employee.rate;
         row.insertCell().textContent = employee.totalRate;
-        row.insertCell().innerHTML = '<button class="btn btn-warning btn-sm btn-edit-employee" id="btn-edit-employee" disabled>Edit</button>';
-        row.insertCell().innerHTML = '<button class="btn btn-danger btn-sm btn-delete-employee" id="btn-delete-employee" disabled>Delete</button>';
-        
         id += 1;
     });
 }
@@ -68,8 +65,6 @@ document.addEventListener('DOMContentLoaded', async function (e) {
 
     // Get references to the buttons
     const editButton = document.getElementById('edit-tracker-btn');
-    const saveButton = document.getElementById('save-tracker-btn');
-    const cancelButton = document.getElementById('cancel-tracker-btn');
 
     // const empEditBtn = document.documentElementId('btn-edit-employee');
     // const empDelBtn = document.documentElementId('btn-delete-employee');
@@ -80,12 +75,6 @@ document.addEventListener('DOMContentLoaded', async function (e) {
         editButton.disabled = true;
         editButton.style.color = '#FFFFFF';
 
-        // Enable save and cancel buttons
-        saveButton.disabled = false;
-        saveButton.style.color = '#000000';
-        cancelButton.disabled = false;
-        cancelButton.style.color = '#000000';
-
         goToEditTracker()
         // // Enable edit and delete buttons in the employee list table
         // empEditBtn.disabled = false;
@@ -93,41 +82,5 @@ document.addEventListener('DOMContentLoaded', async function (e) {
         // empDelBtn.disabled = false;
         // empDelBtn.style.color = '#000000';
 
-    });
-
-    // Add event listener to the cancel button and save button
-    cancelButton.addEventListener('click', function() {
-        // Disable save and cancel buttons
-        saveButton.disabled = true;
-        saveButton.style.color = '#FFFFFF';
-        cancelButton.disabled = true;
-        cancelButton.style.color = '#FFFFFF';
-
-        // empEditBtn.disabled = true;
-        // empEditBtn.style.color = '#FFFFFF';
-        // empDelBtn.disabled = true;
-        // empDelBtn.style.color = '#FFFFFF';
-
-        // Enable edit button
-        editButton.disabled = false;
-        editButton.style.color = '#000000';
-    });
-
-    saveButton.addEventListener('click', function() {
-        // Disable save and cancel buttons
-        saveButton.disabled = true;
-        saveButton.style.color = '#FFFFFF';
-        cancelButton.disabled = true;
-        cancelButton.style.color = '#FFFFFF';
-
-        // empEditBtn.disabled = true;
-        // empEditBtn.style.color = '#FFFFFF';
-        // empDelBtn.disabled = true;
-        // empDelBtn.style.color = '#FFFFFF';
-
-
-        // Enable edit button
-        editButton.disabled = false;
-        editButton.style.color = '#000000';
     });
 });
