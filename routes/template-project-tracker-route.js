@@ -29,6 +29,7 @@ async function getProjectTotalProjectPositions(employeeListData){
     }
 }
 
+/*
 async function getProjectTotalDeployments(employeeListData){
     try {
         return employeeListData.reduce((total, current) => total + current['deploymentHrs'], 0);
@@ -45,12 +46,22 @@ async function getProjectTotalRate(employeeListData) {
         console.error('Error counting totalCost with conditions:', error);
         throw error; 
     }
-}
+}/*
 
 /*
 async function getProjectTotalEmployees(employeeListData) {
     return employeeListData.length;
 }*/
+
+router.post('/redirect-edit', async (req,res) => {
+    const projectID = req.session.projectID
+    try{
+        res.status(200).json({ redirect: '/edit-project-tracker/' + projectID});
+    }
+    catch (error) {
+        console.error('Error redirect edit tracker:', error);
+    }
+})
 
 router.get('/get-employee-list', async (req,res) => {
     console.log('get employee list triggered')

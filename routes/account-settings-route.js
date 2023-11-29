@@ -3,7 +3,7 @@ const router = app.Router()
 const User = require('../server/schema/Users');
 
 router.get('/', (req, res) => {
-
+    let currentUser = req.user
 
     res.render('landing-page', { 
         pageTitle: 'Account Settings',

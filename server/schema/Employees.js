@@ -8,18 +8,12 @@ const employeeSchema = new mongoose.Schema({
         required: true 
     },
 
+    suffix:{
+        type: String,
+    },
+
     deployments: {
         type: [{ type: Schema.Types.ObjectId, ref: 'Deployements' }],
-        default: []
-    },
-
-    currentProjects: {
-        type: [String],
-        default: []
-    },
-
-    pastProjects:{
-        type: [String],
         default: []
     },
 
