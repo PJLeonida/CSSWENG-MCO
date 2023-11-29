@@ -17,11 +17,11 @@ const employeeSchema = new mongoose.Schema({
         type: [String],
         default: []
     },*/
-
+/*
     pastProjects:{
         type: [String],
         default: []
-    },
+    },*/
 
     notes: {
         type: String

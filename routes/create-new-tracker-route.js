@@ -149,7 +149,6 @@ router.post('/', async (req, res) => {
                     const newEmployee = new Employees({
                          //no: employee.no,
                          name: name,
-                        projects: [newProject.name]
                     });                
                             
                     const newDeployment = new Deployments({
