@@ -88,7 +88,8 @@ router.post('/', async (req, res) => {
                 // projectTasks: []
                 employees: [employeeListData.name],
                 totalEmployees: employeeListData.length,
-                totalDeployment: employeeListData.reduce((total, current) => total + current['deployment'], 0)
+                totalDeployment: employeeListData.reduce((total, current) => total + current['deployment'], 0),
+                totalRate: employeeListData.reduce((total, current) => total + current['totalRate'], 0)
             });
 
             // Save new project

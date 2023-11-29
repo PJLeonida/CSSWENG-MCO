@@ -34,6 +34,10 @@ const Projects = new mongoose.Schema({
         type: Number
     },
 
+    totalRate:{
+        type: Number
+    },
+    
     startDate:{
         type: Date,
         require: true

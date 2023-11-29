@@ -39,6 +39,31 @@ async function getProjectData() {
     }
 }
 
+
+async function searchProject(projectName){
+    // Send AJAX request to server
+    try{
+        fetch('/project-list/searchProject/'+projectName, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+            }
+        })
+
+        if(response.status == 200){
+            console.log("Get Project list success");
+            return true
+        }else{
+            console.error(`Project not found ${response.status}`);
+            return false;
+        }
+
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
+
 function initializeProjectListTable(projlist) {
     /*cant do this yet because there are null values
     projlist.sort(function(a,b){
@@ -64,7 +89,7 @@ function initializeProjectListTable(projlist) {
         row.insertCell().textContent = project.description;
         row.insertCell().textContent = project.totalEmployees;
         row.insertCell().textContent = project.totalDeployment;
-        row.insertCell().textContent = 'ONGOING';
+        row.insertCell().textContent = project.status;
         row.insertCell().textContent = project.startDate;
         row.insertCell().textContent = project.dueDate;
 
@@ -74,9 +99,52 @@ function initializeProjectListTable(projlist) {
 }
 
 
+function resetTable(){
+    const dataTable = document.querySelector('#project-list-table');
+    const tbody = dataTable.querySelector('tbody');
+    var rowCount = tbody.rows.length;
+    for (var i = rowCount-1; i >= 0; i--) {
+        tbody.deleteRow(i);
+    }
+}
+
+function searchProject(projList, projectName){
+    let project  = projList.find(obj => obj['name']  && obj['name'].includes(projectName));
+    if(project){
+        return true;
+    }
+    return false;
+}
+
 document.addEventListener('DOMContentLoaded', async function (e) {
     e.preventDefault();
     // Call the function to get project 
     const projlist = await getProjectData();
     initializeProjectListTable(projlist);
+
+    document.getElementById('search-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+   
+        projectNameInput = document.getElementById('search-project-input').value.toUpperCase();
+
+        if(projectNameInput == ""){
+           return false;
+        }
+   
+        let projectExists = searchProject(projlist, projectNameInput)
+
+        if(projectExists){
+          let filteredList = projlist.filter(obj => obj['name'] && obj['name'].includes(projectNameInput));
+          resetTable()  
+          initializeProjectListTable(filteredList)
+          return true;
+        }
+        else{
+           console.log("No project found")
+           return false;
+        }
+    })
 });
+
+
+

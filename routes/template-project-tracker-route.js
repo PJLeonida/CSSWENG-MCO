@@ -6,16 +6,6 @@ const employees = require('../server/schema/Employees');
 const deployments = require('../server/schema/EmpDeployment');
 const router = app.Router()
 
-async function getProject(projectID){
-    try{
-        const project = await projects.findOne({_id:projectID})
-
-        return project;
-    } catch(error){
-        console.error('Error getting project  with:', error);
-        throw error; // Handle the error as needed for your application
-    }
-}
 
 async function getProjectEmployees(projectName){
     try{
@@ -57,14 +47,15 @@ async function getProjectTotalRate(employeeListData) {
     }
 }
 
+/*
 async function getProjectTotalEmployees(employeeListData) {
     return employeeListData.length;
-}
+}*/
 
 router.get('/get-employee-list', async (req,res) => {
     console.log('get employee list triggered')
     const projectID = req.session.projectID;
-    const project = await getProject(projectID)
+    const project = await projects.findById(projectID);
     console.log(project)
     console.log(project.name)
     const employeeListData = await getProjectEmployees(project.name);
@@ -76,11 +67,12 @@ router.get('/:projectID', async (req, res) => {
     const projectID = req.params.projectID;
     req.session.projectID = projectID;
     const project = await projects.findById(projectID);
-    const employeeListData = await getProjectEmployees(projectID)
-    const totalEmployees = await getProjectTotalEmployees(employeeListData);
+    console.log(project.name)
+    const employeeListData = await getProjectEmployees(project.name)
+    const totalEmployees = project.totalEmployees;
     const totalPositions = await getProjectTotalProjectPositions(employeeListData);
-    const totalDeployments = await getProjectTotalDeployments(employeeListData);
-    const totalRate = await getProjectTotalRate(employeeListData);
+    const totalDeployments = project.totalDeployment;
+    const totalRate = project.totalRate;
 
     res.render('landing-page', { 
         pageTitle: project.name.toUpperCase(),

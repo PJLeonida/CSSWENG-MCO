@@ -21,6 +21,23 @@ async function getEmployeeData() {
     }
 }
 
+function resetTable(){
+    const dataTable = document.querySelector('#employee-list-table');
+    const tbody = dataTable.querySelector('#employee-list-tbody');
+    var rowCount = tbody.rows.length;
+    for (var i = rowCount-1; i >= 0; i--) {
+        tbody.deleteRow(i);
+    }
+}
+
+function searchEmployee(empList, employeeName){
+    let employee  = empList.find(obj => obj['employee']  && obj['employee'].includes(employeeName));
+    if(employee){
+        return true;
+    }
+    return false;
+}
+
 function initializeEmployeeListTable(empList) {
     /*cant do this yet because there are null values
     empList.sort(function(a,b){
@@ -29,7 +46,7 @@ function initializeEmployeeListTable(empList) {
     
     const dataTable = document.querySelector('#employee-list-table');
     const tbody = dataTable.querySelector('#employee-list-tbody');
-    var id = 0
+    var id = 1
     empList.forEach(employee => {
         const row = tbody.insertRow();
 
@@ -51,4 +68,27 @@ document.addEventListener('DOMContentLoaded', async function (e) {
     // Call the function to get employee data
     const empList = await getEmployeeData();
     initializeEmployeeListTable(empList);
+
+    document.getElementById('search-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+   
+        employeeNameInput = document.getElementById('search-employee-input').value.toUpperCase();
+
+        if(employeeNameInput == ""){
+           return false;
+        }
+   
+        let employeeExists = searchEmployee(empList, employeeNameInput)
+
+        if(employeeExists){
+          let filteredList = empList.filter(obj => obj['employee'] && obj['employee'].includes(employeeNameInput));
+          resetTable()  
+          initializeEmployeeListTable(filteredList)
+          return true;
+        }
+        else{
+           console.log("No employee found")
+           return false;
+        }
+    })
 });
