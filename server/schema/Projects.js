@@ -21,11 +21,6 @@ const Projects = new mongoose.Schema({
         require: true
     },
 
-    employees:{
-        type: [{ type: Schema.Types.ObjectId, ref: 'Employees' }],
-        default: []
-    },
-
     totalEmployees:{
         type: Number
     },

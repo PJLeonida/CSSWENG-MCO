@@ -13,6 +13,25 @@ const EmpDeployment = new mongoose.Schema({
         required: true
     },
 
+    firstName:{
+        type: String,
+        required: true 
+    },
+
+    middleName:{
+        type: String,
+    },
+
+    lastName:{
+        type: String,
+        required: true 
+    },
+
+    suffix:{
+        type: String,
+        
+    },
+
     position: {
         type: String,
         require: true
@@ -42,7 +61,6 @@ const EmpDeployment = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Project'
     }
-
 })
 
 const empDeployment = mongoose.model("EmpDeployment", EmpDeployment);

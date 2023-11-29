@@ -12,11 +12,11 @@ const employeeSchema = new mongoose.Schema({
         type: [{ type: Schema.Types.ObjectId, ref: 'Deployements' }],
         default: []
     },
-
+    /*
     currentProjects: {
         type: [String],
         default: []
-    },
+    },*/
 
     pastProjects:{
         type: [String],

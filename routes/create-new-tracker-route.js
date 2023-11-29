@@ -75,13 +75,16 @@ router.post('/', async (req, res) => {
                 res.status(400).json({ message: 'Project name already in use' });
             }
 
+            if(new_project_end_date){
+                
+            }
             // Create new project
             const newProject = new Projects({
                 name: new_project_name,
                 description: new_project_descr,
                 location: new_project_location,
                 startDate: formatDateWithoutTime(new_project_start_date),
-                dueDate: formatDateWithoutTime(new_project_end_date),
+                dueDate: new_project_end_date ? formatDateWithoutTime(new_project_end_date) : null,
                 //projectPriority: 'Low',
                 status: new_project_status,
                 //projectMembers: [],
@@ -114,39 +117,21 @@ router.post('/', async (req, res) => {
                     new deployment
             */
             for (let i = 0; i < employeeListData.length; i++) {
-                console.log(employeeListData[i]);
-                let employee = employeeListData[i];
-                console.log('---------------------------------');
-                let name = employee.firstName + ' ' + employee.middleName + ' ' + employee.lastName + ' ' + employee.suffix
-                const existingEmployee = await Employees.findOne({name: name})
-                console.log(existingEmployee)
-                if(existingEmployee){
+                 console.log(employeeListData[i]);
+                 let employee = employeeListData[i];
+                 console.log('---------------------------------');
+                 let name = employee.firstName + ' ' + employee.middleName + ' ' + employee.lastName + ' ' + employee.suffix
+                 const existingEmployee = await Employees.findOne({name: name})
+                 console.log(existingEmployee)
+                 if(existingEmployee){
                     console.log('existing!')
                     const newDeployment = new Deployments({
                         employeeRef: existingEmployee._id,
                         employee: existingEmployee.name,
-                        deploymentHrs: employee.deployment,
-                        rate: employee.rate,
-                        totalRate: employee.totalRate,
-                        project: newProject.name,
-                        projectRef: newProject._id
-                    })
-                    await newDeployment.save();
-
-                    existingEmployee.deployments.push(newDeployment._id);
-                    await existingEmployee.save();
-                }
-                else{
-                    console.log('does not exist!')
-                    const newEmployee = new Employees({
-                        //no: employee.no,
-                        name: name,
-                        projects: [newProject.name]
-                    });                
-                    
-                    const newDeployment = new Deployments({
-                        employeeRef: newEmployee._id,
-                        employee: name,
+                        firstName: employee.firstName,
+                        middleName: employee.middleName,
+                        lastName: employee.lastName,
+                        suffix: employee.suffix,
                         position:  employee.position,
                         deploymentHrs: employee.deployment,
                         rate: employee.rate,
@@ -155,7 +140,34 @@ router.post('/', async (req, res) => {
                         projectRef: newProject._id
                     })
                     await newDeployment.save();
-
+        
+                    existingEmployee.deployments.push(newDeployment._id);
+                    await existingEmployee.save();
+                }
+                else{
+                    console.log('does not exist!')
+                    const newEmployee = new Employees({
+                         //no: employee.no,
+                         name: name,
+                        projects: [newProject.name]
+                    });                
+                            
+                    const newDeployment = new Deployments({
+                        employeeRef: newEmployee._id,
+                        employee: name,
+                        firstName: employee.firstName,
+                        middleName: employee.middleName,
+                        lastName: employee.lastName,
+                        suffix: employee.suffix,
+                        position:  employee.position,
+                        deploymentHrs: employee.deployment,
+                        rate: employee.rate,
+                        totalRate: employee.totalRate,
+                        project: newProject.name,
+                        projectRef: newProject._id
+                    })
+                    await newDeployment.save();
+        
                     newEmployee.deployments.push(newDeployment._id)
                     await newEmployee.save();
                 } 
