@@ -190,7 +190,8 @@ document.addEventListener('DOMContentLoaded',  function (e) {
                 let id = 1;
                 for (var i = 0; i < employeeListTableBody.rows.length; i++) {
                     var row = employeeListTableBody.rows[i];
-                    row.cells[0].innerHTML = id; // Assuming the ID is in the first cell
+                    row.cells[0].innerHTML = id;
+                    id += 1
                 }
 
                 console.log(employeeListData)

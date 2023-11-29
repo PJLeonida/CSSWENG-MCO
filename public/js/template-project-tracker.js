@@ -21,7 +21,7 @@ async function getEmployeeData() {
 function initializeEmployeeListTable(empList) {
     //const dataTable = document.querySelector('#employee-list-table');
     const tbody = document.querySelector('#employee-list-tbody');
-    var id = 0
+    var id = 1
     empList.forEach(employee => {
         const row = tbody.insertRow();
         row.insertCell().textContent = id;
