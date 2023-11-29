@@ -21,7 +21,7 @@ async function getEmployeeData() {
     }
 }
 
-function resetTable(){
+function deleteRows(){
     const dataTable = document.querySelector('#employee-list-table');
     const tbody = dataTable.querySelector('#employee-list-tbody');
     var rowCount = tbody.rows.length;
@@ -82,8 +82,21 @@ document.addEventListener('DOMContentLoaded', async function (e) {
 
         if(employeeExists){
           let filteredList = empList.filter(obj => obj['employee'] && obj['employee'].includes(employeeNameInput));
-          resetTable()  
+          deleteRows()  
           initializeEmployeeListTable(filteredList)
+
+          if(document.getElementById('reset-search-btn') == null){
+            //set up reset button
+           var clearButtonPlaceholder = document.getElementById("reset-button-placeholder");
+           clearButtonPlaceholder.innerHTML += '<button type="reset" class="btn btn-danger d-flex justify-content-center mx-3" id="reset-search-btn"><i class="fa fa-solid fa-circle-xmark"></i>Clear Results</button>'
+           //<button type="reset" class="btn btn-danger d-flex justify-content-center mx-3" id="reset-search-btn" disabled><i class="fa fa-solid fa-circle-xmark"></i>Clear Results</button>
+           let resetBtn = document.getElementById('reset-search-btn')
+           resetBtn.addEventListener('click', function(){
+               deleteRows();
+               initializeEmployeeListTable(empList);
+               clearButtonPlaceholder.innerHTML = '';
+           })
+         }
           return true;
         }
         else{

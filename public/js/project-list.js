@@ -99,7 +99,7 @@ function initializeProjectListTable(projlist) {
 }
 
 
-function resetTable(){
+function deleteRows(){
     const dataTable = document.querySelector('#project-list-table');
     const tbody = dataTable.querySelector('tbody');
     var rowCount = tbody.rows.length;
@@ -130,13 +130,25 @@ document.addEventListener('DOMContentLoaded', async function (e) {
         if(projectNameInput == ""){
            return false;
         }
-   
         let projectExists = searchProject(projlist, projectNameInput)
 
         if(projectExists){
           let filteredList = projlist.filter(obj => obj['name'] && obj['name'].includes(projectNameInput));
-          resetTable()  
+          deleteRows()  
           initializeProjectListTable(filteredList)
+
+          if(document.getElementById('reset-search-btn') == null){
+            //set up reset button
+           var clearButtonPlaceholder = document.getElementById("reset-button-placeholder");
+           clearButtonPlaceholder.innerHTML += '<button type="reset" class="btn btn-danger d-flex justify-content-center mx-3" id="reset-search-btn"><i class="fa fa-solid fa-circle-xmark"></i>Clear Results</button>'
+           //<button type="reset" class="btn btn-danger d-flex justify-content-center mx-3" id="reset-search-btn" disabled><i class="fa fa-solid fa-circle-xmark"></i>Clear Results</button>
+           let resetBtn = document.getElementById('reset-search-btn')
+           resetBtn.addEventListener('click', function(){
+               deleteRows();
+               initializeProjectListTable(projlist);
+               clearButtonPlaceholder.innerHTML = '';
+           })
+         }
           return true;
         }
         else{
