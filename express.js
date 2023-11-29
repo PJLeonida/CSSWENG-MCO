@@ -85,6 +85,7 @@ const employeeListRoute = require('./routes/employee-list-route.js');
 const projectListRoute = require('./routes/project-list-route.js')
 const accountSettingsRoute = require('./routes/account-settings-route.js');
 const templateProjectTrackerRoute = require('./routes/template-project-tracker-route.js');
+const editProjectTrackerRoute = require('./routes/edit-project-tracker-route.js');
 
 /*============================================EXPRESS====================================================================*/ 
 
@@ -125,7 +126,7 @@ app.use('/project-list', verifyLogin, projectListRoute);
 app.use('/employee-list', verifyLogin, employeeListRoute);
 app.use('/account-settings', verifyLogin, accountSettingsRoute);
 app.use('/template-project-tracker', verifyLogin, templateProjectTrackerRoute);
-
+app.use('/edit-project-tracker', verifyLogin, editProjectTrackerRoute);
 // Temporary route for design purposes
 // app.use('/account-settings', verifyLogin, templateProjectTrackerRoute);
 

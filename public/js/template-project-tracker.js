@@ -18,6 +18,28 @@ async function getEmployeeData() {
     }
 }
 
+async function goToEditTracker(){
+    const response = await fetch("/template-project-tracker/redirect-edit", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(response => {
+        if (response.ok) {
+            return response.json(); 
+        } else {
+            throw new Error('Failed to redirect to edit tracker');
+        }
+    })
+    .then(data => {
+        if (data.redirect) {
+            window.location.href = data.redirect; // Redirect if the server sends a redirect URL
+        } else {
+            // Handle other data from the server if needed
+        }
+    })
+}
+
 function initializeEmployeeListTable(empList) {
     //const dataTable = document.querySelector('#employee-list-table');
     const tbody = document.querySelector('#employee-list-tbody');
@@ -64,6 +86,7 @@ document.addEventListener('DOMContentLoaded', async function (e) {
         cancelButton.disabled = false;
         cancelButton.style.color = '#000000';
 
+        goToEditTracker()
         // // Enable edit and delete buttons in the employee list table
         // empEditBtn.disabled = false;
         // empEditBtn.style.color = '#000000';

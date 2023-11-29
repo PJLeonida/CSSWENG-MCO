@@ -52,6 +52,16 @@ async function getProjectTotalEmployees(employeeListData) {
     return employeeListData.length;
 }*/
 
+router.post('/redirect-edit', async (req,res) => {
+    const projectID = req.session.projectID
+    try{
+        res.status(200).json({ redirect: '/edit-project-tracker/' + projectID});
+    }
+    catch (error) {
+        console.error('Error redirect edit tracker:', error);
+    }
+})
+
 router.get('/get-employee-list', async (req,res) => {
     console.log('get employee list triggered')
     const projectID = req.session.projectID;

@@ -1,0 +1,205 @@
+<!--
+    create-new-tracker.hbs
+    Purpose:
+        - This is the partial page that contains the form for creating a new tracker.
+-->
+
+        <!-- Enter Employee Modal -->
+        <div id="enterEmployeeModal" class="modal fade" tabindex="-1" aria-labelledby="enterEmployeeModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" id = "x"></button>
+						<h3 class="modal-title employee-form-header">Employee Form</h3>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <div class="myform bg-dark">
+                            <h5 class="employee-form-subheader mb-3 p-3 fw-bold ">Employee Details</h5>
+                            <form id="employee-form">
+                                <div class="row px-3">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="employeeFirstName" class="form-label fw-bold ">First Name</label>
+                                            <input type="text" class="form-control" id="employeeFirstName" placeholder="Enter First Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="employeeMiddleName" class="form-label fw-bold ">Middle Name</label>
+                                            <input type="text" class="form-control" id="employeeMiddleName" placeholder="Enter Middle Name">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="employeeLastName" class="form-label fw-bold ">Last Name</label>
+                                            <input type="text" class="form-control" id="employeeLastName" placeholder="Enter Last Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="employeeSuffix" class="form-label fw-bold ">Suffix</label>
+                                            <input type="text" class="form-control" id="employeeSuffix" placeholder="Enter Suffix">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h5 class="employee-form-subheader mb-3 p-3 fw-bold">Employment Details</h5>
+
+                                <div class="row px-3">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="employeePosition" class="form-label fw-bold ">Position</label>
+                                            <input type="text" class="form-control" id="employeePosition" placeholder="Enter Employee's Position" required>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="employeeDeployment" class="form-label fw-bold ">Deployment (in Hours)</label>
+                                            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control" id="employeeDeployment" placeholder="Enter the Hours of Deployment" required>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="employeeRate" class="form-label fw-bold ">Rate (per Hour)</label>
+                                            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control" id="employeeRate" placeholder="Enter the Cost of Rate per Hour" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="pt-5 pb-3 px-5">
+                                    <button type="submit" id="enter-employee-btn" data-index="0" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#enterEmployeeModal">Enter Employee</button>
+                                </div>
+                            </form>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Enter Employee Modal -->
+
+
+
+            {{!-- <div class="header">
+                <span class="flex-container">
+                    <h1>{{ pageTitle }}</h1>
+                </span>
+            </div> --}}
+
+
+            <!-- Create New Tracker -->           
+            <div class="main-container">
+
+                <form action="/new-tracker" method="post" id="new-tracker-form">
+
+                    <div class="header d-flex justify-content-between align-items-center">
+                        <span class="d-flex justify-content-start">
+                            <h1>{{ pageTitle }}</h1>
+                        </span>
+
+                        <div class="d-flex mt-2">
+                            <button type="submit" id="btn-create-new-tracker" class="btn btn-success mb-3 me-3"><i class="fa fa-solid fa-square-plus"></i>Create Project Tracker</button>
+                            <button type="button" id="btw-cancel-tracker" class="btn btn-danger mb-3 me-3" data-bs-toggle="modal" data-bs-target="#discardTrackerModal"><i class="fa fa-solid fa-trash"></i>Discard Tracker</button>
+                        </div>
+                    </div>
+                    
+                    {{!-- <button type="submit" id="btn-create-new-tracker" class="btn btn-success mb-3 me-3"><i class="fa fa-solid fa-square-plus"></i>Create Project Tracker</button>
+                    <button type="button" id="btw-cancel-tracker" class="btn btn-danger mb-3 me-3" data-bs-toggle="modal" data-bs-target="#discardTrackerModal" >Discard Tracker</button> --}}
+
+                    <input type="hidden" name="action" value="create-new-tracker">
+                    
+                    <div class="bottom-data">
+                        <div class="reports project-details">
+                            <div class="mb-3">
+                                <label for="new-project-name" class="form-label fw-bold fs-4 new-tracker-to-do">Project Name</label>
+                                <input type="text" class="form-control" id="new-project-name" placeholder="Enter Project Name" required>
+
+                                <!-- Error Message -->
+								<div class="alert alert-danger mt-3" id="project-name-message" style="display:none" role="alert"></div>
+
+                            </div>
+                            <div class="mb-3">
+                                <label for="new-project-desc" class="form-label fw-bold fs-4 new-tracker-to-do">Project Description</label>
+                                <input type="text" class="form-control" id="new-project-desc" placeholder="Enter Project Description" required>
+
+                                <!-- Error Message -->
+								<div class="alert alert-danger mt-3" id="project-desc-message" style="display:none" role="alert"></div>
+
+                            </div>
+                            <!-- Project Location -->
+                            <div class="mb-3">
+                                <label for="new-project-location" class="form-label fw-bold fs-4 new-tracker-to-do">Project Location</label>
+                                <input type="text" class="form-control" id="new-project-location" placeholder="Enter Project Location" required>
+
+                                <!-- Error Message -->
+								<div class="alert alert-danger mt-3" id="project-location-message" style="display:none" role="alert"></div>
+
+                            </div>
+                        </div>
+
+                        <!-- Project Duration -->
+                        <div class="reports project-duration">
+                            <div class="mb-3">
+                                <label for="new-project-status" class="form-label fw-bold fs-4 new-tracker-to-do">Project Status</label>
+                                <select class="form-select mb-3" id="new-project-status" required>
+                                    <option value="" selected disabled hidden>Choose Status</option>
+                                    <option value="ON-GOING">ON-GOING</option>
+                                    <option value="COMPLETED">COMPLETED</option>
+                                </select>
+                                <!-- Error Message -->
+								<div class="alert alert-danger mt-3" id="project-status-message" style="display:none" role="alert"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="new-project-start-date" class="form-label fw-bold fs-4 new-tracker-to-do">Start Date</label>
+                                <input type="date" class="form-control" id="new-project-start-date">
+
+                                <!-- Error Message -->
+								<div class="alert alert-danger mt-3" id="project-start-date-message" style="display:none" role="alert"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="new-project-end-date" class="form-label fw-bold fs-4 new-tracker-to-do">End Date</label>
+                                <input type="date" class="form-control" id="new-project-end-date">
+
+                                <!-- Error Message -->
+								<div class="alert alert-danger mt-3" id="project-end-date-message" style="display:none" role="alert"></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Data -->
+                <div class="bottom-data">
+                    <div class="reports">
+                        <div class="div-options-employee">
+                            <span class="new-tracker-to-do fs-4">
+                                Employee List
+                            </span>
+                            <span>
+                                <button type="button" id="btn-enter-employee" class="btn btn-primary mb-3 me-3" data-bs-toggle="modal" data-bs-target="#enterEmployeeModal">Add Employee</button>
+                            </span>
+                            <!-- Error Message -->
+								<div class="alert alert-danger mt-3" id="employee-list-message" style="display:none" role="alert"></div>
+                        </div>
+
+                        <table id="employee-table">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Deployment (in Hrs)</th>
+                                    <th>Rate (per Hr)</th>
+                                    <th>Total Rate</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <!-- End of Create New Tracker -->
