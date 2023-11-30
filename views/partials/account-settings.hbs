@@ -39,7 +39,7 @@
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="acc-firstName" class="form-label">First Name</label>
-                                    <input type="text" name="acc_firstName" class="form-control" id="acc-firstName" placeholder="Enter First Name" required>
+                                    <input type="text" value="{{ name }}" name="acc_firstName" class="form-control" id="acc-firstName" placeholder="Enter First Name" required>
                                     
                                     <!-- Error Message -->
                                     <div class="alert alert-danger mt-3" role="alert" style="display: none;"> </div>
@@ -50,7 +50,7 @@
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="acc-middleName" class="form-label">Middle Name</label>
-                                    <input type="text" name="acc_middleName" class="form-control" id="acc-middleName" placeholder="Enter Middle Name">
+                                    <input type="text" value="{{ middlename }}" name="acc_middleName" class="form-control" id="acc-middleName" placeholder="Enter Middle Name">
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="acc-lastName" class="form-label">Last Name</label>
-                                    <input type="text" name="acc_lastName" class="form-control" id="acc-lastName" placeholder="Enter Last Name" required>
+                                    <input type="text" value="{{ lastname }}" name="acc_lastName" class="form-control" id="acc-lastName" placeholder="Enter Last Name" required>
 
                                     <!-- Error Message -->
                                     <div class="alert alert-danger mt-3" role="alert" style="display: none;"> </div>
@@ -69,14 +69,14 @@
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="acc-suffix" class="form-label">Suffix</label>
-                                    <input type="text" name="acc_suffix" class="form-control" id="acc-suffix" placeholder="Enter Suffix">
+                                    <input type="text" value="{{ suffix }}" name="acc_suffix" class="form-control" id="acc-suffix" placeholder="Enter Suffix">
                                 </div>
                             </div>
                         </div>
 
                         <div class="mb-3 mt-3">
                             <label for="acc-companyID" class="index-form-label">Company ID</label>
-                            <input type="number" min="0" name="acc_companyID" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" id="acc-companyID" class="form-control" placeholder="Enter Company ID" required>
+                            <input type="number" min="0" value="{{ companyID }}" name="acc_companyID" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" id="acc-companyID" class="form-control" placeholder="Enter Company ID" required>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="acc-password" class="index-form-label">Password</label>
